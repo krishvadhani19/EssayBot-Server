@@ -2,15 +2,26 @@ import express from "express";
 import { connectDB } from "./config/db";
 import routes from "./routes/routes";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
-dotenv.config(); // Load env variables at the very top
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 
-// API Routes
+app.use(cookieParser());
+
+// Allow frontend to send cookies
+app.use(
+  cors({
+    origin: process.env.FRONTEND_BASE_URL,
+    credentials: true,
+  })
+);
+
 app.use("/api", routes);
 
 connectDB();
