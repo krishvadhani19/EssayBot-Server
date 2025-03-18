@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 // Define an interface for the User document
 interface IUser extends Document {
   name: string;
-  email: string;
+  username: string;
   password: string;
   matchPassword(enteredPassword: string): Promise<boolean>;
 }
@@ -12,7 +12,7 @@ interface IUser extends Document {
 // Define the User Schema
 const userSchema: Schema<IUser> = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
 

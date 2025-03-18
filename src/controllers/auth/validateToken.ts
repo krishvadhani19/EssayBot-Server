@@ -29,7 +29,7 @@ export const validateToken = async (
 
     res.status(200).json({
       message: "Token is valid",
-      user: { id: user._id, email: user.email },
+      user: { id: user._id, username: user.username },
     });
   } catch (error) {
     console.log({ error });

@@ -4,6 +4,8 @@ import routes from "./routes/routes";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import fileRoutes from "./routes/fileRoutes";
+import assignmentRoutes from "./routes/assignmentRoutes";
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.use(
 );
 
 app.use("/api", routes);
+app.use("/api", fileRoutes);
+app.use("/api", assignmentRoutes);
 
 connectDB();
 

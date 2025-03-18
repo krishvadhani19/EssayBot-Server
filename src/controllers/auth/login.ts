@@ -4,10 +4,10 @@ import { User, IUser } from "../../models/User";
 
 export const loginUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    // Find user by email
-    const user: IUser | null = await User.findOne({ email });
+    // Find user by username
+    const user: IUser | null = await User.findOne({ username });
 
     if (!user || !(await user.matchPassword(password))) {
       res.status(400).json({ message: "Invalid credentials" });
@@ -15,9 +15,13 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, {
-      expiresIn: "1d",
-    });
+    const token = jwt.sign(
+      { id: user._id, username: user.username },
+      process.env.JWT_SECRET as string,
+      {
+        expiresIn: "1d",
+      }
+    );
 
     // Set token in HttpOnly, Secure cookie
     res.cookie("authToken", token, {
