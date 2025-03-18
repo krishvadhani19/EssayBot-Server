@@ -10,19 +10,19 @@ router.use(authenticateToken as RequestHandler);
 
 // Create a new assignment
 router.post(
-  "/courses/:courseCode/assignment",
+  "/",
   assignmentController.createAssignment as unknown as RequestHandler<AssignmentParams>
 );
 
 // Get assignment details
 router.get(
-  "/courses/:courseCode/assignments/:assignmentId",
+  "/:assignmentId",
   assignmentController.getAssignment as unknown as RequestHandler<AssignmentParams>
 );
 
 // Update assignment (handles question, config_rubric, and config_prompt updates)
 router.patch(
-  "/courses/:courseCode/assignments/:assignmentId",
+  "/:assignmentId",
   assignmentController.updateAssignment as unknown as RequestHandler<AssignmentParams>
 );
 

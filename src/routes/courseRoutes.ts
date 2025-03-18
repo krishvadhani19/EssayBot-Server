@@ -8,24 +8,18 @@ const router = express.Router();
 router.use(authenticateToken as RequestHandler);
 
 // Course routes
-router.post(
-  "/courses",
-  courseController.createCourse as unknown as RequestHandler
-);
+router.post("/", courseController.createCourse as unknown as RequestHandler);
+router.get("/", courseController.getCourses as unknown as RequestHandler);
 router.get(
-  "/courses",
-  courseController.getCourses as unknown as RequestHandler
-);
-router.get(
-  "/courses/:courseId",
+  "/:courseId",
   courseController.getCourse as unknown as RequestHandler
 );
 router.patch(
-  "/courses/:courseId",
+  "/:courseId",
   courseController.updateCourse as unknown as RequestHandler
 );
 router.delete(
-  "/courses/:courseId",
+  "/:courseId",
   courseController.deleteCourse as unknown as RequestHandler
 );
 

@@ -31,7 +31,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
       maxAge: 24 * 60 * 60 * 1000, // 1 day expiration
     });
 
-    res.json({ message: "Login successful" }); // No need to return token in response
+    res.json({ message: "Login successful", userId: user._id });
   } catch (error) {
     console.log({ error });
     res.status(500).json({ message: "Error logging in", error });

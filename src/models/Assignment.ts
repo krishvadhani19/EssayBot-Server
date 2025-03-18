@@ -42,14 +42,14 @@ export interface ICreateAssignment {
 const assignmentSchema = new Schema<IAssignment>({
   title: { type: String, required: true },
   question: { type: String },
-  course: { type: Schema.Types.ObjectId, ref: "Course", required: true }, // Reference to the Course
+  course: { type: Schema.Types.ObjectId, ref: "Course", required: true },
   config_rubric: {
     criteria: {
       type: [Schema.Types.Mixed],
       required: true,
     },
   },
-  config_prompt: { type: Schema.Types.Mixed, required: true }, // Flexible structure for prompt config
+  config_prompt: { type: Schema.Types.Mixed, required: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
