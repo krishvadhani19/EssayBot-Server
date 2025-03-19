@@ -3,6 +3,7 @@ import authRoutes from "./authRoutes";
 import courseRoutes from "./courseRoutes";
 import fileRoutes from "./fileRoutes";
 import assignmentRoutes from "./assignmentRoutes";
+import userRoutes from "./userRoutes";
 
 const router = express.Router();
 
@@ -11,5 +12,6 @@ router.use("/auth", authRoutes);
 router.use("/courses", courseRoutes);
 router.use("/", fileRoutes);
 router.use("/courses/:courseCode/assignments", assignmentRoutes);
+router.use("/users", userRoutes);
 
 export default router;
