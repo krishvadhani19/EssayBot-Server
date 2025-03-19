@@ -6,6 +6,7 @@ interface IUser extends Document {
   name: string;
   username: string;
   password: string;
+  courses: mongoose.Types.ObjectId[];
   matchPassword(enteredPassword: string): Promise<boolean>;
 }
 
@@ -14,6 +15,7 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
   name: { type: String, required: true },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  courses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
 });
 
 // Hash password before saving

@@ -9,8 +9,6 @@ export const validateToken = async (
   try {
     const authToken = req.cookies.authToken;
 
-    console.log({ cookie: req.cookies.authToken });
-
     if (!authToken) {
       res.status(401).json({ message: "No token provided" });
       return;
