@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { ParamsDictionary } from "express-serve-static-core";
 import { fileUploadService } from "../services/fileUploadService";
 import { Course } from "../models/Course";
-import { FileAttachment } from "../models/Course";
 
 export interface FileUploadParams extends ParamsDictionary {
   courseCode: string;
@@ -66,9 +65,9 @@ export class FileController {
       await fileUploadService.deleteFile(fileUrl);
 
       // Remove file attachment from course
-      course.attachments = course.attachments.filter(
-        (attachment) => attachment.fileUrl !== fileUrl
-      );
+      // course.attachments = course.attachments.filter(
+      //   (attachment) => attachment.fileUrl !== fileUrl
+      // );
       await course.save();
 
       res.status(200).json({ message: "File deleted successfully" });
