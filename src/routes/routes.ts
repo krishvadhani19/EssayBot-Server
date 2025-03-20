@@ -11,7 +11,7 @@ const router = express.Router();
 router.use("/auth", authRoutes);
 router.use("/courses", courseRoutes);
 router.use("/", fileRoutes);
-router.use("/courses/:courseCode/assignments", assignmentRoutes);
+router.use("/courses", assignmentRoutes);
 router.use("/users", userRoutes);
 
 export default router;

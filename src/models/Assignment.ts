@@ -36,7 +36,7 @@ export interface ICreateAssignment {
   question?: string;
   course: Schema.Types.ObjectId;
   config_rubric: RubricConfig;
-  config_prompt: Record<string, any>;
+  config_prompt?: Record<string, any>;
 }
 
 const assignmentSchema = new Schema<IAssignment>({
@@ -49,7 +49,7 @@ const assignmentSchema = new Schema<IAssignment>({
       required: true,
     },
   },
-  config_prompt: { type: Schema.Types.Mixed, required: true },
+  config_prompt: { type: Schema.Types.Mixed },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
