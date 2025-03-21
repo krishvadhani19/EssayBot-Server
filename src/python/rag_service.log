@@ -283,3 +283,50 @@ ValueError: No files found in S3 directory: prof_prof_sean/67dd7b841c383e76fd864
 2025-03-21 11:09:32,049 - INFO - Sending request to local model: llama3.1:8b
 2025-03-21 11:09:40,001 - INFO - Successfully generated sample rubric
 2025-03-21 11:09:40,003 - INFO - 127.0.0.1 - - [21/Mar/2025 11:09:40] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-21 12:51:22,217 - INFO - Use pytorch device_name: mps
+2025-03-21 12:51:22,217 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 12:52:28,127 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.229:6000
+2025-03-21 12:52:28,128 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 12:52:28,128 - INFO -  * Restarting with stat
+2025-03-21 12:52:32,401 - INFO - Use pytorch device_name: mps
+2025-03-21 12:52:32,402 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 12:52:35,352 - WARNING -  * Debugger is active!
+2025-03-21 12:52:35,374 - INFO -  * Debugger PIN: 102-319-051
+2025-03-21 12:53:15,964 - INFO - Listing files in S3 with prefix: prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 12:53:16,229 - INFO - Selected most recent index file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_faiss_index.index
+2025-03-21 12:53:16,230 - INFO - Selected most recent chunks file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 12:53:16,385 - INFO - Downloading JSON from S3: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 12:53:19,038 - INFO - Retrieved 5 relevant chunks for query: List and briefly explain the four major steps in d...
+2025-03-21 12:53:19,038 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-21 12:53:19,039 - INFO - Sending request to local model: llama3.1:8b
+2025-03-21 12:53:19,041 - ERROR - Error calling local model API: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x115b98ec0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-03-21 12:53:19,042 - ERROR - Error generating rubric: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x115b98ec0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-03-21 12:53:19,043 - INFO - 127.0.0.1 - - [21/Mar/2025 12:53:19] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-21 12:57:39,705 - INFO - Listing files in S3 with prefix: prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 12:57:39,922 - INFO - Selected most recent index file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_faiss_index.index
+2025-03-21 12:57:39,922 - INFO - Selected most recent chunks file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 12:57:40,095 - INFO - Downloading JSON from S3: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 12:57:40,904 - INFO - Retrieved 5 relevant chunks for query: List and briefly explain the four major steps in d...
+2025-03-21 12:57:40,905 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-21 12:57:40,905 - INFO - Sending request to local model: llama3.1:8b
+2025-03-21 12:57:40,909 - ERROR - Error calling local model API: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x115bb25d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-03-21 12:57:40,909 - ERROR - Error generating rubric: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x115bb25d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-03-21 12:57:40,910 - INFO - 127.0.0.1 - - [21/Mar/2025 12:57:40] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-21 12:58:27,936 - INFO -  * Detected change in '/Users/krish19/Documents/Repos/EssayBot/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 12:58:29,617 - INFO -  * Restarting with stat
+2025-03-21 12:58:34,091 - INFO - Use pytorch device_name: mps
+2025-03-21 12:58:34,092 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 12:58:37,236 - WARNING -  * Debugger is active!
+2025-03-21 12:58:37,261 - INFO -  * Debugger PIN: 102-319-051
+2025-03-21 12:58:45,299 - INFO - Listing files in S3 with prefix: prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 12:58:45,540 - INFO - Selected most recent index file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_faiss_index.index
+2025-03-21 12:58:45,540 - INFO - Selected most recent chunks file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 12:58:45,674 - INFO - Downloading JSON from S3: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 12:58:46,021 - INFO - Retrieved 5 relevant chunks for query: List and briefly explain the four major steps in d...
+2025-03-21 12:58:46,021 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-21 12:58:46,022 - INFO - Sending request to local model: llama3.1:8b
+2025-03-21 12:58:54,090 - INFO - Successfully generated sample rubric
+2025-03-21 12:58:54,091 - INFO - 127.0.0.1 - - [21/Mar/2025 12:58:54] "POST /generate_rubric HTTP/1.1" 200 -

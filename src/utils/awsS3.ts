@@ -1,7 +1,5 @@
 import AWS from "aws-sdk";
-import { IAttachment } from "../models/Attachment";
 import { MulterFile } from "../types/multer";
-import { Course } from "../models/Course";
 
 // Configure AWS
 AWS.config.update({
