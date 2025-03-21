@@ -3,6 +3,7 @@ import { authenticateToken } from "../middleware/authenticateToken";
 import { updateAssignment } from "../controllers/assignments/updateAssignment";
 import { createAssignment } from "../controllers/assignments/createAssignment";
 import { AssignmentParams } from "../controllers/assignments";
+import { createRubric } from "../controllers/assignments/generateRubric";
 
 const router = express.Router();
 
@@ -21,4 +22,8 @@ router.patch(
   updateAssignment as unknown as RequestHandler<AssignmentParams>
 );
 
+router.post(
+  "/generate-rubric",
+  createRubric as unknown as RequestHandler<AssignmentParams>
+);
 export default router;

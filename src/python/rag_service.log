@@ -1,0 +1,285 @@
+2025-03-21 03:08:08,183 - INFO - Use pytorch device_name: mps
+2025-03-21 03:08:08,183 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 03:13:59,883 - INFO - Use pytorch device_name: mps
+2025-03-21 03:13:59,883 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 03:15:02,221 - INFO - Use pytorch device_name: mps
+2025-03-21 03:15:02,221 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:31:42,608 - INFO - Use pytorch device_name: mps
+2025-03-21 10:31:42,609 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:31:46,062 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-21 10:31:46,062 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 10:31:46,063 - INFO -  * Restarting with stat
+2025-03-21 10:31:49,707 - INFO - Use pytorch device_name: mps
+2025-03-21 10:31:49,708 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:31:52,943 - WARNING -  * Debugger is active!
+2025-03-21 10:31:52,981 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:33:03,043 - INFO - 127.0.0.1 - - [21/Mar/2025 10:33:03] "[31m[1mPOST /index HTTP/1.1[0m" 400 -
+2025-03-21 10:33:30,447 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:33:31,026 - INFO -  * Restarting with stat
+2025-03-21 10:33:34,289 - INFO - Use pytorch device_name: mps
+2025-03-21 10:33:34,290 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:33:37,027 - WARNING -  * Debugger is active!
+2025-03-21 10:33:37,039 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:33:43,165 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:33:43,667 - INFO -  * Restarting with stat
+2025-03-21 10:33:46,505 - INFO - Use pytorch device_name: mps
+2025-03-21 10:33:46,505 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:33:54,541 - WARNING -  * Debugger is active!
+2025-03-21 10:33:54,555 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:33:54,575 - INFO - 127.0.0.1 - - [21/Mar/2025 10:33:54] "[31m[1mPOST /index HTTP/1.1[0m" 400 -
+2025-03-21 10:34:36,199 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:34:36,651 - INFO -  * Restarting with stat
+2025-03-21 10:34:39,737 - INFO - Use pytorch device_name: mps
+2025-03-21 10:34:39,737 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:34:42,315 - WARNING -  * Debugger is active!
+2025-03-21 10:34:42,328 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:35:37,123 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:35:37,667 - INFO -  * Restarting with stat
+2025-03-21 10:35:41,022 - INFO - Use pytorch device_name: mps
+2025-03-21 10:35:41,022 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:35:44,072 - WARNING -  * Debugger is active!
+2025-03-21 10:35:44,090 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:35:44,118 - INFO - 127.0.0.1 - - [21/Mar/2025 10:35:44] "[31m[1mPOST /index HTTP/1.1[0m" 400 -
+2025-03-21 10:35:56,767 - INFO - Use pytorch device_name: mps
+2025-03-21 10:35:56,767 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:35:58,172 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-21 10:35:58,172 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 10:35:58,173 - INFO -  * Restarting with stat
+2025-03-21 10:36:00,537 - INFO - Use pytorch device_name: mps
+2025-03-21 10:36:00,537 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:36:02,348 - WARNING -  * Debugger is active!
+2025-03-21 10:36:02,361 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:36:04,319 - INFO - 127.0.0.1 - - [21/Mar/2025 10:36:04] "[31m[1mPOST /index HTTP/1.1[0m" 400 -
+2025-03-21 10:36:15,887 - INFO - 127.0.0.1 - - [21/Mar/2025 10:36:15] "[31m[1mPOST /index HTTP/1.1[0m" 400 -
+2025-03-21 10:37:32,147 - INFO - Downloading file from S3: prof_sean/67dd788d5f1fde029d69c13d/MKTG-2201-Study-Textbook.pdf
+2025-03-21 10:37:34,796 - WARNING - Not enough training data (16) for quantization with nbits=8. Falling back to IndexFlatL2.
+2025-03-21 10:37:34,894 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67dd788d5f1fde029d69c13d/2201-Study-Textbook_chunks.json
+2025-03-21 10:37:34,998 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67dd788d5f1fde029d69c13d/2201-Study-Textbook_faiss_index.index
+2025-03-21 10:37:35,001 - INFO - 127.0.0.1 - - [21/Mar/2025 10:37:35] "POST /index HTTP/1.1" 200 -
+2025-03-21 10:41:41,518 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:41:42,287 - INFO -  * Restarting with stat
+2025-03-21 10:41:46,401 - INFO - Use pytorch device_name: mps
+2025-03-21 10:41:46,401 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:41:49,305 - WARNING -  * Debugger is active!
+2025-03-21 10:41:49,320 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:41:51,367 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:41:51,862 - INFO -  * Restarting with stat
+2025-03-21 10:41:55,306 - INFO - Use pytorch device_name: mps
+2025-03-21 10:41:55,306 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:41:57,088 - WARNING -  * Debugger is active!
+2025-03-21 10:41:57,106 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:42:01,162 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:42:01,618 - INFO -  * Restarting with stat
+2025-03-21 10:42:04,104 - INFO - Use pytorch device_name: mps
+2025-03-21 10:42:04,105 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:42:06,428 - WARNING -  * Debugger is active!
+2025-03-21 10:42:06,439 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:42:09,508 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:42:10,037 - INFO -  * Restarting with stat
+2025-03-21 10:42:12,455 - INFO - Use pytorch device_name: mps
+2025-03-21 10:42:12,455 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:42:14,161 - WARNING -  * Debugger is active!
+2025-03-21 10:42:14,178 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:42:15,222 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:42:15,773 - INFO -  * Restarting with stat
+2025-03-21 10:42:18,694 - INFO - Use pytorch device_name: mps
+2025-03-21 10:42:18,695 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:42:20,140 - WARNING -  * Debugger is active!
+2025-03-21 10:42:20,154 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:42:28,478 - INFO - Use pytorch device_name: mps
+2025-03-21 10:42:28,478 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:42:41,505 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-21 10:42:41,506 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 10:42:41,507 - INFO -  * Restarting with stat
+2025-03-21 10:42:44,552 - INFO - Use pytorch device_name: mps
+2025-03-21 10:42:44,553 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:42:46,811 - WARNING -  * Debugger is active!
+2025-03-21 10:42:46,826 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:42:56,296 - INFO - Downloading file from S3: prof_sean/67dd788d5f1fde029d69c13d/MKTG-2201-Study-Textbook.pdf
+2025-03-21 10:42:58,406 - WARNING - Not enough training data (16) for quantization with nbits=8. Falling back to IndexFlatL2.
+2025-03-21 10:42:58,407 - INFO - Constructed file_name: 2201-Study-Textbook
+2025-03-21 10:42:58,554 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67dd788d5f1fde029d69c13d/2201-Study-Textbook_chunks.json
+2025-03-21 10:42:58,784 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67dd788d5f1fde029d69c13d/2201-Study-Textbook_faiss_index.index
+2025-03-21 10:42:58,787 - INFO - 127.0.0.1 - - [21/Mar/2025 10:42:58] "POST /index HTTP/1.1" 200 -
+2025-03-21 10:44:14,200 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:44:14,724 - INFO -  * Restarting with stat
+2025-03-21 10:44:17,837 - INFO - Use pytorch device_name: mps
+2025-03-21 10:44:17,837 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:44:20,323 - WARNING -  * Debugger is active!
+2025-03-21 10:44:20,333 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:44:25,418 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:44:25,993 - INFO -  * Restarting with stat
+2025-03-21 10:44:28,798 - INFO - Use pytorch device_name: mps
+2025-03-21 10:44:28,798 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:44:30,371 - WARNING -  * Debugger is active!
+2025-03-21 10:44:30,382 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:45:58,508 - INFO - Downloading file from S3: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook.pdf
+2025-03-21 10:46:01,180 - WARNING - Not enough training data (16) for quantization with nbits=8. Falling back to IndexFlatL2.
+2025-03-21 10:46:01,181 - INFO - Constructed file_name: MKTG-2201-Study-Textbook
+2025-03-21 10:46:01,359 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 10:46:01,532 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_faiss_index.index
+2025-03-21 10:46:01,533 - INFO - 127.0.0.1 - - [21/Mar/2025 10:46:01] "POST /index HTTP/1.1" 200 -
+2025-03-21 10:48:05,478 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:48:06,052 - INFO -  * Restarting with stat
+2025-03-21 10:48:09,285 - INFO - Use pytorch device_name: mps
+2025-03-21 10:48:09,285 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:48:11,913 - WARNING -  * Debugger is active!
+2025-03-21 10:48:11,923 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:48:19,036 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:48:19,540 - INFO -  * Restarting with stat
+2025-03-21 10:48:22,118 - INFO - Use pytorch device_name: mps
+2025-03-21 10:48:22,118 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:48:23,671 - WARNING -  * Debugger is active!
+2025-03-21 10:48:23,684 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:52:19,933 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 10:52:20,473 - INFO -  * Restarting with stat
+2025-03-21 10:52:23,935 - INFO - Use pytorch device_name: mps
+2025-03-21 10:52:23,935 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:52:26,941 - WARNING -  * Debugger is active!
+2025-03-21 10:52:26,955 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:52:41,194 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:52:41,704 - INFO -  * Restarting with stat
+2025-03-21 10:52:44,600 - INFO - Use pytorch device_name: mps
+2025-03-21 10:52:44,600 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:52:46,176 - WARNING -  * Debugger is active!
+2025-03-21 10:52:46,187 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:52:48,249 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:52:48,752 - INFO -  * Restarting with stat
+2025-03-21 10:52:51,211 - INFO - Use pytorch device_name: mps
+2025-03-21 10:52:51,211 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:52:52,781 - WARNING -  * Debugger is active!
+2025-03-21 10:52:52,792 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:53:14,094 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:53:14,541 - INFO -  * Restarting with stat
+2025-03-21 10:53:16,954 - INFO - Use pytorch device_name: mps
+2025-03-21 10:53:16,954 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:53:20,247 - WARNING -  * Debugger is active!
+2025-03-21 10:53:20,258 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:54:31,274 - INFO - 127.0.0.1 - - [21/Mar/2025 10:54:31] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 10:55:19,073 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:55:19,619 - INFO -  * Restarting with stat
+2025-03-21 10:55:22,583 - INFO - Use pytorch device_name: mps
+2025-03-21 10:55:22,583 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:55:25,335 - WARNING -  * Debugger is active!
+2025-03-21 10:55:25,349 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:56:23,150 - INFO - 127.0.0.1 - - [21/Mar/2025 10:56:23] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 10:56:28,339 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:56:28,913 - INFO -  * Restarting with stat
+2025-03-21 10:56:35,225 - INFO - Use pytorch device_name: mps
+2025-03-21 10:56:35,225 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:56:37,280 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-21 10:56:37,281 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 10:56:37,281 - INFO -  * Restarting with stat
+2025-03-21 10:56:39,784 - INFO - Use pytorch device_name: mps
+2025-03-21 10:56:39,784 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:56:42,207 - WARNING -  * Debugger is active!
+2025-03-21 10:56:42,222 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:56:42,243 - INFO - 127.0.0.1 - - [21/Mar/2025 10:56:42] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 10:57:11,720 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:57:12,244 - INFO -  * Restarting with stat
+2025-03-21 10:57:15,516 - INFO - Use pytorch device_name: mps
+2025-03-21 10:57:15,516 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:57:18,173 - WARNING -  * Debugger is active!
+2025-03-21 10:57:18,185 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:57:18,997 - INFO - 127.0.0.1 - - [21/Mar/2025 10:57:18] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 10:57:38,478 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:57:38,981 - INFO -  * Restarting with stat
+2025-03-21 10:57:42,003 - INFO - Use pytorch device_name: mps
+2025-03-21 10:57:42,003 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:57:56,526 - WARNING -  * Debugger is active!
+2025-03-21 10:57:56,600 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:57:56,631 - INFO - 127.0.0.1 - - [21/Mar/2025 10:57:56] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 10:58:39,294 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:58:39,774 - INFO -  * Restarting with stat
+2025-03-21 10:58:42,841 - INFO - Use pytorch device_name: mps
+2025-03-21 10:58:42,841 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:58:44,895 - WARNING -  * Debugger is active!
+2025-03-21 10:58:44,913 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:59:31,127 - INFO - 127.0.0.1 - - [21/Mar/2025 10:59:31] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 10:59:43,896 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 10:59:44,393 - INFO -  * Restarting with stat
+2025-03-21 10:59:47,720 - INFO - Use pytorch device_name: mps
+2025-03-21 10:59:47,720 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 10:59:49,976 - WARNING -  * Debugger is active!
+2025-03-21 10:59:49,993 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 10:59:53,625 - INFO - 127.0.0.1 - - [21/Mar/2025 10:59:53] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 11:03:29,076 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 11:03:29,725 - INFO -  * Restarting with stat
+2025-03-21 11:03:33,351 - INFO - Use pytorch device_name: mps
+2025-03-21 11:03:33,351 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 11:03:38,381 - WARNING -  * Debugger is active!
+2025-03-21 11:03:38,398 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 11:03:41,705 - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:41] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 11:03:43,992 - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:43] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 11:03:45,161 - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:45] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-21 11:04:57,982 - INFO - Listing files in S3 with prefix: prof_prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 11:04:58,393 - ERROR - Error generating sample rubric: No files found in S3 directory: prof_prof_sean/67dd7b841c383e76fd864a63/
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py", line 171, in generate_rubric
+    context = retrieve_relevant_text(
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 314, in retrieve_relevant_text
+    index_key, chunks_key = find_most_recent_index_and_chunks(
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 266, in find_most_recent_index_and_chunks
+    raise ValueError(f"No files found in S3 directory: {prefix}")
+ValueError: No files found in S3 directory: prof_prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 11:04:58,394 - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:58] "[35m[1mPOST /generate_rubric HTTP/1.1[0m" 500 -
+2025-03-21 11:05:40,110 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-21 11:05:40,631 - INFO -  * Restarting with stat
+2025-03-21 11:05:44,293 - INFO - Use pytorch device_name: mps
+2025-03-21 11:05:44,293 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 11:05:47,756 - WARNING -  * Debugger is active!
+2025-03-21 11:05:47,770 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 11:05:56,796 - INFO - Listing files in S3 with prefix: prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 11:05:57,026 - INFO - Selected most recent index file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_faiss_index.index
+2025-03-21 11:05:57,027 - INFO - Selected most recent chunks file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 11:05:57,184 - INFO - Downloading JSON from S3: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 11:05:58,493 - INFO - Retrieved 5 relevant chunks for query: List and briefly explain the four major steps in d...
+2025-03-21 11:05:58,493 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-21 11:05:58,494 - INFO - Sending request to local model: llama3.1:8b
+2025-03-21 11:06:08,420 - INFO - Successfully generated sample rubric
+2025-03-21 11:06:08,421 - INFO - 127.0.0.1 - - [21/Mar/2025 11:06:08] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-21 11:07:12,051 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-21 11:07:12,585 - INFO -  * Restarting with stat
+2025-03-21 11:07:15,958 - INFO - Use pytorch device_name: mps
+2025-03-21 11:07:15,958 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-21 11:07:18,672 - WARNING -  * Debugger is active!
+2025-03-21 11:07:18,688 - INFO -  * Debugger PIN: 454-758-480
+2025-03-21 11:07:20,615 - INFO - Listing files in S3 with prefix: prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 11:07:20,874 - INFO - Selected most recent index file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_faiss_index.index
+2025-03-21 11:07:20,875 - INFO - Selected most recent chunks file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 11:07:21,036 - INFO - Downloading JSON from S3: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 11:07:21,435 - INFO - Retrieved 5 relevant chunks for query: List and briefly explain the four major steps in d...
+2025-03-21 11:07:21,435 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-21 11:07:21,436 - INFO - Sending request to local model: llama3.1:8b
+2025-03-21 11:07:27,937 - INFO - Successfully generated sample rubric
+2025-03-21 11:07:27,939 - INFO - 127.0.0.1 - - [21/Mar/2025 11:07:27] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-21 11:09:05,350 - INFO - Listing files in S3 with prefix: prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 11:09:05,557 - INFO - Selected most recent index file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_faiss_index.index
+2025-03-21 11:09:05,557 - INFO - Selected most recent chunks file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 11:09:05,674 - INFO - Downloading JSON from S3: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 11:09:06,654 - INFO - Retrieved 5 relevant chunks for query: List and briefly explain the four major steps in d...
+2025-03-21 11:09:06,655 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-21 11:09:06,655 - INFO - Sending request to local model: llama3.1:8b
+2025-03-21 11:09:13,486 - INFO - Successfully generated sample rubric
+2025-03-21 11:09:13,487 - INFO - 127.0.0.1 - - [21/Mar/2025 11:09:13] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-21 11:09:31,316 - INFO - Listing files in S3 with prefix: prof_sean/67dd7b841c383e76fd864a63/
+2025-03-21 11:09:31,572 - INFO - Selected most recent index file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_faiss_index.index
+2025-03-21 11:09:31,572 - INFO - Selected most recent chunks file: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 11:09:31,697 - INFO - Downloading JSON from S3: prof_sean/67dd7b841c383e76fd864a63/MKTG-2201-Study-Textbook_chunks.json
+2025-03-21 11:09:32,048 - INFO - Retrieved 5 relevant chunks for query: List and briefly explain the four major steps in d...
+2025-03-21 11:09:32,049 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-21 11:09:32,049 - INFO - Sending request to local model: llama3.1:8b
+2025-03-21 11:09:40,001 - INFO - Successfully generated sample rubric
+2025-03-21 11:09:40,003 - INFO - 127.0.0.1 - - [21/Mar/2025 11:09:40] "POST /generate_rubric HTTP/1.1" 200 -
