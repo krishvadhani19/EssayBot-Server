@@ -1,7 +1,6 @@
 import { Schema, model, Document } from "mongoose";
 import { User } from "./User"; // Import the User model
 
-// Interface for the Course document
 export interface ICourse extends Document {
   title: string;
   description?: string;
@@ -16,9 +15,9 @@ const courseSchema = new Schema<ICourse>(
   {
     title: { type: String, required: true },
     description: { type: String },
-    createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Reference to the User
-    assignments: [{ type: Schema.Types.ObjectId, ref: "Assignment" }], // Array of Assignments
-    attachments: [{ type: Schema.Types.ObjectId, ref: "Attachment" }], // Array of Attachment ObjectIds
+    createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    assignments: [{ type: Schema.Types.ObjectId, ref: "Assignment" }],
+    attachments: [{ type: Schema.Types.ObjectId, ref: "Attachment" }],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
   },
