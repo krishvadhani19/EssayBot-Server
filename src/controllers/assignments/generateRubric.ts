@@ -37,15 +37,15 @@ export const createRubric = async (
 
     const { data } = flaskResponse;
     console.log(data);
-    if (data.success) {
+    if ((data as any).success) {
       return res.status(200).json({
         message: "Rubric generated successfully",
-        rubric: data.rubric,
+        rubric: (data as any).rubric,
       });
     } else {
       return res.status(500).json({
         message: "Failed to generate rubric",
-        error: data.error || "Unknown error",
+        error: (data as any).error || "Unknown error",
       });
     }
   } catch (error: any) {

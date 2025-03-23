@@ -1,9 +1,10 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { connectDB } from "./config/db";
 import routes from "./routes/routes";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import axios from "axios";
 
 dotenv.config();
 
@@ -23,6 +24,22 @@ app.use(
 );
 
 app.use("/api", routes);
+
+app.get("/list-models", (req: Request, res: Response, next: Function) => {
+  axios
+    .get("http://localhost:5001/api/tags")
+    .then((response: any) => {
+      res
+        .status(200)
+        .json(response.data.models.map((model: any) => model.name));
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Failed to list models",
+        error: error.message,
+      });
+    });
+});
 
 connectDB();
 
