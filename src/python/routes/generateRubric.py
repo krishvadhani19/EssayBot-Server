@@ -27,7 +27,7 @@ DEFAULT_MAX_TOKENS = 4000
 
 def send_post_request(prompt: str, temperature=DEFAULT_TEMPERATURE,
                       top_p=DEFAULT_TOP_P, max_tokens=DEFAULT_MAX_TOKENS,
-                      model="llama3.1:8b") -> str:
+                      model="llama3.3:70b") -> str:
     payload = {
         "model": model,
         "prompt": prompt,
@@ -47,14 +47,13 @@ def send_post_request(prompt: str, temperature=DEFAULT_TEMPERATURE,
         raise
 
 
-def generate_sample_rubric(question: str, context: List[str], model: str = "llama3.1:8b") -> Dict[str, Any]:
+def generate_sample_rubric(question: str, context: List[str], model: str = "llama3.3:70b") -> Dict[str, Any]:
     """Generate a single sample rubric for the given question and context."""
     logger.info(f"Generating a sample rubric using model: {model}...")
     try:
         context_subset = random.sample(context, min(len(context), 5))
         prompt = f"""
-        You are an expert educational assessment designer. Your task is to create a sample grading rubric 
-        for the following question/assignment:
+        You are an expert educational assessment designer. Your task is to create a grading rubric which helps student understand what is important and also help graders in grading student answers for the following question/assignment:
         
         QUESTION:
         {question}
@@ -160,10 +159,11 @@ def generate_rubric():
     print(data)
     question = data.get("question")
     professor = data.get("username")
+    title = data.get("title")
     course_id = data.get("courseId")  # e.g., "67dd03b10804dc82ad45da1d"
-    model = data.get("model", "llama3.1:8b")
+    model = data.get("model", "llama3.3:70b")
 
-    if not all([question, professor, course_id]):
+    if not all([question, professor, course_id, title]):
         return jsonify({"error": "question, username, and courseId are required"}), 400
 
     try:
@@ -172,7 +172,10 @@ def generate_rubric():
             query=question,
             k=5,
             professor_username=professor,
-            course_id=course_id
+            course_id=course_id,
+            assignmentTitle=title,
+            distance_threshold=0.5,
+            max_total_length=6000
         )
 
         # Generate a single rubric

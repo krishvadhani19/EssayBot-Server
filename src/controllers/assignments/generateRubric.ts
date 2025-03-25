@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import axios from "axios";
+import { Assignment, IAssignment } from "../../models/Assignment";
 
 interface AuthenticatedRequest extends Request {
   user: {
@@ -13,13 +14,21 @@ export const createRubric = async (
   res: Response
 ) => {
   try {
-    const { courseId, question } = req.body;
+    const { courseId, question, assignmentId, model } = req.body;
     const username = req.user.username;
 
-    if (!courseId || !question) {
+    if (!courseId || !question || !assignmentId) {
       return res.status(400).json({
         message: "courseId and question are required",
       });
+    }
+
+    const assignment: IAssignment | null = await Assignment.findById(
+      assignmentId
+    );
+
+    if (!assignment) {
+      return res.status(404).json({ message: "Assignment not found" });
     }
 
     // Prepare request payload for Flask
@@ -27,6 +36,8 @@ export const createRubric = async (
       courseId,
       question,
       username,
+      title: assignment.title,
+      model,
     };
 
     // Call Flask /generate_rubric endpoint

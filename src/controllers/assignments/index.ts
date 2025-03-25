@@ -28,4 +28,5 @@ export interface AssignmentUpdatePayload {
     criteria: Criterion[];
   };
   config_prompt?: Record<string, any>;
+  model?: string;
 }

@@ -9,18 +9,29 @@ export const getUser = async (req: Request, res: Response) => {
 
     // Find the user by ID, exclude the password, and populate courses and assignments
     const user = await User.findById(userId)
-      .select("-password") // Exclude the password field
+      .select("-password")
       .populate({
-        path: "courses", // Populate the courses field
+        path: "courses",
+        options: { distinct: true }, // Add distinct option to prevent duplicates
         populate: {
-          path: "assignments", // Populate the assignments field inside each course
+          path: "assignments",
         },
       })
+      .lean() // Convert to plain JavaScript object
       .exec();
 
     // If user is not found, return a 404 error
     if (!user) {
       return res.status(404).json({ message: "User not found" });
+    }
+
+    // Ensure courses array has unique entries based on _id
+    if (user.courses) {
+      user.courses = Array.from(
+        new Map(
+          user.courses.map((course) => [course._id.toString(), course])
+        ).values()
+      );
     }
 
     // Return the user data with populated courses and assignments

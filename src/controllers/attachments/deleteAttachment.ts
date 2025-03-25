@@ -1,36 +1,50 @@
 import { Request, Response } from "express";
-import AWS from "aws-sdk";
+import mongoose from "mongoose";
 import { Attachment } from "../../models/Attachment";
 
-// Configure AWS SDK
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION,
-});
+// Extend the Request type to include user (from authentication middleware)
+interface AuthenticatedRequest extends Request {
+  user: {
+    id: string;
+    username: string;
+  };
+}
 
-const s3 = new AWS.S3();
-
-export const deleteAttachment = async (req: Request, res: Response) => {
+export const deleteAttachment = async (
+  req: AuthenticatedRequest,
+  res: Response
+) => {
   const { attachmentId } = req.params;
 
+  // Validate attachmentId
+  if (!mongoose.Types.ObjectId.isValid(attachmentId)) {
+    return res.status(400).json({ message: "Invalid attachment ID" });
+  }
+
   try {
-    const attachment = await Attachment.findById(attachmentId);
+    // Find the attachment and populate courseId
+    const attachment = await Attachment.findById(attachmentId).populate(
+      "courseId"
+    );
 
     if (!attachment) {
       return res.status(404).json({ message: "Attachment not found" });
     }
 
-    const fileUrl = attachment.fileUrl;
-    const fileKey = fileUrl.split("/").pop();
+    // Check if the user has permission to delete the attachment
+    const course = attachment.courseId as any; // Simplified type handling
+    if (!course) {
+      return res.status(404).json({ message: "Associated course not found" });
+    }
 
-    await s3
-      .deleteObject({
-        Bucket: process.env.AWS_S3_BUCKET!,
-        Key: fileKey!,
-      })
-      .promise();
+    // Assuming createdBy is an ObjectId; adjust if it's a username string
+    if (course.createdBy.toString() !== req.user.id) {
+      return res.status(403).json({
+        message: "You do not have permission to delete this attachment",
+      });
+    }
 
+    // Delete the attachment (S3 cleanup is handled by the Attachment schema middleware)
     await Attachment.findByIdAndDelete(attachmentId);
 
     res.status(200).json({ message: "Attachment deleted successfully" });

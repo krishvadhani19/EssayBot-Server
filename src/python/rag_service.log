@@ -283,3 +283,1193 @@ ValueError: No files found in S3 directory: prof_prof_sean/67dd7b841c383e76fd864
 2025-03-21 11:09:32,049 - INFO - Sending request to local model: llama3.1:8b
 2025-03-21 11:09:40,001 - INFO - Successfully generated sample rubric
 2025-03-21 11:09:40,003 - INFO - 127.0.0.1 - - [21/Mar/2025 11:09:40] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-23 20:56:08,844 - INFO - Use pytorch device_name: mps
+2025-03-23 20:56:08,844 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-23 20:56:11,782 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.59.5.211:6000
+2025-03-23 20:56:11,783 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-23 20:56:11,783 - INFO -  * Restarting with stat
+2025-03-23 20:56:15,280 - INFO - Use pytorch device_name: mps
+2025-03-23 20:56:15,280 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-23 20:56:21,575 - WARNING -  * Debugger is active!
+2025-03-23 20:56:21,591 - INFO -  * Debugger PIN: 527-154-434
+2025-03-23 23:02:23,143 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-23 23:02:23,931 - INFO -  * Restarting with stat
+2025-03-24 02:00:43,344 - INFO - Use pytorch device_name: mps
+2025-03-24 02:00:43,344 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 02:00:50,111 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 02:00:50,111 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 02:00:50,112 - INFO -  * Restarting with stat
+2025-03-24 02:00:53,417 - INFO - Use pytorch device_name: mps
+2025-03-24 02:00:53,417 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 02:00:55,458 - WARNING -  * Debugger is active!
+2025-03-24 02:00:55,478 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 02:02:12,072 - INFO - Downloading file from S3: prof_sean/67e0f4d4637540954851d232/Task1/MKTG-2201-Study-Textbook.pdf
+2025-03-24 02:02:14,315 - WARNING - Not enough training data (16) for quantization with nbits=8. Using IndexFlatL2.
+2025-03-24 02:02:14,317 - ERROR - Error indexing PDF: a bytes-like object is required, not 'str'
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 172, in index_pdf
+    chunks_url = upload_json_to_s3(chunks_data, chunks_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 76, in upload_json_to_s3
+    json.dump(data, temp_file)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/json/__init__.py", line 180, in dump
+    fp.write(chunk)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/tempfile.py", line 494, in func_wrapper
+    return func(*args, **kwargs)
+TypeError: a bytes-like object is required, not 'str'
+2025-03-24 02:02:14,319 - INFO - 127.0.0.1 - - [24/Mar/2025 02:02:14] "[35m[1mPOST /index HTTP/1.1[0m" 500 -
+2025-03-24 02:03:44,942 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-24 02:03:45,522 - INFO -  * Restarting with stat
+2025-03-24 02:03:48,896 - INFO - Use pytorch device_name: mps
+2025-03-24 02:03:48,896 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 02:03:51,301 - WARNING -  * Debugger is active!
+2025-03-24 02:03:51,316 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 02:04:12,099 - INFO - Downloading file from S3: prof_sean/67e0f4d4637540954851d232/Task1/MKTG-2201-Study-Textbook.pdf
+2025-03-24 02:04:14,106 - INFO - Creating quantized FAISS index with nlist=4, m=16, nbits=4, dimension=1024
+2025-03-24 02:04:14,107 - INFO - Training FAISS index
+2025-03-24 02:04:14,113 - INFO - Adding embeddings to FAISS index
+2025-03-24 02:04:14,249 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e0f4d4637540954851d232/Task1/chunks.json
+2025-03-24 02:04:14,472 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e0f4d4637540954851d232/Task1/faiss_index.index
+2025-03-24 02:04:14,478 - INFO - 127.0.0.1 - - [24/Mar/2025 02:04:14] "POST /index HTTP/1.1" 200 -
+2025-03-24 02:06:21,569 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-24 02:06:22,078 - INFO -  * Restarting with stat
+2025-03-24 02:06:25,543 - INFO - Use pytorch device_name: mps
+2025-03-24 02:06:25,543 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 02:06:28,136 - WARNING -  * Debugger is active!
+2025-03-24 02:06:28,149 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 02:06:52,501 - INFO - Downloading file from S3: prof_sean/67e0f673637540954851d242/Task1/MKTG-2201-Study-Textbook.pdf
+2025-03-24 02:06:54,493 - WARNING - Not enough training data (16) for clustering with nlist=4. Requires at least 156 points. Using IndexFlatL2.
+2025-03-24 02:06:54,696 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 02:06:54,931 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e0f673637540954851d242/Task1/faiss_index.index
+2025-03-24 02:06:54,933 - INFO - 127.0.0.1 - - [24/Mar/2025 02:06:54] "POST /index HTTP/1.1" 200 -
+2025-03-24 02:08:17,050 - ERROR - Error generating sample rubric: professor_username, course_id, and assignmentTitle are required
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py", line 171, in generate_rubric
+    context = retrieve_relevant_text(
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 253, in retrieve_relevant_text
+    raise ValueError(
+ValueError: professor_username, course_id, and assignmentTitle are required
+2025-03-24 02:08:17,051 - INFO - 127.0.0.1 - - [24/Mar/2025 02:08:17] "[35m[1mPOST /generate_rubric HTTP/1.1[0m" 500 -
+2025-03-24 02:10:18,685 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 02:10:19,235 - INFO -  * Restarting with stat
+2025-03-24 02:10:22,613 - INFO - Use pytorch device_name: mps
+2025-03-24 02:10:22,613 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 02:10:57,243 - INFO - Use pytorch device_name: mps
+2025-03-24 02:10:57,243 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 02:10:58,613 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 02:10:58,613 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 02:10:58,614 - INFO -  * Restarting with stat
+2025-03-24 02:11:01,053 - INFO - Use pytorch device_name: mps
+2025-03-24 02:11:01,053 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 02:11:03,104 - WARNING -  * Debugger is active!
+2025-03-24 02:11:03,117 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 02:11:03,140 - ERROR - Error generating sample rubric: professor_username, course_id, and assignmentTitle are required
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py", line 172, in generate_rubric
+    context = retrieve_relevant_text(
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 253, in retrieve_relevant_text
+    raise ValueError(
+ValueError: professor_username, course_id, and assignmentTitle are required
+2025-03-24 02:11:03,141 - INFO - 127.0.0.1 - - [24/Mar/2025 02:11:03] "[35m[1mPOST /generate_rubric HTTP/1.1[0m" 500 -
+2025-03-24 02:11:42,752 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 02:11:43,291 - INFO -  * Restarting with stat
+2025-03-24 02:11:46,383 - INFO - Use pytorch device_name: mps
+2025-03-24 02:11:46,383 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 02:11:48,611 - WARNING -  * Debugger is active!
+2025-03-24 02:11:48,624 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 02:11:53,171 - INFO - 127.0.0.1 - - [24/Mar/2025 02:11:53] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-24 02:12:11,652 - INFO - 127.0.0.1 - - [24/Mar/2025 02:12:11] "[31m[1mPOST /generate_rubric HTTP/1.1[0m" 400 -
+2025-03-24 02:12:32,534 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 02:12:32,912 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 02:12:32,912 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-24 02:12:32,913 - INFO - Sending request to local model: llama3.1:8b
+2025-03-24 02:12:32,917 - ERROR - Error calling local model API: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x15fd65f70>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-03-24 02:12:32,917 - ERROR - Error generating rubric: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x15fd65f70>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-03-24 02:12:32,917 - INFO - 127.0.0.1 - - [24/Mar/2025 02:12:32] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 08:48:04,390 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 08:48:05,110 - INFO -  * Restarting with stat
+2025-03-24 08:48:08,873 - INFO - Use pytorch device_name: mps
+2025-03-24 08:48:08,873 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 08:48:11,429 - WARNING -  * Debugger is active!
+2025-03-24 08:48:11,442 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 08:48:22,590 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 08:48:23,060 - INFO -  * Restarting with stat
+2025-03-24 08:48:26,144 - INFO - Use pytorch device_name: mps
+2025-03-24 08:48:26,144 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 08:48:27,776 - WARNING -  * Debugger is active!
+2025-03-24 08:48:27,791 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 08:48:36,576 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 08:48:37,016 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 08:48:37,017 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-24 08:48:37,017 - INFO - Sending request to local model: llama3.1:8b
+2025-03-24 08:48:37,051 - ERROR - Error calling local model API: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+2025-03-24 08:48:37,051 - ERROR - Error generating rubric: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+2025-03-24 08:48:37,051 - INFO - 127.0.0.1 - - [24/Mar/2025 08:48:37] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 08:49:44,973 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 08:49:45,452 - INFO -  * Restarting with stat
+2025-03-24 08:49:48,692 - INFO - Use pytorch device_name: mps
+2025-03-24 08:49:48,692 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 08:49:51,096 - WARNING -  * Debugger is active!
+2025-03-24 08:49:51,110 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 08:49:52,146 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 08:49:52,604 - INFO -  * Restarting with stat
+2025-03-24 08:49:55,354 - INFO - Use pytorch device_name: mps
+2025-03-24 08:49:55,354 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 08:49:57,403 - WARNING -  * Debugger is active!
+2025-03-24 08:49:57,424 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 08:49:57,785 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 08:49:58,179 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 08:49:58,179 - INFO - Generating a sample rubric using model: nemotron-mini:latest...
+2025-03-24 08:49:58,180 - INFO - Sending request to local model: nemotron-mini:latest
+2025-03-24 08:50:33,999 - ERROR - Error parsing JSON from model response: Expecting property name enclosed in double quotes: line 23 column 5 (char 1202)
+2025-03-24 08:50:34,000 - ERROR - Error generating rubric: Expecting property name enclosed in double quotes: line 23 column 5 (char 1202)
+2025-03-24 08:50:34,006 - INFO - 127.0.0.1 - - [24/Mar/2025 08:50:34] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 08:51:17,536 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 08:51:18,147 - INFO -  * Restarting with stat
+2025-03-24 08:51:21,296 - INFO - Use pytorch device_name: mps
+2025-03-24 08:51:21,296 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 08:51:23,570 - WARNING -  * Debugger is active!
+2025-03-24 08:51:23,584 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 08:51:41,876 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 08:51:42,332 - INFO -  * Restarting with stat
+2025-03-24 08:51:44,891 - INFO - Use pytorch device_name: mps
+2025-03-24 08:51:44,891 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 08:51:46,525 - WARNING -  * Debugger is active!
+2025-03-24 08:51:46,543 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 08:51:47,056 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 08:51:47,385 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 08:51:47,385 - INFO - Generating a sample rubric using model: nemotron-mini:latest...
+2025-03-24 08:51:47,385 - INFO - Sending request to local model: nemotron-mini:latest
+2025-03-24 08:52:12,815 - ERROR - Error parsing JSON from model response: Expecting property name enclosed in double quotes: line 23 column 5 (char 1278)
+2025-03-24 08:52:12,815 - ERROR - Error generating rubric: Expecting property name enclosed in double quotes: line 23 column 5 (char 1278)
+2025-03-24 08:52:12,816 - INFO - 127.0.0.1 - - [24/Mar/2025 08:52:12] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 08:52:36,260 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 08:52:36,748 - INFO -  * Restarting with stat
+2025-03-24 08:52:40,132 - INFO - Use pytorch device_name: mps
+2025-03-24 08:52:40,132 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 08:52:45,024 - WARNING -  * Debugger is active!
+2025-03-24 08:52:45,038 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 08:52:45,365 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 08:52:45,646 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 08:52:45,646 - INFO - Generating a sample rubric using model: nemotron-mini:latest...
+2025-03-24 08:52:45,647 - INFO - Sending request to local model: nemotron-mini:latest
+2025-03-24 08:52:54,406 - INFO - Successfully generated sample rubric
+2025-03-24 08:52:54,408 - INFO - 127.0.0.1 - - [24/Mar/2025 08:52:54] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 08:54:20,902 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 08:54:21,660 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 08:54:21,660 - INFO - Generating a sample rubric using model: nemotron-mini:latest...
+2025-03-24 08:54:21,661 - INFO - Sending request to local model: nemotron-mini:latest
+2025-03-24 08:54:43,290 - ERROR - Error parsing JSON from model response: Expecting property name enclosed in double quotes: line 23 column 5 (char 1403)
+2025-03-24 08:54:43,291 - ERROR - Error generating rubric: Expecting property name enclosed in double quotes: line 23 column 5 (char 1403)
+2025-03-24 08:54:43,293 - INFO - 127.0.0.1 - - [24/Mar/2025 08:54:43] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 08:59:51,866 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 08:59:52,378 - INFO -  * Restarting with stat
+2025-03-24 08:59:56,138 - INFO - Use pytorch device_name: mps
+2025-03-24 08:59:56,138 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 08:59:59,224 - WARNING -  * Debugger is active!
+2025-03-24 08:59:59,240 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 09:53:21,986 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 09:53:23,162 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 09:53:23,163 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-24 09:53:23,163 - INFO - Sending request to local model: llama3.1:8b
+2025-03-24 09:53:40,688 - INFO - Successfully generated sample rubric
+2025-03-24 09:53:40,689 - INFO - 127.0.0.1 - - [24/Mar/2025 09:53:40] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 10:06:19,950 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:06:20,623 - INFO -  * Restarting with stat
+2025-03-24 10:06:24,357 - INFO - Use pytorch device_name: mps
+2025-03-24 10:06:24,357 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:06:28,007 - WARNING -  * Debugger is active!
+2025-03-24 10:06:28,022 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:06:31,097 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:06:31,606 - INFO -  * Restarting with stat
+2025-03-24 10:06:34,503 - INFO - Use pytorch device_name: mps
+2025-03-24 10:06:34,503 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:06:35,877 - WARNING -  * Debugger is active!
+2025-03-24 10:06:35,890 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:08:40,747 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:08:41,216 - INFO -  * Restarting with stat
+2025-03-24 10:08:44,600 - INFO - Use pytorch device_name: mps
+2025-03-24 10:08:44,600 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:08:46,881 - WARNING -  * Debugger is active!
+2025-03-24 10:08:46,895 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:09:20,181 - INFO - 127.0.0.1 - - [24/Mar/2025 10:09:20] "[33mPOST /generate_prompt HTTP/1.1[0m" 404 -
+2025-03-24 10:09:31,440 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:09:31,942 - INFO -  * Restarting with stat
+2025-03-24 10:09:35,088 - INFO - Use pytorch device_name: mps
+2025-03-24 10:09:35,089 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:09:37,412 - WARNING -  * Debugger is active!
+2025-03-24 10:09:37,427 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:10:20,080 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/__init__.py', reloading
+2025-03-24 10:10:20,590 - INFO -  * Restarting with stat
+2025-03-24 10:10:23,956 - INFO - Use pytorch device_name: mps
+2025-03-24 10:10:23,956 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:10:57,532 - INFO - Use pytorch device_name: mps
+2025-03-24 10:10:57,532 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:11:56,723 - INFO - Use pytorch device_name: mps
+2025-03-24 10:11:56,723 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:12:45,315 - INFO - Use pytorch device_name: mps
+2025-03-24 10:12:45,315 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:17:05,480 - INFO - Use pytorch device_name: mps
+2025-03-24 10:17:05,480 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:18:32,946 - INFO - Use pytorch device_name: mps
+2025-03-24 10:18:32,946 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:19:15,412 - INFO - Use pytorch device_name: mps
+2025-03-24 10:19:15,412 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:20:19,802 - INFO - Use pytorch device_name: mps
+2025-03-24 10:20:19,803 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:20:21,875 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 10:20:21,876 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 10:20:21,876 - INFO -  * Restarting with stat
+2025-03-24 10:20:24,570 - INFO - Use pytorch device_name: mps
+2025-03-24 10:20:24,570 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:20:27,463 - WARNING -  * Debugger is active!
+2025-03-24 10:20:27,482 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:20:30,673 - INFO - 127.0.0.1 - - [24/Mar/2025 10:20:30] "[31m[1mPOST /generate_prompt HTTP/1.1[0m" 400 -
+2025-03-24 10:20:57,925 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:20:58,424 - INFO -  * Restarting with stat
+2025-03-24 10:21:01,845 - INFO - Use pytorch device_name: mps
+2025-03-24 10:21:01,845 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:21:04,122 - WARNING -  * Debugger is active!
+2025-03-24 10:21:04,137 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:21:12,247 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:21:12,805 - INFO -  * Restarting with stat
+2025-03-24 10:21:15,437 - INFO - Use pytorch device_name: mps
+2025-03-24 10:21:15,437 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:21:18,633 - WARNING -  * Debugger is active!
+2025-03-24 10:21:18,644 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:21:22,704 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:21:23,182 - INFO -  * Restarting with stat
+2025-03-24 10:21:25,604 - INFO - Use pytorch device_name: mps
+2025-03-24 10:21:25,604 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:21:27,301 - WARNING -  * Debugger is active!
+2025-03-24 10:21:27,312 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:21:29,361 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:21:29,874 - INFO -  * Restarting with stat
+2025-03-24 10:21:32,365 - INFO - Use pytorch device_name: mps
+2025-03-24 10:21:32,366 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:21:34,089 - WARNING -  * Debugger is active!
+2025-03-24 10:21:34,099 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:21:52,359 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:21:52,900 - INFO -  * Restarting with stat
+2025-03-24 10:21:55,491 - INFO - Use pytorch device_name: mps
+2025-03-24 10:21:55,491 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:21:57,504 - WARNING -  * Debugger is active!
+2025-03-24 10:21:57,517 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:22:01,610 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:22:02,091 - INFO -  * Restarting with stat
+2025-03-24 10:22:04,648 - INFO - Use pytorch device_name: mps
+2025-03-24 10:22:04,648 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:22:06,481 - WARNING -  * Debugger is active!
+2025-03-24 10:22:06,494 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:22:10,562 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:22:11,051 - INFO -  * Restarting with stat
+2025-03-24 10:22:13,581 - INFO - Use pytorch device_name: mps
+2025-03-24 10:22:13,581 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:22:15,349 - WARNING -  * Debugger is active!
+2025-03-24 10:22:15,360 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:22:18,819 - INFO - 127.0.0.1 - - [24/Mar/2025 10:22:18] "[31m[1mPOST /generate_prompt HTTP/1.1[0m" 400 -
+2025-03-24 10:22:36,652 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:22:37,121 - INFO -  * Restarting with stat
+2025-03-24 10:22:39,892 - INFO - Use pytorch device_name: mps
+2025-03-24 10:22:39,893 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:22:41,858 - WARNING -  * Debugger is active!
+2025-03-24 10:22:41,871 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:22:44,927 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:22:45,419 - INFO -  * Restarting with stat
+2025-03-24 10:22:47,983 - INFO - Use pytorch device_name: mps
+2025-03-24 10:22:47,983 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:22:51,173 - WARNING -  * Debugger is active!
+2025-03-24 10:22:51,184 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:22:53,241 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:22:53,714 - INFO -  * Restarting with stat
+2025-03-24 10:22:56,834 - INFO - Use pytorch device_name: mps
+2025-03-24 10:22:56,834 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:22:58,946 - WARNING -  * Debugger is active!
+2025-03-24 10:22:58,962 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:23:07,418 - INFO - 127.0.0.1 - - [24/Mar/2025 10:23:07] "[31m[1mPOST /generate_prompt HTTP/1.1[0m" 400 -
+2025-03-24 10:23:44,691 - ERROR - Failed to retrieve RAG context: retrieve_relevant_text() got an unexpected keyword argument 'assignment_title'
+2025-03-24 10:23:44,691 - INFO - RAG context retrieved: No relevant context available due to retrieval error....
+2025-03-24 10:23:44,692 - INFO - 127.0.0.1 - - [24/Mar/2025 10:23:44] "[31m[1mPOST /generate_prompt HTTP/1.1[0m" 400 -
+2025-03-24 10:25:36,220 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:25:36,853 - INFO -  * Restarting with stat
+2025-03-24 10:25:41,191 - INFO - Use pytorch device_name: mps
+2025-03-24 10:25:41,191 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:25:44,212 - WARNING -  * Debugger is active!
+2025-03-24 10:25:44,224 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:28:05,272 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/agents.py', reloading
+2025-03-24 10:28:05,832 - INFO -  * Restarting with stat
+2025-03-24 10:28:09,305 - INFO - Use pytorch device_name: mps
+2025-03-24 10:28:09,305 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:28:11,906 - WARNING -  * Debugger is active!
+2025-03-24 10:28:11,921 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:28:21,069 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:28:21,688 - INFO -  * Restarting with stat
+2025-03-24 10:28:24,688 - INFO - Use pytorch device_name: mps
+2025-03-24 10:28:24,688 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:28:26,556 - WARNING -  * Debugger is active!
+2025-03-24 10:28:26,571 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:28:40,779 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:28:41,278 - INFO -  * Restarting with stat
+2025-03-24 10:28:45,057 - INFO - Use pytorch device_name: mps
+2025-03-24 10:28:45,058 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:30:06,870 - INFO - Use pytorch device_name: mps
+2025-03-24 10:30:06,871 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:30:09,085 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 10:30:09,085 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 10:30:09,086 - INFO -  * Restarting with stat
+2025-03-24 10:30:11,492 - INFO - Use pytorch device_name: mps
+2025-03-24 10:30:11,492 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:30:13,458 - WARNING -  * Debugger is active!
+2025-03-24 10:30:13,472 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:30:38,305 - ERROR - Failed to retrieve RAG context: retrieve_relevant_text() got an unexpected keyword argument 'assignment_title'
+2025-03-24 10:30:38,306 - INFO - RAG context retrieved: No relevant context available due to retrieval error....
+2025-03-24 10:30:47,184 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 10:30:53,167 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 10:31:00,525 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 10:48:39,114 - INFO - Use pytorch device_name: mps
+2025-03-24 10:48:39,115 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:48:42,008 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 10:48:42,008 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 10:48:42,009 - INFO -  * Restarting with stat
+2025-03-24 10:48:46,043 - INFO - Use pytorch device_name: mps
+2025-03-24 10:48:46,044 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:48:49,111 - WARNING -  * Debugger is active!
+2025-03-24 10:48:49,146 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:49:05,648 - ERROR - Failed to retrieve RAG context: retrieve_relevant_text() got an unexpected keyword argument 'assignment_title'
+2025-03-24 10:49:05,648 - INFO - RAG context retrieved: No relevant context available due to retrieval error....
+2025-03-24 10:49:10,168 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 10:49:13,298 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 10:49:16,083 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 10:49:19,867 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 10:49:19,871 - INFO - 127.0.0.1 - - [24/Mar/2025 10:49:19] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 10:51:14,068 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:51:14,922 - INFO -  * Restarting with stat
+2025-03-24 10:51:19,227 - INFO - Use pytorch device_name: mps
+2025-03-24 10:51:19,227 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:51:22,258 - WARNING -  * Debugger is active!
+2025-03-24 10:51:22,271 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:51:59,696 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 10:52:00,218 - INFO -  * Restarting with stat
+2025-03-24 10:52:03,782 - INFO - Use pytorch device_name: mps
+2025-03-24 10:52:03,782 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 10:52:06,224 - WARNING -  * Debugger is active!
+2025-03-24 10:52:06,376 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 10:52:21,017 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 10:52:21,405 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 10:52:21,406 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 10:52:25,874 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 10:52:34,998 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 10:52:41,441 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 10:52:45,136 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 10:52:45,137 - INFO - 127.0.0.1 - - [24/Mar/2025 10:52:45] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 10:54:42,185 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 10:54:43,215 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 10:54:43,215 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 10:54:47,543 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 10:54:51,348 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 10:54:56,170 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 10:55:03,945 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 10:55:03,946 - INFO - 127.0.0.1 - - [24/Mar/2025 10:55:03] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 10:59:12,425 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 10:59:13,373 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 10:59:13,373 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 10:59:16,905 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 10:59:20,963 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 10:59:26,488 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 10:59:33,553 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 10:59:33,554 - INFO - 127.0.0.1 - - [24/Mar/2025 10:59:33] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 11:01:13,988 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 11:01:14,966 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 11:01:14,967 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 11:01:22,311 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 11:01:26,847 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 11:01:33,434 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 11:01:38,919 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 11:01:38,921 - INFO - 127.0.0.1 - - [24/Mar/2025 11:01:38] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 11:02:56,870 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 11:02:57,919 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 11:02:57,919 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 11:03:03,173 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 11:03:08,784 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 11:03:14,048 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 11:03:22,204 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 11:03:22,205 - INFO - 127.0.0.1 - - [24/Mar/2025 11:03:22] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 11:06:52,201 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 11:06:53,082 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 11:06:53,083 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 11:06:56,151 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 11:07:02,402 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 11:07:09,466 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 11:07:12,717 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 11:07:12,718 - INFO - 127.0.0.1 - - [24/Mar/2025 11:07:12] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 14:48:36,090 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 14:48:36,973 - INFO -  * Restarting with stat
+2025-03-24 14:48:40,661 - INFO - Use pytorch device_name: mps
+2025-03-24 14:48:40,661 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 14:48:43,451 - WARNING -  * Debugger is active!
+2025-03-24 14:48:43,463 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 14:48:48,551 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 14:48:49,099 - INFO -  * Restarting with stat
+2025-03-24 14:48:51,757 - INFO - Use pytorch device_name: mps
+2025-03-24 14:48:51,757 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 14:48:53,482 - WARNING -  * Debugger is active!
+2025-03-24 14:48:53,496 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 14:48:55,565 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 14:48:56,046 - INFO -  * Restarting with stat
+2025-03-24 14:48:58,658 - INFO - Use pytorch device_name: mps
+2025-03-24 14:48:58,658 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 14:49:02,005 - WARNING -  * Debugger is active!
+2025-03-24 14:49:02,018 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 14:49:04,064 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 14:49:04,666 - INFO -  * Restarting with stat
+2025-03-24 14:49:07,484 - INFO - Use pytorch device_name: mps
+2025-03-24 14:49:07,484 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 14:49:10,153 - WARNING -  * Debugger is active!
+2025-03-24 14:49:10,164 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 14:49:22,331 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 14:49:22,803 - INFO -  * Restarting with stat
+2025-03-24 14:49:25,277 - INFO - Use pytorch device_name: mps
+2025-03-24 14:49:25,277 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 14:49:27,515 - WARNING -  * Debugger is active!
+2025-03-24 14:49:27,528 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 14:49:31,593 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 14:49:32,051 - INFO -  * Restarting with stat
+2025-03-24 14:49:34,528 - INFO - Use pytorch device_name: mps
+2025-03-24 14:49:34,528 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 14:49:38,429 - WARNING -  * Debugger is active!
+2025-03-24 14:49:38,440 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 14:49:42,422 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 14:49:42,864 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 14:49:42,864 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-24 14:49:42,865 - INFO - Sending request to local model: llama3.1:8b
+2025-03-24 14:49:51,289 - INFO - Successfully generated sample rubric
+2025-03-24 14:49:51,291 - INFO - 127.0.0.1 - - [24/Mar/2025 14:49:51] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 15:21:39,665 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/agents.py', reloading
+2025-03-24 15:21:40,242 - INFO -  * Restarting with stat
+2025-03-24 15:21:43,958 - INFO - Use pytorch device_name: mps
+2025-03-24 15:21:43,958 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:21:46,684 - WARNING -  * Debugger is active!
+2025-03-24 15:21:46,700 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 15:22:52,728 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/agents.py', reloading
+2025-03-24 15:22:53,215 - INFO -  * Restarting with stat
+2025-03-24 15:22:56,475 - INFO - Use pytorch device_name: mps
+2025-03-24 15:22:56,475 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:22:59,409 - WARNING -  * Debugger is active!
+2025-03-24 15:22:59,425 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 15:25:17,264 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 15:25:17,890 - INFO -  * Restarting with stat
+2025-03-24 15:25:21,698 - INFO - Use pytorch device_name: mps
+2025-03-24 15:25:21,698 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:25:24,745 - WARNING -  * Debugger is active!
+2025-03-24 15:25:24,760 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 15:40:07,846 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 15:40:08,751 - INFO -  * Restarting with stat
+2025-03-24 15:40:13,289 - INFO - Use pytorch device_name: mps
+2025-03-24 15:40:13,290 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:53:03,082 - INFO - Use pytorch device_name: mps
+2025-03-24 15:53:03,082 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:53:06,175 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 15:53:06,176 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 15:53:06,176 - INFO -  * Restarting with stat
+2025-03-24 15:53:08,852 - INFO - Use pytorch device_name: mps
+2025-03-24 15:53:08,852 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:53:11,287 - WARNING -  * Debugger is active!
+2025-03-24 15:53:11,302 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 15:53:50,583 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 15:53:51,606 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 15:53:51,607 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 15:55:31,462 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 15:55:32,530 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 15:55:32,530 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 15:57:17,665 - INFO - Use pytorch device_name: mps
+2025-03-24 15:57:17,665 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:57:20,145 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 15:57:20,146 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 15:57:20,147 - INFO -  * Restarting with stat
+2025-03-24 15:57:22,767 - INFO - Use pytorch device_name: mps
+2025-03-24 15:57:22,767 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:57:24,708 - WARNING -  * Debugger is active!
+2025-03-24 15:57:24,721 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 15:57:27,770 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 15:57:28,339 - INFO -  * Restarting with stat
+2025-03-24 15:57:31,016 - INFO - Use pytorch device_name: mps
+2025-03-24 15:57:31,016 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:57:33,226 - WARNING -  * Debugger is active!
+2025-03-24 15:57:33,242 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 15:58:07,940 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 15:58:08,377 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 15:58:08,378 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 15:59:02,516 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 15:59:03,082 - INFO -  * Restarting with stat
+2025-03-24 15:59:06,359 - INFO - Use pytorch device_name: mps
+2025-03-24 15:59:06,359 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 15:59:09,064 - WARNING -  * Debugger is active!
+2025-03-24 15:59:09,083 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 15:59:12,812 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 15:59:13,100 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 15:59:13,100 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 15:59:28,987 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:00:02,364 - ERROR - Failed to get response from LLM server: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-03-24 16:00:02,366 - ERROR - Failed to generate prompt for criterion: Explanation of Steps
+2025-03-24 16:00:02,369 - INFO - 127.0.0.1 - - [24/Mar/2025 16:00:02] "[35m[1mPOST /generate_prompt HTTP/1.1[0m" 500 -
+2025-03-24 16:03:31,190 - INFO - Use pytorch device_name: mps
+2025-03-24 16:03:31,191 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:03:34,577 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 16:03:34,577 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 16:03:34,578 - INFO -  * Restarting with stat
+2025-03-24 16:03:37,414 - INFO - Use pytorch device_name: mps
+2025-03-24 16:03:37,415 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:03:40,312 - WARNING -  * Debugger is active!
+2025-03-24 16:03:40,325 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:03:42,059 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 16:03:42,405 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 16:03:42,405 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 16:03:45,703 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:03:47,694 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:03:49,621 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:03:51,905 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:03:51,905 - INFO - 127.0.0.1 - - [24/Mar/2025 16:03:51] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:03:53,514 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:03:54,061 - INFO -  * Restarting with stat
+2025-03-24 16:03:57,264 - INFO - Use pytorch device_name: mps
+2025-03-24 16:03:57,264 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:03:59,634 - WARNING -  * Debugger is active!
+2025-03-24 16:03:59,646 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:03:59,983 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 16:04:00,249 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 16:04:00,249 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 16:04:21,016 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:04:36,339 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:04:51,102 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:05:05,579 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:05:05,582 - INFO - 127.0.0.1 - - [24/Mar/2025 16:05:05] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:05:52,970 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 16:05:53,904 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 16:05:53,904 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 16:06:11,239 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:06:26,680 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:06:41,943 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:06:58,588 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:06:58,589 - INFO - 127.0.0.1 - - [24/Mar/2025 16:06:58] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:07:58,020 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:07:58,516 - INFO -  * Restarting with stat
+2025-03-24 16:08:01,728 - INFO - Use pytorch device_name: mps
+2025-03-24 16:08:01,728 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:10:45,566 - INFO - Use pytorch device_name: mps
+2025-03-24 16:10:45,566 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:10:47,965 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 16:10:47,965 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 16:10:47,966 - INFO -  * Restarting with stat
+2025-03-24 16:10:50,501 - INFO - Use pytorch device_name: mps
+2025-03-24 16:10:50,502 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:10:52,985 - WARNING -  * Debugger is active!
+2025-03-24 16:10:53,006 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:10:54,519 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 16:10:54,920 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 16:10:54,920 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 16:11:10,966 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:11:29,497 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:11:45,915 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:12:00,727 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:12:00,729 - INFO - 127.0.0.1 - - [24/Mar/2025 16:12:00] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:14:25,831 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:14:26,406 - INFO -  * Restarting with stat
+2025-03-24 16:14:29,687 - INFO - Use pytorch device_name: mps
+2025-03-24 16:14:29,687 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:14:32,518 - WARNING -  * Debugger is active!
+2025-03-24 16:14:32,530 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:14:43,723 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:14:44,236 - INFO -  * Restarting with stat
+2025-03-24 16:14:46,983 - INFO - Use pytorch device_name: mps
+2025-03-24 16:14:46,983 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:14:48,604 - WARNING -  * Debugger is active!
+2025-03-24 16:14:48,616 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:14:51,669 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:14:52,178 - INFO -  * Restarting with stat
+2025-03-24 16:14:54,786 - INFO - Use pytorch device_name: mps
+2025-03-24 16:14:54,786 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:14:56,652 - WARNING -  * Debugger is active!
+2025-03-24 16:14:56,668 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:15:05,809 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:15:06,282 - INFO -  * Restarting with stat
+2025-03-24 16:15:08,736 - INFO - Use pytorch device_name: mps
+2025-03-24 16:15:08,736 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:15:10,635 - WARNING -  * Debugger is active!
+2025-03-24 16:15:10,646 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:15:22,133 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 16:15:22,542 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 16:15:22,542 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 16:15:27,650 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:15:29,922 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:15:31,643 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:15:33,803 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:15:33,804 - INFO - 127.0.0.1 - - [24/Mar/2025 16:15:33] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:17:54,966 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:17:55,477 - INFO -  * Restarting with stat
+2025-03-24 16:17:59,639 - INFO - Use pytorch device_name: mps
+2025-03-24 16:17:59,639 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:18:02,496 - WARNING -  * Debugger is active!
+2025-03-24 16:18:02,511 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:18:33,624 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 16:18:34,716 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 16:18:34,716 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 16:18:36,508 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:18:38,627 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:18:40,820 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:18:42,983 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:18:42,984 - INFO - 127.0.0.1 - - [24/Mar/2025 16:18:42] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:20:44,912 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:20:45,418 - INFO -  * Restarting with stat
+2025-03-24 16:20:48,643 - INFO - Use pytorch device_name: mps
+2025-03-24 16:20:48,643 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:20:51,434 - WARNING -  * Debugger is active!
+2025-03-24 16:20:51,450 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:21:04,687 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:21:05,242 - INFO -  * Restarting with stat
+2025-03-24 16:21:08,200 - INFO - Use pytorch device_name: mps
+2025-03-24 16:21:08,201 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:21:11,562 - WARNING -  * Debugger is active!
+2025-03-24 16:21:11,575 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:21:19,710 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:21:20,197 - INFO -  * Restarting with stat
+2025-03-24 16:21:22,902 - INFO - Use pytorch device_name: mps
+2025-03-24 16:21:22,902 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:21:24,961 - WARNING -  * Debugger is active!
+2025-03-24 16:21:24,972 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:21:26,042 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 16:21:26,418 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 16:21:26,418 - INFO - RAG context retrieved: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 16:21:50,066 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:22:05,895 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:22:23,854 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:22:40,440 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:22:40,441 - INFO - 127.0.0.1 - - [24/Mar/2025 16:22:40] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:26:27,117 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:26:27,666 - INFO -  * Restarting with stat
+2025-03-24 16:26:31,580 - INFO - Use pytorch device_name: mps
+2025-03-24 16:26:31,580 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:26:34,730 - WARNING -  * Debugger is active!
+2025-03-24 16:26:34,745 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:26:36,797 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:26:37,312 - INFO -  * Restarting with stat
+2025-03-24 16:26:40,924 - INFO - Use pytorch device_name: mps
+2025-03-24 16:26:40,924 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:26:43,469 - WARNING -  * Debugger is active!
+2025-03-24 16:26:43,482 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:26:54,499 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:27:04,519 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:27:17,149 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:27:27,179 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:27:27,180 - INFO - 127.0.0.1 - - [24/Mar/2025 16:27:27] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:27:57,526 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 16:27:58,023 - INFO -  * Restarting with stat
+2025-03-24 16:28:01,377 - INFO - Use pytorch device_name: mps
+2025-03-24 16:28:01,377 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 16:28:04,012 - WARNING -  * Debugger is active!
+2025-03-24 16:28:04,025 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 16:29:10,065 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:29:21,557 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:29:34,643 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:29:45,703 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:29:45,704 - INFO - 127.0.0.1 - - [24/Mar/2025 16:29:45] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:36:23,904 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:36:35,557 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:36:45,972 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:36:56,437 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:36:56,440 - INFO - 127.0.0.1 - - [24/Mar/2025 16:36:56] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:38:57,291 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:39:08,224 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:39:21,496 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:39:33,271 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:39:33,275 - INFO - 127.0.0.1 - - [24/Mar/2025 16:39:33] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 16:42:11,874 - INFO - Generated prompt for criterion: Identification and Order of Steps
+2025-03-24 16:42:22,879 - INFO - Generated prompt for criterion: Explanation of Steps
+2025-03-24 16:42:36,213 - INFO - Generated prompt for criterion: Understanding the Goals of the Steps
+2025-03-24 16:42:46,894 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 16:42:46,896 - INFO - 127.0.0.1 - - [24/Mar/2025 16:42:46] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 17:01:22,120 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:01:22,774 - INFO -  * Restarting with stat
+2025-03-24 17:01:26,351 - INFO - Use pytorch device_name: mps
+2025-03-24 17:01:26,351 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:01:29,286 - WARNING -  * Debugger is active!
+2025-03-24 17:01:29,298 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:01:42,487 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:01:42,996 - INFO -  * Restarting with stat
+2025-03-24 17:01:45,704 - INFO - Use pytorch device_name: mps
+2025-03-24 17:01:45,704 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:01:47,542 - WARNING -  * Debugger is active!
+2025-03-24 17:01:47,552 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:01:49,611 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:01:50,085 - INFO -  * Restarting with stat
+2025-03-24 17:01:52,437 - INFO - Use pytorch device_name: mps
+2025-03-24 17:01:52,437 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:01:54,319 - WARNING -  * Debugger is active!
+2025-03-24 17:01:54,334 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:02:41,024 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:02:41,660 - INFO -  * Restarting with stat
+2025-03-24 17:02:45,022 - INFO - Use pytorch device_name: mps
+2025-03-24 17:02:45,022 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:02:47,695 - WARNING -  * Debugger is active!
+2025-03-24 17:02:47,706 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:02:56,859 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:02:57,349 - INFO -  * Restarting with stat
+2025-03-24 17:03:00,253 - INFO - Use pytorch device_name: mps
+2025-03-24 17:03:00,253 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:03:02,427 - WARNING -  * Debugger is active!
+2025-03-24 17:03:02,448 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:06:55,401 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:06:55,920 - INFO -  * Restarting with stat
+2025-03-24 17:06:59,133 - INFO - Use pytorch device_name: mps
+2025-03-24 17:06:59,133 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:07:01,795 - WARNING -  * Debugger is active!
+2025-03-24 17:07:01,806 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:08:49,311 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:08:49,871 - INFO -  * Restarting with stat
+2025-03-24 17:08:54,029 - INFO - Use pytorch device_name: mps
+2025-03-24 17:08:54,029 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:08:57,133 - WARNING -  * Debugger is active!
+2025-03-24 17:08:57,145 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:09:16,444 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/__init__.py', reloading
+2025-03-24 17:09:17,033 - INFO -  * Restarting with stat
+2025-03-24 17:09:20,856 - INFO - Use pytorch device_name: mps
+2025-03-24 17:09:20,856 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:14:38,916 - INFO - Use pytorch device_name: mps
+2025-03-24 17:14:38,916 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:14:41,599 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 17:14:41,599 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 17:14:41,600 - INFO -  * Restarting with stat
+2025-03-24 17:14:44,397 - INFO - Use pytorch device_name: mps
+2025-03-24 17:14:44,397 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:14:46,669 - WARNING -  * Debugger is active!
+2025-03-24 17:14:46,682 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:15:54,243 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 17:15:55,339 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 17:15:55,339 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 17:16:02,222 - INFO - 127.0.0.1 - - [24/Mar/2025 17:16:02] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 17:16:39,158 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:16:39,729 - INFO -  * Restarting with stat
+2025-03-24 17:16:42,975 - INFO - Use pytorch device_name: mps
+2025-03-24 17:16:42,975 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:16:45,553 - WARNING -  * Debugger is active!
+2025-03-24 17:16:45,565 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:16:48,338 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 17:16:48,736 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 17:16:48,736 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 17:17:09,559 - INFO - 127.0.0.1 - - [24/Mar/2025 17:17:09] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 17:17:26,169 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 17:17:26,792 - INFO -  * Restarting with stat
+2025-03-24 17:17:30,137 - INFO - Use pytorch device_name: mps
+2025-03-24 17:17:30,137 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:17:32,504 - WARNING -  * Debugger is active!
+2025-03-24 17:17:32,516 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 17:17:32,971 - INFO - Downloading JSON from S3: prof_sean/67e0f673637540954851d242/Task1/chunks.json
+2025-03-24 17:17:33,298 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 17:17:33,298 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 17:17:40,988 - INFO - 127.0.0.1 - - [24/Mar/2025 17:17:40] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 17:34:23,705 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-24 17:34:24,356 - INFO -  * Restarting with stat
+2025-03-24 17:34:27,924 - INFO - Use pytorch device_name: mps
+2025-03-24 17:34:27,924 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 17:34:30,536 - WARNING -  * Debugger is active!
+2025-03-24 17:34:30,547 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 19:01:12,341 - INFO - Downloading file from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/knowledge-base.pdf
+2025-03-24 19:01:17,175 - WARNING - Not enough training data (16) for clustering with nlist=4. Requires at least 156 points. Using IndexFlatL2.
+2025-03-24 19:01:17,360 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 19:01:17,585 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e1de88b66b538be0d1e825/Task1/faiss_index.index
+2025-03-24 19:01:17,589 - INFO - 127.0.0.1 - - [24/Mar/2025 19:01:17] "POST /index HTTP/1.1" 200 -
+2025-03-24 20:13:02,278 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 20:13:06,197 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 20:13:06,198 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-24 20:13:06,208 - INFO - Sending request to local model: llama3.1:8b
+2025-03-24 20:13:15,539 - INFO - Successfully generated sample rubric
+2025-03-24 20:13:15,541 - INFO - 127.0.0.1 - - [24/Mar/2025 20:13:15] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 20:14:58,080 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 20:14:58,975 - INFO -  * Restarting with stat
+2025-03-24 20:15:02,859 - INFO - Use pytorch device_name: mps
+2025-03-24 20:15:02,859 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 20:15:06,142 - WARNING -  * Debugger is active!
+2025-03-24 20:15:06,165 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 20:15:06,579 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 20:15:06,969 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 20:15:06,969 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-24 20:15:06,970 - INFO - Sending request to local model: llama3.1:8b
+2025-03-24 20:15:14,466 - INFO - Successfully generated sample rubric
+2025-03-24 20:15:14,469 - INFO - 127.0.0.1 - - [24/Mar/2025 20:15:14] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 20:15:33,630 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 20:15:34,193 - INFO -  * Restarting with stat
+2025-03-24 20:15:37,385 - INFO - Use pytorch device_name: mps
+2025-03-24 20:15:37,385 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 20:15:39,365 - WARNING -  * Debugger is active!
+2025-03-24 20:15:39,379 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 20:15:40,703 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 20:15:40,973 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 20:15:40,973 - INFO - Generating a sample rubric using model: llama3.3:70b...
+2025-03-24 20:15:40,974 - INFO - Sending request to local model: llama3.3:70b
+2025-03-24 20:16:43,732 - INFO - Successfully generated sample rubric
+2025-03-24 20:16:43,734 - INFO - 127.0.0.1 - - [24/Mar/2025 20:16:43] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 20:17:22,494 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 20:17:23,471 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 20:17:23,471 - INFO - Generating a sample rubric using model: llama3.3:70b...
+2025-03-24 20:17:23,471 - INFO - Sending request to local model: llama3.3:70b
+2025-03-24 20:18:16,032 - INFO - Successfully generated sample rubric
+2025-03-24 20:18:16,034 - INFO - 127.0.0.1 - - [24/Mar/2025 20:18:16] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 20:32:08,508 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 20:32:09,438 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 20:32:09,438 - INFO - Generating a sample rubric using model: llama3.3:70b...
+2025-03-24 20:32:09,439 - INFO - Sending request to local model: llama3.3:70b
+2025-03-24 20:33:03,353 - INFO - Successfully generated sample rubric
+2025-03-24 20:33:03,358 - INFO - 127.0.0.1 - - [24/Mar/2025 20:33:03] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 20:56:58,992 - INFO - Generated prompt for criterion: Identification and Explanation of Steps
+2025-03-24 20:57:15,626 - INFO - Generated prompt for criterion: Understanding of Company Objectives
+2025-03-24 20:57:31,364 - INFO - Generated prompt for criterion: Application and Relevance to Customer Value-Driven Strategy
+2025-03-24 20:57:43,431 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 20:57:43,432 - INFO - 127.0.0.1 - - [24/Mar/2025 20:57:43] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 21:04:07,835 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 21:04:08,467 - INFO -  * Restarting with stat
+2025-03-24 21:04:12,005 - INFO - Use pytorch device_name: mps
+2025-03-24 21:04:12,005 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:04:14,737 - WARNING -  * Debugger is active!
+2025-03-24 21:04:14,748 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 21:04:17,818 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 21:04:18,286 - INFO -  * Restarting with stat
+2025-03-24 21:04:20,953 - INFO - Use pytorch device_name: mps
+2025-03-24 21:04:20,953 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:04:22,657 - WARNING -  * Debugger is active!
+2025-03-24 21:04:22,683 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 21:04:42,027 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 21:04:42,500 - INFO -  * Restarting with stat
+2025-03-24 21:04:45,024 - INFO - Use pytorch device_name: mps
+2025-03-24 21:04:45,024 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:04:46,839 - WARNING -  * Debugger is active!
+2025-03-24 21:04:46,856 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 21:04:47,897 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 21:04:48,411 - INFO -  * Restarting with stat
+2025-03-24 21:04:50,863 - INFO - Use pytorch device_name: mps
+2025-03-24 21:04:50,863 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:04:52,907 - WARNING -  * Debugger is active!
+2025-03-24 21:04:52,920 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 21:05:25,265 - ERROR - Error generating prompts: send_post_request() got an unexpected keyword argument 'model'
+2025-03-24 21:05:25,266 - INFO - 127.0.0.1 - - [24/Mar/2025 21:05:25] "[35m[1mPOST /generate_prompt HTTP/1.1[0m" 500 -
+2025-03-24 21:05:55,921 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 21:05:56,447 - INFO -  * Restarting with stat
+2025-03-24 21:05:59,724 - INFO - Use pytorch device_name: mps
+2025-03-24 21:05:59,724 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:06:02,328 - WARNING -  * Debugger is active!
+2025-03-24 21:06:02,341 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 21:06:11,502 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generatePrompts.py', reloading
+2025-03-24 21:06:11,985 - INFO -  * Restarting with stat
+2025-03-24 21:06:14,598 - INFO - Use pytorch device_name: mps
+2025-03-24 21:06:14,598 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:06:43,456 - INFO - Use pytorch device_name: mps
+2025-03-24 21:06:43,456 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:06:45,180 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 21:06:45,180 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 21:06:45,181 - INFO -  * Restarting with stat
+2025-03-24 21:06:47,729 - INFO - Use pytorch device_name: mps
+2025-03-24 21:06:47,729 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:06:50,454 - WARNING -  * Debugger is active!
+2025-03-24 21:06:50,478 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 21:07:01,322 - INFO - Generated prompt for criterion: Identification and Explanation of Steps
+2025-03-24 21:07:02,751 - INFO - Generated prompt for criterion: Understanding of Company Objectives
+2025-03-24 21:07:04,083 - INFO - Generated prompt for criterion: Application and Relevance to Customer Value-Driven Strategy
+2025-03-24 21:07:05,345 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 21:07:05,348 - INFO - 127.0.0.1 - - [24/Mar/2025 21:07:05] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 21:09:55,103 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 21:09:55,693 - INFO -  * Restarting with stat
+2025-03-24 21:09:59,063 - INFO - Use pytorch device_name: mps
+2025-03-24 21:09:59,063 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 21:59:58,466 - INFO - Use pytorch device_name: mps
+2025-03-24 21:59:58,467 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 22:00:01,449 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-24 22:00:01,449 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 22:00:01,450 - INFO -  * Restarting with stat
+2025-03-24 22:00:04,573 - INFO - Use pytorch device_name: mps
+2025-03-24 22:00:04,573 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 22:00:08,127 - WARNING -  * Debugger is active!
+2025-03-24 22:00:08,141 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 22:00:22,574 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 22:00:23,018 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 22:00:23,019 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-03-24 22:00:23,019 - INFO - Sending request to local model: llama3.1:8b
+2025-03-24 22:00:33,133 - INFO - Successfully generated sample rubric
+2025-03-24 22:00:33,136 - INFO - 127.0.0.1 - - [24/Mar/2025 22:00:33] "POST /generate_rubric HTTP/1.1" 200 -
+2025-03-24 22:03:43,135 - INFO - Generated prompt for criterion: Identification and Explanation of Steps
+2025-03-24 22:03:44,645 - INFO - Generated prompt for criterion: Understanding of Company Objectives
+2025-03-24 22:03:45,842 - INFO - Generated prompt for criterion: Application and Relevance to Customer Value-Driven Strategy
+2025-03-24 22:03:46,921 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-03-24 22:03:46,921 - INFO - 127.0.0.1 - - [24/Mar/2025 22:03:46] "POST /generate_prompt HTTP/1.1" 200 -
+2025-03-24 22:22:06,901 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/agents.py', reloading
+2025-03-24 22:22:08,389 - INFO -  * Restarting with stat
+2025-03-24 22:22:12,642 - INFO - Use pytorch device_name: mps
+2025-03-24 22:22:12,642 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 22:22:15,428 - WARNING -  * Debugger is active!
+2025-03-24 22:22:15,444 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 22:25:08,934 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 22:25:10,159 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 22:25:10,159 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 22:25:16,594 - INFO - 127.0.0.1 - - [24/Mar/2025 22:25:16] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 22:33:23,125 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 22:33:23,993 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 22:33:23,994 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 22:33:30,678 - INFO - 127.0.0.1 - - [24/Mar/2025 22:33:30] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 22:33:56,585 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 22:33:57,617 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 22:33:57,617 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 22:34:02,253 - INFO - 127.0.0.1 - - [24/Mar/2025 22:34:02] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 22:37:59,324 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 22:38:00,336 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 22:38:00,338 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 22:38:05,306 - INFO - 127.0.0.1 - - [24/Mar/2025 22:38:05] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 22:38:41,332 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 22:38:42,309 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 22:38:42,309 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 22:39:03,907 - INFO - 127.0.0.1 - - [24/Mar/2025 22:39:03] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 22:43:44,928 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 22:43:45,850 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 22:43:45,851 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 22:43:53,272 - INFO - 127.0.0.1 - - [24/Mar/2025 22:43:53] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 22:44:24,535 - INFO - Downloading JSON from S3: prof_sean/67e1de88b66b538be0d1e825/Task1/chunks.json
+2025-03-24 22:44:25,274 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-24 22:44:25,275 - INFO - RAG context retrieved for grading: PART 3: DESIGNING A CUSTOMER VALUE–DRIVEN STRATEGY AND MIX (CHAPTERS 6–14)
+Customer Value–Driven
+6
+Marketing Strategy
+Creating Value for Target Customers
+Objectives Outline
+OBJECTIVE 6-1 Define the ma...
+2025-03-24 22:44:30,154 - INFO - 127.0.0.1 - - [24/Mar/2025 22:44:30] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-03-24 23:07:53,390 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-24 23:07:54,240 - INFO -  * Restarting with stat
+2025-03-24 23:07:58,617 - INFO - Use pytorch device_name: mps
+2025-03-24 23:07:58,617 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 23:08:01,480 - WARNING -  * Debugger is active!
+2025-03-24 23:08:01,501 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 23:08:08,640 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 23:08:09,249 - INFO -  * Restarting with stat
+2025-03-24 23:08:12,869 - INFO - Use pytorch device_name: mps
+2025-03-24 23:08:12,869 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 23:08:14,884 - WARNING -  * Debugger is active!
+2025-03-24 23:08:14,900 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 23:10:17,579 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-03-24 23:10:18,086 - INFO -  * Restarting with stat
+2025-03-24 23:10:21,515 - INFO - Use pytorch device_name: mps
+2025-03-24 23:10:21,515 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 23:10:24,415 - WARNING -  * Debugger is active!
+2025-03-24 23:10:24,432 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 23:12:10,059 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/script.py', reloading
+2025-03-24 23:12:10,741 - INFO -  * Restarting with stat
+2025-03-24 23:12:14,905 - INFO - Use pytorch device_name: mps
+2025-03-24 23:12:14,905 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 23:12:17,767 - WARNING -  * Debugger is active!
+2025-03-24 23:12:17,783 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 23:12:32,043 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 23:12:32,540 - INFO -  * Restarting with stat
+2025-03-24 23:12:35,291 - INFO - Use pytorch device_name: mps
+2025-03-24 23:12:35,291 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 23:12:37,278 - WARNING -  * Debugger is active!
+2025-03-24 23:12:37,291 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 23:14:53,465 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/generateRubric.py', reloading
+2025-03-24 23:14:53,985 - INFO -  * Restarting with stat
+2025-03-24 23:14:56,979 - INFO - Use pytorch device_name: mps
+2025-03-24 23:14:56,979 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-24 23:15:03,367 - WARNING -  * Debugger is active!
+2025-03-24 23:15:03,383 - INFO -  * Debugger PIN: 527-154-434
+2025-03-24 23:16:09,492 - INFO - Downloading file from S3: prof_sean/67e21fd58840f6048b9a1568/Task1/knowledge-base.pdf
+2025-03-24 23:16:11,944 - WARNING - Not enough training data (16) for clustering with nlist=4. Requires at least 156 points. Using IndexFlatL2.
+2025-03-24 23:16:12,094 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e21fd58840f6048b9a1568/Task1/chunks.json
+2025-03-24 23:16:12,314 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e21fd58840f6048b9a1568/Task1/faiss_index.index
+2025-03-24 23:16:12,320 - INFO - 127.0.0.1 - - [24/Mar/2025 23:16:12] "POST /index HTTP/1.1" 200 -

@@ -1,6 +1,9 @@
 import express, { RequestHandler } from "express";
 import { authenticateToken } from "../middleware/authenticateToken";
-import { updateAssignment } from "../controllers/assignments/updateAssignment";
+import {
+  finalizeRubricAndGeneratePrompt,
+  updateAssignment,
+} from "../controllers/assignments/updateAssignment";
 import { createAssignment } from "../controllers/assignments/createAssignment";
 import { AssignmentParams } from "../controllers/assignments";
 import { createRubric } from "../controllers/assignments/generateRubric";
@@ -25,5 +28,10 @@ router.patch(
 router.post(
   "/generate-rubric",
   createRubric as unknown as RequestHandler<AssignmentParams>
+);
+
+router.post(
+  "/:courseId/assignments/:assignmentId/finalize-rubric",
+  finalizeRubricAndGeneratePrompt as unknown as RequestHandler<AssignmentParams>
 );
 export default router;

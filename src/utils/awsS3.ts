@@ -1,16 +1,21 @@
-import AWS from "aws-sdk";
-import { IAttachment } from "../models/Attachment";
+import {
+  S3Client,
+  PutObjectCommand,
+  DeleteObjectCommand,
+  HeadObjectCommand,
+} from "@aws-sdk/client-s3";
+import { Attachment, IAttachment } from "../models/Attachment";
+import { Assignment } from "../models/Assignment";
 import { MulterFile } from "../types/multer";
-import { Course } from "../models/Course";
 
-// Configure AWS
-AWS.config.update({
+// Configure S3 client
+const s3Client = new S3Client({
   region: process.env.AWS_REGION || "us-east-1",
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+  },
 });
-
-const s3 = new AWS.S3();
 
 // Allowed file types and their MIME types
 const ALLOWED_FILE_TYPES = {
@@ -58,20 +63,78 @@ export class FileUploadService {
     return `${sanitized}${extension}`;
   }
 
+  // Check if a file with the same key already exists in S3
+  private async checkFileExistsInS3(fileKey: string): Promise<boolean> {
+    try {
+      const command = new HeadObjectCommand({
+        Bucket: this.bucket,
+        Key: fileKey,
+      });
+      await s3Client.send(command);
+      return true; // File exists
+    } catch (error: any) {
+      if (error.$metadata?.httpStatusCode === 404) {
+        return false; // File does not exist
+      }
+      throw new Error("Error checking file existence in S3");
+    }
+  }
+
+  // Check if an attachment with the same fileName, courseId, and assignmentId already exists in MongoDB
+  private async checkAttachmentExists(
+    fileName: string,
+    courseId: string,
+    assignmentId: string
+  ): Promise<IAttachment | null> {
+    return await Attachment.findOne({
+      fileName,
+      courseId,
+      assignmentId,
+    });
+  }
+
   async uploadFile(
     file: MulterFile,
-    courseCode: string,
-    professorUsername: string
-  ): Promise<any> {
+    courseId: string,
+    assignmentId: string,
+    professorUsername: string,
+    overwrite: boolean = false
+  ): Promise<string> {
     // Validate file type and size
     this.validateFileType(file.mimetype);
     this.validateFileSize(file.size);
 
+    // Fetch the assignment to get the assignmentTitle for the S3 key
+    const assignment = await Assignment.findById(assignmentId);
+    if (!assignment) {
+      throw new Error("Assignment not found");
+    }
+    const assignmentTitle = assignment.title;
+
     // Sanitize file name and create key
     const sanitizedFileName = this.sanitizeFileName(file.originalname);
-    // Structure: professor/courseCode/filename
-    const fileKey = `${professorUsername}/${courseCode}/${sanitizedFileName}`;
-    // const fileKey = `${professorUsername}/${courseCode}/${Date.now()}-${sanitizedFileName}`;
+    const fileKey = `${professorUsername}/${courseId}/${assignmentTitle}/${sanitizedFileName}`;
+
+    // Check if an attachment already exists in MongoDB
+    const existingAttachment = await this.checkAttachmentExists(
+      file.originalname,
+      courseId,
+      assignmentId
+    );
+
+    if (existingAttachment && !overwrite) {
+      throw new Error(
+        `File '${file.originalname}' already exists for this course and assignment.`
+      );
+    }
+
+    // Double-check S3 for consistency
+    const fileExistsInS3 = await this.checkFileExistsInS3(fileKey);
+    if (fileExistsInS3 && !overwrite) {
+      throw new Error(
+        `File '${file.originalname}' already exists in S3 for this course and assignment.`
+      );
+    }
 
     const uploadParams = {
       Bucket: this.bucket,
@@ -82,9 +145,11 @@ export class FileUploadService {
     };
 
     try {
-      const uploadResult = await s3.upload(uploadParams).promise();
-
-      return uploadResult.Location;
+      const command = new PutObjectCommand(uploadParams);
+      const uploadResult = await s3Client.send(command);
+      // Construct the file URL manually since PutObjectCommand doesn't return it
+      const fileUrl = `https://${this.bucket}.s3.amazonaws.com/${fileKey}`;
+      return fileUrl;
     } catch (error) {
       console.error("Error uploading file to S3:", error);
       throw new Error("Failed to upload file");
@@ -101,63 +166,13 @@ export class FileUploadService {
     };
 
     try {
-      await s3.deleteObject(deleteParams).promise();
+      const command = new DeleteObjectCommand(deleteParams);
+      await s3Client.send(command);
     } catch (error) {
       console.error("Error deleting file from S3:", error);
       throw new Error("Failed to delete file");
     }
   }
-
-  // async uploadFiles(
-  //   files: Express.Multer.File[],
-  //   courseCode: string,
-  //   professorUsername: string
-  // ): Promise<any[]> {
-  //   const uploadedFiles: FileAttachment[] = [];
-  //   const errors: { fileName: string; error: string }[] = [];
-
-  //   // Find the course by courseCode
-  //   const course = await Course.findOne({ courseCode });
-  //   if (!course) {
-  //     throw new Error("Course not found");
-  //   }
-
-  //   // Upload each file
-  //   for (const file of files) {
-  //     try {
-  //       const fileAttachment = await this.uploadFile(
-  //         file,
-  //         courseCode,
-  //         professorUsername
-  //       );
-  //       uploadedFiles.push(fileAttachment);
-  //       course.attachments.push(fileAttachment);
-  //     } catch (error: any) {
-  //       errors.push({
-  //         fileName: file.originalname,
-  //         error: error.message,
-  //       });
-  //     }
-  //   }
-
-  //   // Save course if any files were uploaded successfully
-  //   if (uploadedFiles.length > 0) {
-  //     await course.save();
-  //   }
-
-  //   if (errors.length > 0) {
-  //     // If there were any errors, throw them along with successful uploads
-  //     throw {
-  //       success: {
-  //         count: uploadedFiles.length,
-  //         files: uploadedFiles,
-  //       },
-  //       errors,
-  //     };
-  //   }
-
-  //   return uploadedFiles;
-  // }
 }
 
 // Export a singleton instance
