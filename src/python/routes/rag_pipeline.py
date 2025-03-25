@@ -12,6 +12,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 import tempfile
 from typing import List, Generator, Optional
+from transformers import AutoTokenizer
+import re
 
 rag_bp = Blueprint("rag", __name__)
 
@@ -20,6 +22,7 @@ load_dotenv()
 CHUNK_SIZE = int(os.getenv("RAG_CHUNK_SIZE", 1200))
 CHUNK_OVERLAP = int(os.getenv("RAG_CHUNK_OVERLAP", 240))
 BATCH_SIZE = int(os.getenv("RAG_BATCH_SIZE", 32))
+MIN_CHUNK_SIZE = 50  # New: Minimum chunk size to ensure meaningful context
 
 logging.basicConfig(
     level=logging.INFO,
@@ -32,6 +35,8 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 embeddings_model = HuggingFaceEmbeddings(model_name="BAAI/bge-large-en")
+tokenizer = AutoTokenizer.from_pretrained("BAAI/bge-large-en")
+MAX_TOKEN_LENGTH = 512
 
 S3_BUCKET = os.getenv("AWS_S3_BUCKET", "essaybotbucket")
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
@@ -83,18 +88,47 @@ def extract_text_from_pdf(file_obj: BytesIO) -> Generator[str, None, None]:
                 page_text = page.extract_text()
                 if page_text:
                     yield page_text.strip()
+                else:
+                    logger.warning(
+                        f"Page {page.page_number} has no extractable text")
     except Exception as e:
         logger.error(f"Error extracting text from PDF: {str(e)}")
         raise ValueError(f"Failed to extract text from PDF: {str(e)}")
+
+
+def clean_chunk(chunk: str) -> str:
+    """Cleans a text chunk by removing excessive whitespace and special characters."""
+    chunk = re.sub(r'\s+', ' ', chunk.strip())
+    chunk = re.sub(r'Page \d+', '', chunk)
+    return chunk
+
+
+def truncate_chunk(chunk: str, max_tokens: int = MAX_TOKEN_LENGTH) -> str:
+    """Truncates a chunk to the maximum token length."""
+    tokens = tokenizer.tokenize(chunk)
+    if len(tokens) > max_tokens:
+        tokens = tokens[:max_tokens]
+        chunk = tokenizer.convert_tokens_to_string(tokens)
+    return chunk
 
 
 def embed_in_batches(text_chunks: List[str], batch_size: int = BATCH_SIZE) -> np.ndarray:
     embeddings = []
     for i in range(0, len(text_chunks), batch_size):
         batch = text_chunks[i:i + batch_size]
-        batch_embeddings = embeddings_model.embed_documents(batch)
-        embeddings.extend(batch_embeddings)
-    return np.array(embeddings).astype("float32")
+        batch = [truncate_chunk(chunk) for chunk in batch]
+        try:
+            batch_embeddings = embeddings_model.embed_documents(batch)
+            embeddings.extend(batch_embeddings)
+        except Exception as e:
+            logger.error(f"Failed to embed batch {i//batch_size}: {str(e)}")
+            continue
+    if not embeddings:
+        raise ValueError("No embeddings generated for any chunks")
+    embeddings = np.array(embeddings).astype("float32")
+    norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+    embeddings = embeddings / np.maximum(norms, 1e-10)
+    return embeddings
 
 
 def create_quantized_index(embeddings: np.ndarray, nlist: Optional[int] = None, m: int = 8, nbits: int = 8) -> faiss.Index:
@@ -103,7 +137,7 @@ def create_quantized_index(embeddings: np.ndarray, nlist: Optional[int] = None, 
     min_points_per_centroid = 39
 
     if nlist is None:
-        nlist = max(1, min(100, int(np.sqrt(num_embeddings))))
+        nlist = max(1, min(500, int(np.sqrt(num_embeddings) * 2)))
 
     min_required_points = nlist * min_points_per_centroid
     if num_embeddings < min_required_points:
@@ -129,7 +163,25 @@ def create_quantized_index(embeddings: np.ndarray, nlist: Optional[int] = None, 
     index = faiss.IndexIVFPQ(quantizer, d, nlist, m, adjusted_nbits)
 
     logger.info("Training FAISS index")
-    index.train(embeddings)
+    try:
+        index.train(embeddings)
+    except Exception as e:
+        logger.warning(
+            f"Training failed: {str(e)}. Falling back to IndexFlatL2.")
+        index = faiss.IndexFlatL2(d)
+        index.add(embeddings)
+        return index
+
+    logger.info("Validating FAISS index")
+    test_query = embeddings[0:1]
+    distances, indices = index.search(test_query, 1)
+    if indices[0][0] == -1:
+        logger.warning(
+            "Index validation failed: no results returned. Falling back to IndexFlatL2.")
+        index = faiss.IndexFlatL2(d)
+        index.add(embeddings)
+        return index
+
     logger.info("Adding embeddings to FAISS index")
     index.add(embeddings)
     return index
@@ -154,25 +206,43 @@ def index_pdf():
             separators=["\n\n", "\n", ". ", " ", ""],
             keep_separator=True
         )
-        text_chunks = []
+        all_text_chunks = []
         for page_text in extract_text_from_pdf(file_obj):
             chunks = text_splitter.split_text(page_text)
-            text_chunks.extend(chunks)
-        if not text_chunks:
+            chunks = [clean_chunk(chunk)
+                      for chunk in chunks if len(chunk) >= MIN_CHUNK_SIZE]
+            all_text_chunks.extend(chunks)
+
+        if not all_text_chunks:
             return jsonify({"error": "No text chunks generated from PDF"}), 400
 
-        embeddings = embed_in_batches(text_chunks)
+        if all_text_chunks:
+            avg_chunk_size = sum(len(chunk)
+                                 for chunk in all_text_chunks) / len(all_text_chunks)
+            logger.info(
+                f"Generated {len(all_text_chunks)} chunks with average size {avg_chunk_size:.2f} characters")
+
+        all_text_chunks = list(dict.fromkeys(all_text_chunks))
+        embeddings = embed_in_batches(all_text_chunks)
         optimized_index = create_quantized_index(embeddings)
 
         professor_dir = f"{professor_username}/{course_id}/{assignment_title}"
         index_key = f"{professor_dir}/faiss_index.index"
         chunks_key = f"{professor_dir}/chunks.json"
 
-        chunks_data = {"chunks": text_chunks, "index_key": index_key}
+        chunks_data = {"chunks": all_text_chunks, "index_key": index_key}
         chunks_url = upload_json_to_s3(chunks_data, chunks_key)
 
         with tempfile.NamedTemporaryFile(delete=False, suffix=".index") as temp_file:
             faiss.write_index(optimized_index, temp_file.name)
+            try:
+                test_index = faiss.read_index(temp_file.name)
+                if test_index.ntotal != len(all_text_chunks):
+                    raise ValueError(
+                        "FAISS index validation failed: incorrect number of embeddings")
+            except Exception as e:
+                logger.error(f"FAISS index validation failed: {str(e)}")
+                raise
             index_url = upload_file_to_s3(
                 temp_file.name, index_key, "application/octet-stream")
         os.remove(temp_file.name)
@@ -188,6 +258,83 @@ def index_pdf():
     except Exception as e:
         logger.exception(f"Error indexing PDF: {str(e)}")
         return jsonify({"error": f"Failed to index PDF: {str(e)}"}), 500
+
+
+@rag_bp.route("/index-multiple", methods=["POST"])
+def index_multiple_pdfs():
+    data = request.get_json()
+    s3_file_keys = data.get("s3_file_keys")
+    professor_username = data.get("username")
+    course_id = data.get("courseId")
+    assignment_title = data.get("assignmentTitle")
+    if not all([s3_file_keys, professor_username, course_id, assignment_title]):
+        return jsonify({"error": "s3_file_keys, username, courseId, and assignmentTitle are required"}), 400
+
+    if not isinstance(s3_file_keys, list) or len(s3_file_keys) == 0:
+        return jsonify({"error": "s3_file_keys must be a non-empty array"}), 400
+
+    try:
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=CHUNK_SIZE,
+            chunk_overlap=CHUNK_OVERLAP,
+            separators=["\n\n", "\n", ". ", " ", ""],
+            keep_separator=True
+        )
+        all_text_chunks = []
+        for s3_file_key in s3_file_keys:
+            logger.info(f"Processing file: {s3_file_key}")
+            file_obj = download_file_from_s3(s3_file_key)
+            for page_text in extract_text_from_pdf(file_obj):
+                chunks = text_splitter.split_text(page_text)
+                chunks = [clean_chunk(chunk) for chunk in chunks if len(
+                    chunk) >= MIN_CHUNK_SIZE]
+                all_text_chunks.extend(chunks)
+
+        if not all_text_chunks:
+            return jsonify({"error": "No text chunks generated from PDFs"}), 400
+
+        if all_text_chunks:
+            avg_chunk_size = sum(len(chunk)
+                                 for chunk in all_text_chunks) / len(all_text_chunks)
+            logger.info(
+                f"Generated {len(all_text_chunks)} chunks with average size {avg_chunk_size:.2f} characters")
+
+        all_text_chunks = list(dict.fromkeys(all_text_chunks))
+        embeddings = embed_in_batches(all_text_chunks)
+        optimized_index = create_quantized_index(embeddings)
+
+        professor_dir = f"{professor_username}/{course_id}/{assignment_title}"
+        index_key = f"{professor_dir}/faiss_index.index"
+        chunks_key = f"{professor_dir}/chunks.json"
+
+        chunks_data = {"chunks": all_text_chunks, "index_key": index_key}
+        chunks_url = upload_json_to_s3(chunks_data, chunks_key)
+
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".index") as temp_file:
+            faiss.write_index(optimized_index, temp_file.name)
+            try:
+                test_index = faiss.read_index(temp_file.name)
+                if test_index.ntotal != len(all_text_chunks):
+                    raise ValueError(
+                        "FAISS index validation failed: incorrect number of embeddings")
+            except Exception as e:
+                logger.error(f"FAISS index validation failed: {str(e)}")
+                raise
+            index_url = upload_file_to_s3(
+                temp_file.name, index_key, "application/octet-stream")
+        os.remove(temp_file.name)
+
+        return jsonify({
+            "faiss_index_url": index_url,
+            "index_key": index_key,
+            "chunks_url": chunks_url,
+            "chunks_key": chunks_key,
+            "course_id": course_id,
+            "assignment_title": assignment_title
+        })
+    except Exception as e:
+        logger.exception(f"Error indexing multiple PDFs: {str(e)}")
+        return jsonify({"error": f"Failed to index PDFs: {str(e)}"}), 500
 
 
 def get_faiss_index_from_s3(index_key: str) -> faiss.Index:
@@ -220,7 +367,6 @@ def download_chunks_from_s3(chunks_key: str) -> List[str]:
 
 
 def expand_query(query: str) -> str:
-    """Expands the query by adding related terms using a simple heuristic."""
     related_terms = {
         "customer-driven marketing strategy": "market segmentation targeting differentiation positioning",
         "machine learning": "supervised learning unsupervised learning neural networks",
@@ -235,7 +381,6 @@ def retrieve_relevant_text(query: str, faiss_index: Optional[faiss.Index] = None
                            professor_username: Optional[str] = None, course_id: Optional[str] = None,
                            assignmentTitle: Optional[str] = None, distance_threshold: float = 0.5,
                            max_total_length: int = 4000) -> List[str]:
-    """Retrieves relevant text chunks using the FAISS index, with relevance filtering and length limits."""
     if not all([professor_username, course_id, assignmentTitle]):
         raise ValueError(
             "professor_username, course_id, and assignmentTitle are required")
@@ -252,10 +397,13 @@ def retrieve_relevant_text(query: str, faiss_index: Optional[faiss.Index] = None
         raise ValueError(f"Failed to load FAISS index or chunks: {str(e)}")
 
     expanded_query = expand_query(query)
+    expanded_query = truncate_chunk(expanded_query)
     logger.info(f"Expanded query: {expanded_query[:100]}...")
 
     query_embedding = embeddings_model.embed_query(expanded_query)
     query_embedding = np.array([query_embedding]).astype("float32")
+    norms = np.linalg.norm(query_embedding, axis=1, keepdims=True)
+    query_embedding = query_embedding / np.maximum(norms, 1e-10)
 
     distances, indices = faiss_index.search(query_embedding, k * 2)
     relevant_chunks = []
@@ -289,6 +437,7 @@ def retrieve_relevant_text(query: str, faiss_index: Optional[faiss.Index] = None
             relevant_chunks.append(chunk)
             total_length += chunk_length
 
+    relevant_chunks = list(dict.fromkeys(relevant_chunks))
     logger.info(
         f"Retrieved {len(relevant_chunks)} chunks for query: {query[:50]}...")
     return relevant_chunks

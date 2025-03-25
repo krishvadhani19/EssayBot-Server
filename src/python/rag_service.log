@@ -1473,3 +1473,22 @@ OBJECTIVE 6-1 Define the ma...
 2025-03-24 23:16:12,094 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e21fd58840f6048b9a1568/Task1/chunks.json
 2025-03-24 23:16:12,314 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e21fd58840f6048b9a1568/Task1/faiss_index.index
 2025-03-24 23:16:12,320 - INFO - 127.0.0.1 - - [24/Mar/2025 23:16:12] "POST /index HTTP/1.1" 200 -
+2025-03-25 08:39:12,514 - INFO - Use pytorch device_name: mps
+2025-03-25 08:39:12,514 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-25 08:39:15,398 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-25 08:39:15,398 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-25 08:39:15,399 - INFO -  * Restarting with stat
+2025-03-25 08:39:18,357 - INFO - Use pytorch device_name: mps
+2025-03-25 08:39:18,357 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-25 08:39:22,776 - WARNING -  * Debugger is active!
+2025-03-25 08:39:22,841 - INFO -  * Debugger PIN: 527-154-434
+2025-03-25 08:41:31,334 - INFO - Processing file: prof_sean/67e2a4211eaee07f8a129492/Task1/MKTG-2201-Study-Textbook.pdf
+2025-03-25 08:41:31,334 - INFO - Downloading file from S3: prof_sean/67e2a4211eaee07f8a129492/Task1/MKTG-2201-Study-Textbook.pdf
+2025-03-25 08:41:32,474 - INFO - Generated 16 chunks with average size 1063.81 characters
+2025-03-25 08:41:34,885 - WARNING - Not enough training data (16) for clustering with nlist=8. Requires at least 312 points. Using IndexFlatL2.
+2025-03-25 08:41:35,038 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e2a4211eaee07f8a129492/Task1/chunks.json
+2025-03-25 08:41:35,234 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e2a4211eaee07f8a129492/Task1/faiss_index.index
+2025-03-25 08:41:35,239 - INFO - 127.0.0.1 - - [25/Mar/2025 08:41:35] "POST /index-multiple HTTP/1.1" 200 -

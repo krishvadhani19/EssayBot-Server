@@ -107,13 +107,14 @@ export const addAttachments = [
       // Array to store the saved attachments
       const savedAttachments = [];
       const errors = [];
+      const s3FileKeys: string[] = [];
 
-      // Process each file
+      // Step 1: Upload all files to S3
       for (const file of files) {
         console.log(`Processing file: ${file.originalname}`);
 
         try {
-          // Upload the file to S3 (do not overwrite by default)
+          // Upload the file to S3
           const fileUrl = await fileUploadService.uploadFile(
             file,
             courseId,
@@ -130,42 +131,9 @@ export const addAttachments = [
             throw new Error("Failed to extract S3 key from file URL");
           }
 
-          // Call the Python RAG service to index the uploaded file with retry logic
-          let faissIndexUrl = "";
-          let chunksFileUrl = "";
-          try {
-            const response = await retry(async () => {
-              const res: any = await axios.post("http://localhost:6000/index", {
-                username,
-                s3_file_key: s3FileKey,
-                courseId,
-                assignmentTitle: assignment.title,
-              });
+          s3FileKeys.push(s3FileKey);
 
-              // Validate response data
-              if (
-                !res.data ||
-                !res.data.faiss_index_url ||
-                !res.data.chunks_key
-              ) {
-                throw new Error("Invalid response from RAG service");
-              }
-
-              return res;
-            });
-            faissIndexUrl = response.data.faiss_index_url;
-            chunksFileUrl = response.data.chunks_key;
-            console.log(`Indexed file successfully: ${faissIndexUrl}`);
-          } catch (indexError: any) {
-            console.error("Error indexing file after retries:", indexError);
-            // Delete the uploaded file from S3 if indexing fails
-            await fileUploadService.deleteFile(fileUrl);
-            throw new Error(
-              `Failed to index file in RAG service: ${indexError.message}`
-            );
-          }
-
-          // Create a new attachment with metadata, including the index URL
+          // Create a new attachment (without indexing yet)
           const newAttachment = new Attachment({
             fileName: file.originalname,
             fileUrl,
@@ -173,11 +141,8 @@ export const addAttachments = [
             fileSize: file.size,
             courseId,
             assignmentId,
-            faissIndexUrl,
-            chunksFileUrl,
           });
 
-          // Save the attachment to the database
           const savedAttachment = await newAttachment.save();
           savedAttachments.push(savedAttachment);
         } catch (error: any) {
@@ -189,7 +154,57 @@ export const addAttachments = [
         }
       }
 
-      // If there were errors, return them along with any successful uploads
+      // Step 2: Call the RAG service to index all files at once
+      let faissIndexUrl = "";
+      let chunksFileUrl = "";
+      if (s3FileKeys.length > 0) {
+        try {
+          const response = await retry(async () => {
+            const res: any = await axios.post(
+              "http://localhost:6000/index-multiple",
+              {
+                username,
+                s3_file_keys: s3FileKeys, // Send all S3 keys at once
+                courseId,
+                assignmentTitle: assignment.title,
+              }
+            );
+
+            if (
+              !res.data ||
+              !res.data.faiss_index_url ||
+              !res.data.chunks_key
+            ) {
+              throw new Error("Invalid response from RAG service");
+            }
+
+            return res;
+          });
+          faissIndexUrl = response.data.faiss_index_url;
+          chunksFileUrl = response.data.chunks_key;
+          console.log(`Indexed files successfully: ${faissIndexUrl}`);
+
+          // Update all saved attachments with the same FAISS index and chunks URLs
+          for (const attachment of savedAttachments) {
+            attachment.faissIndexUrl = faissIndexUrl;
+            attachment.chunksFileUrl = chunksFileUrl;
+            await attachment.save();
+          }
+        } catch (indexError: any) {
+          console.error("Error indexing files after retries:", indexError);
+          // Delete the uploaded files from S3 if indexing fails
+          for (const attachment of savedAttachments) {
+            await fileUploadService.deleteFile(attachment.fileUrl);
+            await Attachment.deleteOne({ _id: attachment._id });
+          }
+          return res.status(500).json({
+            message: "Failed to index files in RAG service",
+            error: indexError.message,
+          });
+        }
+      }
+
+      // If there were errors during file upload, return them along with any successful uploads
       if (errors.length > 0) {
         return res.status(207).json({
           message: "Some files failed to upload",
