@@ -53,11 +53,11 @@ def generate_criterion_prompt(criterion, agent_index, model):
         str: The generated prompt as a JSON string, or None if failed.
     """
     llm_instruction = f"""
-You are an expert prompt engineer. Generate the evaluation instructions for a single criterion of an essay. The instructions should:
-- Specify how to evaluate the essay for the criterion '{criterion['name']}' (e.g., "Evaluate how well the student identifies social loafing, explains its root causes with depth, and proposes actionable solutions").
-- Provide guidance on giving specific feedback (e.g., "Provide specific feedback on where the analysis could be more thorough or solutions more tailored").
-- Limit the number of instructions to 4-5 bullet points maximum.
-- **Do NOT include** any role description, feedback instructions, output format, or placeholders (e.g., no {{question}}, {{essay}}, or {{rag_context}}).
+You are an expert prompt engineer. Generate evaluation instructions for a single criterion of an essay. The instructions should:
+- Be directly related to the criterion '{criterion['name']}' and help assess how well the essay meets this criterion.
+- Be specific, clear, and actionable, providing precise guidance on what to look for in the essay.
+- Be concise and limited to 4-5 bullet points.
+- Avoid vague or generic statements; focus on aspects unique to this criterion.
 - **Do NOT include** the header or introduction; they will be added programmatically.
 
 Criterion JSON: {json.dumps(criterion)}

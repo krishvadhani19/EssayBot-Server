@@ -51,18 +51,30 @@ def generate_sample_rubric(question: str, context: List[str], model: str = "llam
     """Generate a single sample rubric for the given question and context."""
     logger.info(f"Generating a sample rubric using model: {model}...")
     try:
-        context_subset = random.sample(context, min(len(context), 5))
+        context_text = ' '.join(context)
         prompt = f"""
-        You are an expert educational assessment designer. Your task is to create a grading rubric which helps student understand what is important and also help graders in grading student answers for the following question/assignment:
-        
-        QUESTION:
+        You are an expert educational assessment designer. Your task is to create a grading rubric that helps students understand what is important and assists graders in evaluating student answers for the following question/assignment.
+
+        To create an effective rubric, ensure that each criterion is:
+        1. **Specific and measurable**: Clearly define what is being assessed.
+        2. **Relevant to the question**: Directly relate to the key concepts or skills the question is testing.
+        3. **Distinct**: Each criterion should cover a unique aspect of the assignment.
+        4. **Comprehensive**: Together, the criteria should cover all important aspects of the assignment.
+
+        For example, a criterion might assess the depth of understanding of key concepts, with scoring levels that differentiate between exceptional, basic, and limited comprehension.
+
+        **QUESTION:**
         {question}
-        
-        RELEVANT CONTEXT FROM COURSE MATERIALS:
-        {' '.join(context_subset)}
-        
-        Create a sample grading rubric that assesses understanding of the subject matter and application of 
-        concepts. The rubric should have 3-4 relevant criteria that are tailored to this specific question.
+
+        **RELEVANT CONTEXT FROM COURSE MATERIALS:**
+        {context_text}
+
+        Create a sample grading rubric with 3-4 relevant criteria tailored to this specific question. Each criterion should include:
+        1. A clear name
+        2. A detailed description
+        3. A weight (numerical value where all weights add up to 100)
+        4. Scoring levels with descriptions for full, partial, and minimal performance
+        5. An empty subCriteria array
         
         Return the rubric as a valid JSON object with the following structure:
         
@@ -81,14 +93,7 @@ def generate_sample_rubric(question: str, context: List[str], model: str = "llam
             }}
           ]
         }}
-        
-        Each criterion should include:
-        1. A clear name
-        2. A detailed description
-        3. A weight (numerical value where all weights add up to 100)
-        4. Scoring levels with descriptions
-        5. An empty subCriteria array
-        
+
         Return ONLY the JSON object with no additional text before or after it.
         """
         response = send_post_request(prompt=prompt, temperature=0.3, top_p=0.9,

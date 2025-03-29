@@ -22,7 +22,10 @@ load_dotenv()
 CHUNK_SIZE = int(os.getenv("RAG_CHUNK_SIZE", 1200))
 CHUNK_OVERLAP = int(os.getenv("RAG_CHUNK_OVERLAP", 240))
 BATCH_SIZE = int(os.getenv("RAG_BATCH_SIZE", 32))
-MIN_CHUNK_SIZE = 50  # New: Minimum chunk size to ensure meaningful context
+MIN_CHUNK_SIZE = 50  # Minimum chunk size to ensure meaningful context
+DISTANCE_THRESHOLD = float(
+    os.getenv("DISTANCE_THRESHOLD", 0.5))  # Configurable
+MAX_TOTAL_LENGTH = int(os.getenv("MAX_TOTAL_LENGTH", 4000))      # Configurable
 
 logging.basicConfig(
     level=logging.INFO,
@@ -104,12 +107,16 @@ def clean_chunk(chunk: str) -> str:
 
 
 def truncate_chunk(chunk: str, max_tokens: int = MAX_TOKEN_LENGTH) -> str:
-    """Truncates a chunk to the maximum token length."""
+    """Truncates a chunk to the maximum token length, respecting sentence boundaries."""
     tokens = tokenizer.tokenize(chunk)
-    if len(tokens) > max_tokens:
-        tokens = tokens[:max_tokens]
-        chunk = tokenizer.convert_tokens_to_string(tokens)
-    return chunk
+    if len(tokens) <= max_tokens:
+        return chunk
+    truncated = tokens[:max_tokens]
+    text = tokenizer.convert_tokens_to_string(truncated)
+    last_period = text.rfind('.')
+    if last_period > len(text) // 2:  # Avoid cutting too early
+        return text[:last_period + 1]
+    return text
 
 
 def embed_in_batches(text_chunks: List[str], batch_size: int = BATCH_SIZE) -> np.ndarray:
@@ -367,20 +374,15 @@ def download_chunks_from_s3(chunks_key: str) -> List[str]:
 
 
 def expand_query(query: str) -> str:
-    related_terms = {
-        "customer-driven marketing strategy": "market segmentation targeting differentiation positioning",
-        "machine learning": "supervised learning unsupervised learning neural networks",
-    }
-    for key, terms in related_terms.items():
-        if key.lower() in query.lower():
-            return f"{query} {terms}"
+    """No expansion for precision in retrieval."""
     return query
 
 
 def retrieve_relevant_text(query: str, faiss_index: Optional[faiss.Index] = None, k: int = 10,
                            professor_username: Optional[str] = None, course_id: Optional[str] = None,
-                           assignmentTitle: Optional[str] = None, distance_threshold: float = 0.5,
-                           max_total_length: int = 4000) -> List[str]:
+                           assignmentTitle: Optional[str] = None,
+                           distance_threshold: float = DISTANCE_THRESHOLD,
+                           max_total_length: int = MAX_TOTAL_LENGTH) -> List[str]:
     if not all([professor_username, course_id, assignmentTitle]):
         raise ValueError(
             "professor_username, course_id, and assignmentTitle are required")
@@ -398,7 +400,7 @@ def retrieve_relevant_text(query: str, faiss_index: Optional[faiss.Index] = None
 
     expanded_query = expand_query(query)
     expanded_query = truncate_chunk(expanded_query)
-    logger.info(f"Expanded query: {expanded_query[:100]}...")
+    logger.info(f"Query: {expanded_query[:100]}...")
 
     query_embedding = embeddings_model.embed_query(expanded_query)
     query_embedding = np.array([query_embedding]).astype("float32")
@@ -412,7 +414,7 @@ def retrieve_relevant_text(query: str, faiss_index: Optional[faiss.Index] = None
         if idx >= len(text_chunks):
             continue
         if dist > distance_threshold:
-            break
+            break  # Stop at first irrelevant chunk (distances are sorted)
         chunk = text_chunks[idx]
         chunk_length = len(chunk)
         if total_length + chunk_length > max_total_length:
@@ -438,6 +440,9 @@ def retrieve_relevant_text(query: str, faiss_index: Optional[faiss.Index] = None
             total_length += chunk_length
 
     relevant_chunks = list(dict.fromkeys(relevant_chunks))
+    if not relevant_chunks:
+        logger.warning(
+            f"No relevant chunks retrieved for query: {query[:50]}...")
     logger.info(
         f"Retrieved {len(relevant_chunks)} chunks for query: {query[:50]}...")
     return relevant_chunks

@@ -14,3 +14,5 @@ boto3
 python-dotenv
 numpy
 routes
+aiohttp
+asyncio
