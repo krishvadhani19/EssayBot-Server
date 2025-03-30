@@ -61,6 +61,7 @@ def send_post_request_sync(
     max_tokens: int = 2048,
     model: str = DEFAULT_MODEL
 ) -> Optional[Dict[str, Any]]:
+    """Send a request to the remote LLM API."""
     payload = {
         "model": model,
         "prompt": prompt,
@@ -71,6 +72,7 @@ def send_post_request_sync(
         "format": "json"
     }
     headers = {"Content-Type": "application/json"}
+
     try:
         response = requests.post(LLM_API_URL, json=payload, headers=headers)
         response.raise_for_status()
@@ -88,65 +90,99 @@ def grade_essay_sync(
     course_id: str,
     assignment_title: str,
     model: str,
-    progress: GradingProgress
+    progress: GradingProgress,
+    tone: str = "moderate"
 ) -> Dict[str, Dict[str, Any]]:
+    """
+    Grades a single essay using the stored config_prompt from the Assignment.
+    Returns feedback and scores for each agent (criterion).
+    """
     try:
-        rag_chunks = retrieve_relevant_text(
-            query=question,
-            professor_username=professor_username,
-            course_id=course_id,
-            assignmentTitle=assignment_title,
-            k=RAG_K,
-            distance_threshold=RAG_DISTANCE_THRESHOLD,
-            max_total_length=RAG_MAX_TOTAL_LENGTH
-        )
-        rag_context = "\n".join(
-            rag_chunks) if rag_chunks else "No relevant context available."
+        # Step 1: Retrieve RAG context for grading
+        try:
+            rag_chunks = retrieve_relevant_text(
+                query=question,  # Use the question as the query for RAG
+                professor_username=professor_username,
+                course_id=course_id,
+                assignmentTitle=assignment_title,
+                k=RAG_K,
+                distance_threshold=RAG_DISTANCE_THRESHOLD,
+                max_total_length=RAG_MAX_TOTAL_LENGTH
+            )
+            rag_context = "\n".join(
+                rag_chunks) if rag_chunks else "No relevant context available."
+        except Exception as e:
+            logger.error(f"Failed to retrieve RAG context: {str(e)}")
+            rag_context = "No relevant context available due to retrieval error."
 
-        assembled_prompts = get_prompt(config_prompt)
+        logger.info(
+            f"RAG context retrieved for essay {progress.current_essay_index + 1}/{progress.total_essays}")
+
+        # Step 2: Assemble the prompts using get_prompt from agents.py
+        assembled_prompts = get_prompt(config_prompt, tone=tone)
         if not assembled_prompts or "criteria_prompts" not in assembled_prompts:
-            raise ValueError("Invalid or missing criteria_prompts")
+            raise ValueError("Failed to assemble prompts")
 
+        # Step 3: Grade the essay for each criterion (agent)
         grading_results = {}
-        for criterion_name, criterion_data in assembled_prompts["criteria_prompts"].items():
-            if not isinstance(criterion_data, dict) or "prompt" not in criterion_data:
-                raise ValueError(
-                    f"Invalid prompt for criterion: {criterion_name}")
-
-            full_prompt = criterion_data["prompt"]
+        for criterion_name, prompt_data in assembled_prompts["criteria_prompts"].items():
+            # Replace placeholders in the prompt
+            full_prompt = prompt_data["prompt"]
             full_prompt = full_prompt.replace("{{question}}", question)
             full_prompt = full_prompt.replace("{{essay}}", essay)
             full_prompt = full_prompt.replace("{{rag_context}}", rag_context)
 
+            # Send the prompt to the LLM for grading
             response = send_post_request_sync(full_prompt, model=model)
             if response and "response" in response:
                 try:
                     result = json.loads(response["response"])
+                    if "score" not in result or "feedback" not in result:
+                        logger.error(
+                            f"Invalid grading response format for criterion: {criterion_name}")
+                        grading_results[criterion_name] = {
+                            "score": 0,
+                            "feedback": "Invalid grading response format"
+                        }
+                        continue
                     grading_results[criterion_name] = {
-                        "score": result.get("score", 0),
-                        "feedback": result.get("feedback", "No feedback provided")
+                        "score": result["score"],
+                        "feedback": result["feedback"]
                     }
-                except json.JSONDecodeError:
+                except json.JSONDecodeError as e:
+                    logger.error(
+                        f"Failed to parse LLM grading response for criterion: {criterion_name}, error: {str(e)}")
                     grading_results[criterion_name] = {
                         "score": 0,
-                        "feedback": "Failed to parse LLM response"
+                        "feedback": f"Failed to parse grading response: {str(e)}"
                     }
             else:
+                logger.error(
+                    f"Failed to grade essay for criterion: {criterion_name}")
                 grading_results[criterion_name] = {
                     "score": 0,
-                    "feedback": "No response from LLM"
+                    "feedback": "Failed to get response from LLM"
                 }
 
         progress.completed_essays += 1
         progress.current_essay_index += 1
+        logger.info(
+            f"Completed essay {progress.current_essay_index}/{progress.total_essays}")
         return grading_results
 
     except Exception as e:
         logger.error(f"Error grading essay: {e}")
         progress.failed_essays += 1
+        progress.current_essay_index += 1
+
+        # Get criteria names from config_prompt to ensure we return a result for all criteria
+        criteria = []
+        if isinstance(config_prompt, dict) and "criteria_prompts" in config_prompt:
+            criteria = list(config_prompt["criteria_prompts"].keys())
+
         return {
-            criterion: {"score": 0, "feedback": f"Error: {str(e)}"}
-            for criterion in config_prompt.get("criteria_prompts", {}).keys()
+            criterion: {"score": 0, "feedback": f"Error grading: {str(e)}"}
+            for criterion in criteria
         }
 
 
@@ -157,38 +193,53 @@ def run_threaded_grading(
     professor_username: str,
     course_id: str,
     assignment_title: str,
-    model: str
+    model: str,
+    tone: str = "moderate"
 ) -> List[Dict[str, Dict[str, Any]]]:
-    logger.info("Starting threaded grading...")
-    grading_results = []
+    """
+    Runs grading on multiple essays in parallel using threading.
+    """
+    logger.info(f"Starting threaded grading of {len(essays)} essays...")
+    # Pre-allocate results list to maintain order
+    grading_results = [None] * len(essays)
     progress = GradingProgress(total_essays=len(essays))
 
     with ThreadPoolExecutor(max_workers=MAX_CONCURRENT_REQUESTS) as executor:
-        futures = [
+        # Submit all tasks and map them to their original indices
+        future_to_index = {
             executor.submit(
                 grade_essay_sync,
                 essay, question, config_prompt,
-                professor_username, course_id, assignment_title, model, progress
-            )
-            for essay in essays
-        ]
+                professor_username, course_id, assignment_title, model, progress, tone
+            ): i
+            for i, essay in enumerate(essays)
+        }
 
-        for future in as_completed(futures):
+        for future in as_completed(future_to_index):
+            idx = future_to_index[future]
             try:
-                grading_results.append(future.result())
+                result = future.result()
+                grading_results[idx] = result
             except Exception as e:
-                logger.error(f"Grading failed: {e}")
-                grading_results.append({
-                    criterion: {"score": 0, "feedback": f"Error: {str(e)}"}
-                    for criterion in config_prompt.get("criteria_prompts", {}).keys()
-                })
-    logger.debug(
-        f"Grading result for essay {progress.current_essay_index + 1}: {grading_results}")
+                logger.error(f"Grading failed for essay index {idx}: {e}")
 
+                # Get criteria names to ensure we return a result for all criteria
+                criteria = []
+                if isinstance(config_prompt, dict) and "criteria_prompts" in config_prompt:
+                    criteria = list(config_prompt["criteria_prompts"].keys())
+
+                grading_results[idx] = {
+                    criterion: {"score": 0, "feedback": f"Error: {str(e)}"}
+                    for criterion in criteria
+                }
+
+    logger.info(
+        f"Completed grading {progress.completed_essays} essays. Failed: {progress.failed_essays}")
     return grading_results
 
 
 def download_file_from_s3(s3_key: str) -> BytesIO:
+    """Download a file from S3 bucket."""
     logger.info(f"Downloading file from S3: {s3_key}")
     try:
         response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
@@ -199,6 +250,7 @@ def download_file_from_s3(s3_key: str) -> BytesIO:
 
 
 def upload_file_to_s3(file_obj: BytesIO, s3_key: str) -> str:
+    """Upload a file to S3 bucket and return the URL."""
     try:
         s3_client.upload_fileobj(file_obj, S3_BUCKET, s3_key)
         url = f"https://{S3_BUCKET}.s3.amazonaws.com/{s3_key}"
@@ -211,7 +263,13 @@ def upload_file_to_s3(file_obj: BytesIO, s3_key: str) -> str:
 
 @bulkGrading_bp.route('/grade_bulk_essays', methods=['POST'])
 def grade_bulk_essays() -> Tuple[Dict[str, Any], int]:
+    """
+    Grades multiple essays from an Excel file.
+    Expects a POST request with courseId, assignmentTitle, config_prompt, question, username, s3_excel_link, and optional tone.
+    Returns a link to a graded Excel file with feedback and scores for each criterion.
+    """
     try:
+        # Expect JSON data
         data = request.get_json()
         required_fields = ["courseId", "assignmentTitle",
                            "config_prompt", "question", "username", "s3_excel_link"]
@@ -225,47 +283,73 @@ def grade_bulk_essays() -> Tuple[Dict[str, Any], int]:
         professor_username = data["username"]
         s3_excel_link = data["s3_excel_link"]
         model = data.get("model", DEFAULT_MODEL)
+        tone = data.get("tone", "moderate")  # Get tone or use default
 
+        # Parse S3 path from link
         s3_key = s3_excel_link.replace(
             f"https://{S3_BUCKET}.s3.amazonaws.com/", "")
         folder = "/".join(s3_key.split("/")[:-1])
 
+        # Download and read the Excel file
         excel_file = download_file_from_s3(s3_key)
         df = pd.read_excel(excel_file)
         if "ID" not in df.columns or "Response" not in df.columns:
             return jsonify({"error": "Excel must contain 'ID' and 'Response' columns"}), 400
+
+        # Grade all essays
         grading_results = run_threaded_grading(
             df["Response"].tolist(),
-            question, config_prompt, professor_username, course_id, assignment_title, model
+            question, config_prompt, professor_username, course_id, assignment_title, model, tone
         )
-        logger.debug(f"Sample grading result: {grading_results[0]}")
 
-        criteria = list(config_prompt["criteria_prompts"].keys())
+        # Prepare output data
+        # Get criteria names from the config_prompt
+        if isinstance(config_prompt, dict) and "criteria_prompts" in config_prompt:
+            criteria = list(config_prompt["criteria_prompts"].keys())
+        else:
+            # If we can't determine criteria from config_prompt, try to get them from the first result
+            if grading_results and grading_results[0]:
+                criteria = list(grading_results[0].keys())
+            else:
+                return jsonify({"error": "Failed to determine grading criteria"}), 500
+
+        # Create output DataFrame
         output_data = {"ID": df["ID"], "Response": df["Response"]}
+
+        # Add feedback and scores for each criterion
         for criterion in criteria:
-            output_data[criterion] = [result[criterion]["feedback"]
-                                      for result in grading_results]
+            output_data[f"{criterion}_feedback"] = [
+                result.get(criterion, {}).get("feedback", "No feedback")
+                for result in grading_results
+            ]
             output_data[f"{criterion}_score"] = [
-                result[criterion]["score"] for result in grading_results]
+                result.get(criterion, {}).get("score", 0)
+                for result in grading_results
+            ]
+
+        # Calculate total score
         output_data["Total_Score"] = [
-            sum(result[c]["score"] for c in criteria) for result in grading_results
+            sum(result.get(c, {}).get("score", 0) for c in criteria)
+            for result in grading_results
         ]
 
+        # Create output Excel file
         output_df = pd.DataFrame(output_data)
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
         output_key = f"{folder}/graded_response_{timestamp}.xlsx"
         output_buffer = BytesIO()
         output_df.to_excel(output_buffer, index=False)
         output_buffer.seek(0)
+
+        # Upload to S3
         s3_url = upload_file_to_s3(output_buffer, output_key)
 
         return jsonify({
             "message": "Bulk essays graded successfully",
             "s3_graded_link": s3_url,
             "total_essays": len(df),
-            "completed_essays": len(df),
-            # Approximate fallback
-            "failed_essays": len(df) - len(grading_results)
+            "completed_essays": len([r for r in grading_results if r is not None]),
+            "failed_essays": len([r for r in grading_results if r is None])
         }), 200
 
     except Exception as e:

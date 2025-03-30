@@ -26,6 +26,16 @@ export interface IAssignment extends Document {
   course: Schema.Types.ObjectId;
   config_rubric: RubricConfig;
   config_prompt: Record<string, any>;
+  excelFiles?: Array<{
+    url: string;
+    originalName: string;
+    uploadedAt: Date;
+  }>;
+  gradedFiles?: Array<{
+    url: string;
+    originalName: string;
+    gradedAt: Date;
+  }>;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -37,6 +47,11 @@ export interface ICreateAssignment {
   course: Schema.Types.ObjectId;
   config_rubric: RubricConfig;
   config_prompt?: Record<string, any>;
+  excelFiles?: Array<{
+    url: string;
+    originalName: string;
+    uploadedAt: Date;
+  }>;
 }
 
 const assignmentSchema = new Schema<IAssignment>({
@@ -50,6 +65,20 @@ const assignmentSchema = new Schema<IAssignment>({
     },
   },
   config_prompt: { type: Schema.Types.Mixed },
+  excelFiles: [
+    {
+      url: { type: String, required: true },
+      originalName: { type: String, required: true },
+      uploadedAt: { type: Date, default: Date.now },
+    },
+  ],
+  gradedFiles: [
+    {
+      url: { type: String, required: true },
+      originalName: { type: String, required: true },
+      gradedAt: { type: Date, default: Date.now },
+    },
+  ],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

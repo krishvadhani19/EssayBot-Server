@@ -46,8 +46,8 @@ export const createRubric = async (
       payload
     );
 
-    const { data } = flaskResponse;
-    console.log(data);
+    const { data }: any = flaskResponse;
+    console.log(data?.rubric);
     if ((data as any).success) {
       return res.status(200).json({
         message: "Rubric generated successfully",
