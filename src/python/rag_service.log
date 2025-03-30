@@ -3857,3 +3857,796 @@ OBJECTIVE 6-1 Define the ma...
 2025-03-29 22:13:47,330 - INFO - Completed grading 12 essays. Failed: 0
 2025-03-29 22:13:47,614 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e2ec32b54117369761db36/Task1/graded_response_20250329221347.xlsx
 2025-03-29 22:13:47,616 - INFO - 127.0.0.1 - - [29/Mar/2025 22:13:47] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-03-30 15:48:32,149 - INFO - Use pytorch device_name: mps
+2025-03-30 15:48:32,149 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 15:48:37,169 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-30 15:48:37,169 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-30 15:48:37,170 - INFO -  * Restarting with stat
+2025-03-30 15:48:41,613 - INFO - Use pytorch device_name: mps
+2025-03-30 15:48:41,613 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 15:48:50,259 - WARNING -  * Debugger is active!
+2025-03-30 15:48:50,292 - INFO -  * Debugger PIN: 435-436-407
+2025-03-30 15:51:21,240 - INFO - Downloading file from S3: prof_sean/67e2ec32b54117369761db36/Task1/student-responses-2025-03-26T18-00-19-560Z.xlsx
+2025-03-30 15:51:22,338 - INFO - Starting threaded grading of 12 essays...
+2025-03-30 15:51:22,949 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:22,949 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:22,953 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:22,953 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:23,080 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:23,080 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:23,080 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:23,080 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:24,128 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:24,128 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:24,128 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:24,128 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:24,128 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 15:51:24,128 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 15:51:24,128 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 15:51:24,128 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 15:51:39,743 - INFO - Completed essay 1/12
+2025-03-30 15:51:40,095 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:40,142 - INFO - Completed essay 2/12
+2025-03-30 15:51:40,197 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:40,372 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:40,461 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:40,565 - INFO - Completed essay 3/12
+2025-03-30 15:51:40,679 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:40,770 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:40,988 - INFO - Completed essay 4/12
+2025-03-30 15:51:41,028 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:41,028 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 15:51:41,033 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:41,033 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 15:51:41,066 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:41,066 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 15:51:41,074 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:41,161 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:41,213 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:41,214 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 15:51:54,431 - INFO - Completed essay 5/12
+2025-03-30 15:51:54,665 - INFO - Completed essay 6/12
+2025-03-30 15:51:54,671 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:54,767 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:54,925 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:54,928 - INFO - Completed essay 7/12
+2025-03-30 15:51:55,015 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:55,045 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:55,146 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:55,725 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:55,725 - INFO - RAG context retrieved for essay 8/12
+2025-03-30 15:51:55,730 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:55,730 - INFO - RAG context retrieved for essay 8/12
+2025-03-30 15:51:55,731 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:55,731 - INFO - RAG context retrieved for essay 8/12
+2025-03-30 15:51:56,734 - INFO - Completed essay 8/12
+2025-03-30 15:51:56,888 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:51:57,007 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:51:57,227 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:51:57,227 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 15:52:08,973 - INFO - Completed essay 9/12
+2025-03-30 15:52:09,488 - INFO - Completed essay 10/12
+2025-03-30 15:52:09,893 - INFO - Completed essay 11/12
+2025-03-30 15:52:10,494 - INFO - Completed essay 12/12
+2025-03-30 15:52:10,498 - INFO - Completed grading 12 essays. Failed: 0
+2025-03-30 15:52:10,921 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e2ec32b54117369761db36/Task1/graded_response_20250330155210.xlsx
+2025-03-30 15:52:10,923 - INFO - 127.0.0.1 - - [30/Mar/2025 15:52:10] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-03-30 15:56:45,480 - INFO - Downloading file from S3: prof_sean/67e2ec32b54117369761db36/Task1/student-responses-2025-03-26T18-00-19-560Z.xlsx
+2025-03-30 15:56:45,731 - INFO - Starting threaded grading of 12 essays...
+2025-03-30 15:56:46,080 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:56:46,083 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:56:46,086 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:56:46,099 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:56:46,209 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:56:46,213 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:56:46,213 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:56:46,226 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:56:47,513 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:56:47,514 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 15:56:47,520 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:56:47,520 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 15:56:47,524 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:56:47,524 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:56:47,525 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 15:56:47,526 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 15:57:00,578 - INFO - Completed essay 1/12
+2025-03-30 15:57:00,756 - INFO - Completed essay 2/12
+2025-03-30 15:57:00,871 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:57:00,963 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:57:01,127 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:57:01,236 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:57:01,418 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:57:01,418 - INFO - RAG context retrieved for essay 3/12
+2025-03-30 15:57:01,462 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:57:01,462 - INFO - RAG context retrieved for essay 3/12
+2025-03-30 15:57:02,318 - INFO - Completed essay 3/12
+2025-03-30 15:57:02,455 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:57:02,554 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:57:02,607 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:57:02,607 - INFO - RAG context retrieved for essay 4/12
+2025-03-30 15:57:03,044 - INFO - Completed essay 4/12
+2025-03-30 15:57:03,134 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:57:03,228 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:57:03,277 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:57:03,277 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 15:57:15,272 - INFO - Completed essay 5/12
+2025-03-30 15:57:15,524 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:57:15,610 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:57:15,714 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:57:15,714 - INFO - RAG context retrieved for essay 6/12
+2025-03-30 15:57:16,092 - INFO - Completed essay 6/12
+2025-03-30 15:57:16,208 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:57:16,220 - INFO - Completed essay 7/12
+2025-03-30 15:57:16,298 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:57:16,356 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:57:16,356 - INFO - RAG context retrieved for essay 8/12
+2025-03-30 15:57:16,470 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:57:16,573 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:57:16,625 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:57:16,625 - INFO - RAG context retrieved for essay 8/12
+2025-03-30 15:57:17,719 - INFO - Completed essay 8/12
+2025-03-30 15:57:17,846 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 15:57:17,946 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 15:57:18,033 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 15:57:18,033 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 15:57:29,388 - INFO - Completed essay 9/12
+2025-03-30 15:57:29,676 - INFO - Completed essay 10/12
+2025-03-30 15:57:30,217 - INFO - Completed essay 11/12
+2025-03-30 15:57:32,891 - INFO - Completed essay 12/12
+2025-03-30 15:57:32,893 - INFO - Completed grading 12 essays. Failed: 0
+2025-03-30 15:57:33,280 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e2ec32b54117369761db36/Task1/graded_response_20250330155732.xlsx
+2025-03-30 15:57:33,287 - INFO - 127.0.0.1 - - [30/Mar/2025 15:57:33] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-03-30 16:17:46,410 - INFO - Downloading file from S3: prof_sean/67e2ec32b54117369761db36/Task1/student-responses-2025-03-26T18-00-19-560Z.xlsx
+2025-03-30 16:17:46,750 - INFO - Starting threaded grading of 12 essays...
+2025-03-30 16:17:47,113 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:17:47,132 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:17:47,132 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:17:47,178 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:17:47,226 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:17:47,233 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:17:47,240 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:17:47,274 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:17:48,214 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:17:48,214 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 16:17:48,215 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:17:48,215 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 16:17:48,216 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:17:48,217 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 16:17:48,217 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:17:48,217 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 16:18:03,382 - INFO - Completed essay 1/12
+2025-03-30 16:18:03,639 - INFO - Completed essay 2/12
+2025-03-30 16:18:03,797 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:18:03,893 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:18:03,988 - INFO - Completed essay 3/12
+2025-03-30 16:18:03,994 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:18:04,094 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:18:04,100 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:18:04,182 - INFO - Completed essay 4/12
+2025-03-30 16:18:04,193 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:18:04,347 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:18:04,460 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:18:04,501 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:18:04,501 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 16:18:04,505 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:18:04,505 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 16:18:04,506 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:18:04,506 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 16:18:04,536 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:18:04,537 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 16:18:18,515 - INFO - Completed essay 5/12
+2025-03-30 16:18:18,877 - INFO - Completed essay 6/12
+2025-03-30 16:18:18,887 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:18:18,980 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:18:19,090 - INFO - Completed essay 7/12
+2025-03-30 16:18:19,139 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:18:19,206 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:18:19,231 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:18:19,320 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:18:19,516 - INFO - Completed essay 8/12
+2025-03-30 16:18:19,637 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:18:19,650 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:18:19,650 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 16:18:19,653 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:18:19,653 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 16:18:19,654 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:18:19,654 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 16:18:19,737 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:18:19,786 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:18:19,786 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 16:18:32,183 - INFO - Completed essay 9/12
+2025-03-30 16:18:33,167 - INFO - Completed essay 10/12
+2025-03-30 16:18:33,765 - INFO - Completed essay 11/12
+2025-03-30 16:18:33,812 - INFO - Completed essay 12/12
+2025-03-30 16:18:33,814 - INFO - Completed grading 12 essays. Failed: 0
+2025-03-30 16:18:34,263 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e2ec32b54117369761db36/Task1/graded_response_20250330161833.xlsx
+2025-03-30 16:18:34,265 - INFO - 127.0.0.1 - - [30/Mar/2025 16:18:34] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-03-30 16:33:56,207 - INFO - Downloading file from S3: prof_sean/67e2ec32b54117369761db36/Task1/student-responses-2025-03-26T18-00-19-560Z.xlsx
+2025-03-30 16:33:56,614 - INFO - Starting threaded grading of 12 essays...
+2025-03-30 16:33:56,988 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:33:56,994 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:33:56,994 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:33:57,014 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:33:57,125 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:33:57,128 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:33:57,128 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:33:57,133 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:33:58,175 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:33:58,176 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:33:58,176 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:33:58,176 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:33:58,176 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 16:33:58,176 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 16:33:58,176 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 16:33:58,176 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 16:34:12,324 - INFO - Completed essay 1/12
+2025-03-30 16:34:12,633 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:34:12,741 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:34:12,857 - INFO - Completed essay 2/12
+2025-03-30 16:34:12,969 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:34:13,060 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:34:13,211 - INFO - Completed essay 3/12
+2025-03-30 16:34:13,261 - INFO - Completed essay 4/12
+2025-03-30 16:34:13,309 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:34:13,392 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:34:13,392 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 16:34:13,395 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:34:13,395 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 16:34:13,402 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:34:13,450 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:34:13,450 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 16:34:13,512 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:34:13,613 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:34:13,668 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:34:13,668 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 16:34:26,879 - INFO - Completed essay 5/12
+2025-03-30 16:34:27,134 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:34:27,262 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:34:27,440 - INFO - Completed essay 6/12
+2025-03-30 16:34:27,557 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:34:27,661 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:34:27,700 - INFO - Completed essay 7/12
+2025-03-30 16:34:27,764 - INFO - Completed essay 8/12
+2025-03-30 16:34:27,795 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:34:27,889 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:34:27,929 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:34:27,929 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 16:34:27,933 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:34:27,933 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 16:34:27,972 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:34:27,972 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 16:34:27,999 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 16:34:28,093 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 16:34:28,147 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 16:34:28,147 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 16:34:41,565 - INFO - Completed essay 9/12
+2025-03-30 16:34:41,589 - INFO - Completed essay 10/12
+2025-03-30 16:34:42,134 - INFO - Completed essay 11/12
+2025-03-30 16:34:43,226 - INFO - Completed essay 12/12
+2025-03-30 16:34:43,228 - INFO - Completed grading 12 essays. Failed: 0
+2025-03-30 16:34:43,722 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e2ec32b54117369761db36/Task1/graded_response_20250330163443.xlsx
+2025-03-30 16:34:43,724 - INFO - 127.0.0.1 - - [30/Mar/2025 16:34:43] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-03-30 17:07:23,510 - INFO - Use pytorch device_name: mps
+2025-03-30 17:07:23,510 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:07:26,793 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-03-30 17:07:26,793 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-30 17:07:26,794 - INFO -  * Restarting with stat
+2025-03-30 17:07:30,188 - INFO - Use pytorch device_name: mps
+2025-03-30 17:07:30,189 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:07:33,364 - WARNING -  * Debugger is active!
+2025-03-30 17:07:33,381 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:08:20,050 - INFO - Downloading file from S3: prof_sean/67e2ec32b54117369761db36/Task1/student-responses-2025-03-26T18-00-19-560Z.xlsx
+2025-03-30 17:08:20,466 - INFO - Starting threaded grading of 12 essays...
+2025-03-30 17:08:20,862 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:20,868 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:20,870 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:20,874 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:20,971 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:20,978 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:20,978 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:20,988 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:22,721 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:22,721 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:22,721 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:22,721 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:22,721 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 17:08:22,721 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 17:08:22,721 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 17:08:22,721 - INFO - RAG context retrieved for essay 1/12
+2025-03-30 17:08:37,545 - INFO - Completed essay 1/12
+2025-03-30 17:08:37,620 - INFO - Completed essay 2/12
+2025-03-30 17:08:37,703 - INFO - Completed essay 3/12
+2025-03-30 17:08:37,946 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:37,947 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:38,013 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:38,075 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:38,075 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:38,116 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:38,582 - INFO - Completed essay 4/12
+2025-03-30 17:08:38,725 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:38,830 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:38,968 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:38,968 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 17:08:38,971 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:38,971 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 17:08:38,972 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:38,973 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 17:08:39,009 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:39,009 - INFO - RAG context retrieved for essay 5/12
+2025-03-30 17:08:52,186 - INFO - Completed essay 5/12
+2025-03-30 17:08:52,464 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:52,547 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:52,581 - INFO - Completed essay 6/12
+2025-03-30 17:08:52,667 - INFO - Completed essay 7/12
+2025-03-30 17:08:52,696 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:52,789 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:52,937 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:53,037 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:53,402 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:53,402 - INFO - RAG context retrieved for essay 8/12
+2025-03-30 17:08:53,403 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:53,403 - INFO - RAG context retrieved for essay 8/12
+2025-03-30 17:08:53,421 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:53,421 - INFO - RAG context retrieved for essay 8/12
+2025-03-30 17:08:55,352 - INFO - Completed essay 8/12
+2025-03-30 17:08:55,478 - INFO - Downloading JSON from S3: prof_sean/67e2ec32b54117369761db36/Task1/chunks.json
+2025-03-30 17:08:55,588 - INFO - Query: List and briefly explain the four major steps in designing a customer-driven marketing strategy in t...
+2025-03-30 17:08:55,723 - INFO - Retrieved 5 chunks for query: List and briefly explain the four major steps in d...
+2025-03-30 17:08:55,723 - INFO - RAG context retrieved for essay 9/12
+2025-03-30 17:09:05,696 - INFO - Completed essay 9/12
+2025-03-30 17:09:07,046 - INFO - Completed essay 10/12
+2025-03-30 17:09:07,737 - INFO - Completed essay 11/12
+2025-03-30 17:09:07,780 - INFO - Completed essay 12/12
+2025-03-30 17:09:07,782 - INFO - Completed grading 12 essays. Failed: 0
+2025-03-30 17:09:08,120 - INFO - Uploaded to S3: https://essaybotbucket.s3.amazonaws.com/prof_sean/67e2ec32b54117369761db36/Task1/graded_response_20250330170907.xlsx
+2025-03-30 17:09:08,123 - INFO - 127.0.0.1 - - [30/Mar/2025 17:09:08] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-03-30 17:13:55,843 - INFO - 127.0.0.1 - - [30/Mar/2025 17:13:55] "[33mPOST /reports/analyze_grading HTTP/1.1[0m" 404 -
+2025-03-30 17:14:55,607 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-03-30 17:14:55,607 - ERROR - Error analyzing grading performance: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-03-30 17:14:55,607 - INFO - 127.0.0.1 - - [30/Mar/2025 17:14:55] "[35m[1mPOST /analyze_grading HTTP/1.1[0m" 500 -
+2025-03-30 17:15:46,072 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-03-30 17:15:46,074 - ERROR - Error analyzing grading performance: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-03-30 17:15:46,074 - INFO - 127.0.0.1 - - [30/Mar/2025 17:15:46] "[35m[1mPOST /analyze_grading HTTP/1.1[0m" 500 -
+2025-03-30 17:17:44,092 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:17:44,984 - INFO -  * Restarting with stat
+2025-03-30 17:17:49,121 - INFO - Use pytorch device_name: mps
+2025-03-30 17:17:49,121 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:17:55,973 - WARNING -  * Debugger is active!
+2025-03-30 17:17:55,991 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:17:58,520 - ERROR - Error analyzing grading performance: Worksheet index 1 is invalid, 1 worksheets found
+2025-03-30 17:17:58,520 - INFO - 127.0.0.1 - - [30/Mar/2025 17:17:58] "[35m[1mPOST /analyze_grading HTTP/1.1[0m" 500 -
+2025-03-30 17:18:29,355 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:18:29,991 - INFO -  * Restarting with stat
+2025-03-30 17:18:33,846 - INFO - Use pytorch device_name: mps
+2025-03-30 17:18:33,846 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:18:38,014 - WARNING -  * Debugger is active!
+2025-03-30 17:18:38,031 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:18:41,194 - ERROR - Error analyzing grading performance: 'int' object is not subscriptable
+2025-03-30 17:18:41,195 - INFO - 127.0.0.1 - - [30/Mar/2025 17:18:41] "[35m[1mPOST /analyze_grading HTTP/1.1[0m" 500 -
+2025-03-30 17:19:05,936 - ERROR - Error analyzing grading performance: 'int' object is not subscriptable
+2025-03-30 17:19:05,937 - INFO - 127.0.0.1 - - [30/Mar/2025 17:19:05] "[35m[1mPOST /analyze_grading HTTP/1.1[0m" 500 -
+2025-03-30 17:19:26,646 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:19:27,225 - INFO -  * Restarting with stat
+2025-03-30 17:19:31,349 - INFO - Use pytorch device_name: mps
+2025-03-30 17:19:31,349 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:19:44,551 - WARNING -  * Debugger is active!
+2025-03-30 17:19:44,565 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:20:16,769 - INFO - 127.0.0.1 - - [30/Mar/2025 17:20:16] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:20:31,020 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:20:31,573 - INFO -  * Restarting with stat
+2025-03-30 17:20:35,091 - INFO - Use pytorch device_name: mps
+2025-03-30 17:20:35,091 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:20:42,619 - WARNING -  * Debugger is active!
+2025-03-30 17:20:42,635 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:20:44,671 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:20:45,167 - INFO -  * Restarting with stat
+2025-03-30 17:20:48,287 - INFO - Use pytorch device_name: mps
+2025-03-30 17:20:48,287 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:20:55,666 - WARNING -  * Debugger is active!
+2025-03-30 17:20:55,768 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:30:46,168 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:30:46,866 - INFO -  * Restarting with stat
+2025-03-30 17:30:50,860 - INFO - Use pytorch device_name: mps
+2025-03-30 17:30:50,860 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:30:59,090 - WARNING -  * Debugger is active!
+2025-03-30 17:30:59,105 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:31:24,385 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:31:25,005 - INFO -  * Restarting with stat
+2025-03-30 17:31:28,575 - INFO - Use pytorch device_name: mps
+2025-03-30 17:31:28,575 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:31:33,441 - WARNING -  * Debugger is active!
+2025-03-30 17:31:33,453 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:31:40,811 - INFO - 127.0.0.1 - - [30/Mar/2025 17:31:40] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:33:57,081 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:33:57,681 - INFO -  * Restarting with stat
+2025-03-30 17:34:01,563 - INFO - Use pytorch device_name: mps
+2025-03-30 17:34:01,564 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:34:04,530 - WARNING -  * Debugger is active!
+2025-03-30 17:34:04,543 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:34:14,129 - INFO - 127.0.0.1 - - [30/Mar/2025 17:34:14] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:35:56,778 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:35:57,297 - INFO -  * Restarting with stat
+2025-03-30 17:36:01,279 - INFO - Use pytorch device_name: mps
+2025-03-30 17:36:01,279 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:36:04,346 - WARNING -  * Debugger is active!
+2025-03-30 17:36:04,367 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:38:32,978 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:38:33,690 - INFO -  * Restarting with stat
+2025-03-30 17:38:37,754 - INFO - Use pytorch device_name: mps
+2025-03-30 17:38:37,754 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:38:40,951 - WARNING -  * Debugger is active!
+2025-03-30 17:38:40,969 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:38:46,683 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:38:46,690 - INFO - 127.0.0.1 - - [30/Mar/2025 17:38:46] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:39:50,731 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/reports.py', reloading
+2025-03-30 17:39:51,275 - INFO -  * Restarting with stat
+2025-03-30 17:39:55,253 - INFO - Use pytorch device_name: mps
+2025-03-30 17:39:55,253 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-03-30 17:40:05,668 - WARNING -  * Debugger is active!
+2025-03-30 17:40:05,687 - INFO -  * Debugger PIN: 527-154-434
+2025-03-30 17:40:06,090 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:40:06,094 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:40:06,097 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:40:06,097 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:40:06,097 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:40:06,097 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:40:06,098 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:40:06,098 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:40:06,098 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:40:06,099 - INFO - 127.0.0.1 - - [30/Mar/2025 17:40:06] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:46:14,496 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:46:14,498 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:46:14,500 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:46:14,500 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:46:14,500 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:46:14,501 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:46:14,501 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:46:14,501 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:46:14,504 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:46:14,505 - INFO - 127.0.0.1 - - [30/Mar/2025 17:46:14] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:46:14,508 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:46:14,509 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:46:14,510 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:46:14,510 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:46:14,511 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:46:14,511 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:46:14,511 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:46:14,511 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:46:14,511 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:46:14,512 - INFO - 127.0.0.1 - - [30/Mar/2025 17:46:14] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:46:48,917 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:46:48,919 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:46:48,920 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:46:48,920 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:46:48,921 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:46:48,921 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:46:48,921 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:46:48,921 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:46:48,921 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:46:48,923 - INFO - 127.0.0.1 - - [30/Mar/2025 17:46:48] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:46:48,930 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:46:48,931 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:46:48,933 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:46:48,934 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:46:48,934 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:46:48,934 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:46:48,934 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:46:48,935 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:46:48,935 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:46:48,936 - INFO - 127.0.0.1 - - [30/Mar/2025 17:46:48] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:46:53,220 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:46:53,220 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:46:53,221 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:46:53,221 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:46:53,222 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:46:53,222 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:46:53,224 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:46:53,224 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:46:53,224 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:46:53,226 - INFO - 127.0.0.1 - - [30/Mar/2025 17:46:53] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:46:53,229 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:46:53,230 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:46:53,231 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:46:53,231 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:46:53,232 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:46:53,232 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:46:53,232 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:46:53,232 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:46:53,232 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:46:53,233 - INFO - 127.0.0.1 - - [30/Mar/2025 17:46:53] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:47:18,221 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:47:18,223 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:47:18,224 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:47:18,224 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:47:18,225 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:47:18,225 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:47:18,225 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:47:18,225 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:47:18,225 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:47:18,226 - INFO - 127.0.0.1 - - [30/Mar/2025 17:47:18] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:47:18,239 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:47:18,240 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:47:18,241 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:47:18,241 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:47:18,241 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:47:18,241 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:47:18,242 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:47:18,244 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:47:18,244 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:47:18,245 - INFO - 127.0.0.1 - - [30/Mar/2025 17:47:18] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:47:54,395 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:47:54,398 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:47:54,400 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:47:54,401 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:47:54,402 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:47:54,402 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:47:54,403 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:47:54,403 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:47:54,404 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:47:54,404 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:47:54,404 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:47:54,404 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:47:54,405 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:47:54,405 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:47:54,405 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:47:54,406 - INFO - 127.0.0.1 - - [30/Mar/2025 17:47:54] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:47:54,407 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:47:54,407 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:47:54,407 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:47:54,409 - INFO - 127.0.0.1 - - [30/Mar/2025 17:47:54] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:48:38,334 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:48:38,336 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:48:38,337 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:48:38,337 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:48:38,337 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:48:38,337 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:48:38,337 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:48:38,337 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:48:38,338 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:48:38,339 - INFO - 127.0.0.1 - - [30/Mar/2025 17:48:38] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:48:38,360 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:48:38,361 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:48:38,362 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:48:38,362 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:48:38,362 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:48:38,362 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:48:38,362 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:48:38,362 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:48:38,362 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:48:38,363 - INFO - 127.0.0.1 - - [30/Mar/2025 17:48:38] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:48:48,978 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:48:48,980 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:48:48,984 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:48:48,985 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:48:48,987 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:48:48,988 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:48:48,988 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:48:48,989 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:48:48,988 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:48:48,989 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:48:48,989 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:48:48,989 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:48:48,989 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:48:48,990 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:48:48,990 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:48:48,990 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:48:48,990 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:48:48,992 - INFO - 127.0.0.1 - - [30/Mar/2025 17:48:48] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:48:48,992 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:48:48,994 - INFO - 127.0.0.1 - - [30/Mar/2025 17:48:48] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:52:00,770 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:52:00,771 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:52:00,773 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:52:00,773 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:52:00,773 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:52:00,774 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:52:00,774 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:52:00,774 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:52:00,774 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:52:00,775 - INFO - 127.0.0.1 - - [30/Mar/2025 17:52:00] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 17:52:00,783 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 17:52:00,783 - INFO - Generating histogram with max_score: 100
+2025-03-30 17:52:00,784 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 17:52:00,784 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 17:52:00,784 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 17:52:00,784 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 17:52:00,784 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 17:52:00,784 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 17:52:00,785 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 17:52:00,786 - INFO - 127.0.0.1 - - [30/Mar/2025 17:52:00] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 18:15:43,440 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 18:15:43,442 - INFO - Generating histogram with max_score: 100
+2025-03-30 18:15:43,443 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 18:15:43,444 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 18:15:43,444 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 18:15:43,444 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 18:15:43,444 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 18:15:43,444 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 18:15:43,444 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 18:15:43,445 - INFO - 127.0.0.1 - - [30/Mar/2025 18:15:43] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 18:35:55,311 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 18:35:55,316 - INFO - Generating histogram with max_score: 100
+2025-03-30 18:35:55,318 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 18:35:55,318 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 18:35:55,319 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 18:35:55,319 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 18:35:55,320 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 18:35:55,320 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 18:35:55,321 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 18:35:55,323 - INFO - 127.0.0.1 - - [30/Mar/2025 18:35:55] "POST /analyze_grading HTTP/1.1" 200 -
+2025-03-30 18:35:55,325 - INFO - Available columns in Excel: ['ID', 'Response', 'Market Segmentation Understanding_feedback', 'Market Segmentation Understanding_score', 'Target Market Identification_feedback', 'Target Market Identification_score', 'Value Proposition Development_feedback', 'Value Proposition Development_score', 'Positioning Strategy_feedback', 'Positioning Strategy_score', 'Total_Score']
+2025-03-30 18:35:55,326 - INFO - Generating histogram with max_score: 100
+2025-03-30 18:35:55,327 - INFO - Score distribution: count    12.00000
+mean     70.25000
+std       2.70101
+min      67.00000
+25%      68.00000
+50%      70.00000
+75%      72.25000
+max      75.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-03-30 18:35:55,327 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-03-30 18:35:55,327 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-03-30 18:35:55,327 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-03-30 18:35:55,327 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-03-30 18:35:55,328 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-03-30 18:35:55,328 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-03-30 18:35:55,329 - INFO - 127.0.0.1 - - [30/Mar/2025 18:35:55] "POST /analyze_grading HTTP/1.1" 200 -

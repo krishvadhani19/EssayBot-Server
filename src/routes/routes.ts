@@ -6,6 +6,7 @@ import assignmentRoutes from "./assignmentRoutes";
 import userRoutes from "./userRoutes";
 import attachmentRoutes from "./attachmentRoutes";
 import gradingRoutes from "./gradingRoutes";
+import reportsRoutes from "./reportsRoute";
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.use("/courses", assignmentRoutes);
 router.use("/users", userRoutes);
 router.use("/attachments", attachmentRoutes);
 router.use("/grading", gradingRoutes);
+router.use("/reports", reportsRoutes);
 
 export default router;
