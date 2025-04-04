@@ -31,11 +31,15 @@ export interface IAssignment extends Document {
     originalName: string;
     uploadedAt: Date;
   }>;
-  gradedFiles?: Array<{
+  gradedFile?: {
     url: string;
     originalName: string;
     gradedAt: Date;
-  }>;
+  };
+  gradingApproved: boolean;
+  approvedOn?: Date;
+  totalEssays?: number;
+  gradingStats?: Array<Schema.Types.ObjectId>;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -72,13 +76,7 @@ const assignmentSchema = new Schema<IAssignment>({
       uploadedAt: { type: Date, default: Date.now },
     },
   ],
-  gradedFiles: [
-    {
-      url: { type: String, required: true },
-      originalName: { type: String, required: true },
-      gradedAt: { type: Date, default: Date.now },
-    },
-  ],
+  gradingStats: [{ type: Schema.Types.ObjectId, ref: "GradingStats" }],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

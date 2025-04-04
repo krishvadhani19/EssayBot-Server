@@ -148,7 +148,7 @@ export const uploadExcelGrades = [
           savedAsFilename: standardizedFileName,
         });
       } catch (uploadError: any) {
-        console.error("Error uploading Excel file to S3:", uploadError);
+        console.error("Error uploading Excel file to Minio:", uploadError);
         return res.status(500).json({
           message: "Failed to upload Excel file",
           error: uploadError.message,

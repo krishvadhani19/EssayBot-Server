@@ -10,6 +10,7 @@ import boto3
 from io import BytesIO
 from flask import Blueprint, request, jsonify
 import os
+from urllib.parse import urlparse, unquote
 
 # Configure logging
 logging.basicConfig(level=logging.INFO,
@@ -20,25 +21,34 @@ logger = logging.getLogger(__name__)
 reports_bp = Blueprint("reports", __name__)
 
 # S3 configuration
-S3_BUCKET = os.getenv("AWS_S3_BUCKET", "essaybotbucket")
-AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 s3_client = boto3.client(
     "s3",
-    region_name=AWS_REGION,
-    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY")
+    endpoint_url=os.getenv("MINIO_ENDPOINT", "http://127.0.0.1:9000"),
+    aws_access_key_id=os.getenv("MINIO_ACCESS_KEY"),
+    aws_secret_access_key=os.getenv("MINIO_SECRET_KEY"),
+    region_name="us-east-1",
+    config=boto3.session.Config(signature_version='s3v4')
 )
+S3_BUCKET = os.getenv("MINIO_BUCKET", "essaybot")
 
 
 def download_file_from_s3(s3_key: str) -> BytesIO:
     """Download a file from S3 and return it as a BytesIO object."""
+    logger.info(f"Downloading file from S3: {s3_key}")
     try:
-        # Extract the key from full S3 URL if provided
-        if s3_key.startswith('https://'):
-            s3_key = s3_key.split('.com/')[-1]
+        # If full URL is passed, extract key from path
+        if s3_key.startswith("http"):
+            parsed_url = urlparse(s3_key)
+            s3_key = unquote(parsed_url.path.lstrip("/"))
 
+        # ✅ Strip leading bucket prefix if accidentally present
+        if s3_key.startswith(f"{S3_BUCKET}/"):
+            s3_key = s3_key[len(f"{S3_BUCKET}/"):]
+
+        logger.info(f"Final S3 key used for download: {s3_key}")
         response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
         return BytesIO(response["Body"].read())
+
     except Exception as e:
         logger.error(f"Failed to download from S3: {str(e)}")
         raise
@@ -82,6 +92,99 @@ def get_feedback_and_score_columns(df, criteria_names):
     return column_mapping
 
 
+def get_score_distribution_data(detailed_stats):
+    bins = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    labels = ["0-10%", "10-20%", "20-30%", "30-40%", "40-50%",
+              "50-60%", "60-70%", "70-80%", "80-90%", "90-100%"]
+    criteria_names = list(detailed_stats.keys())
+    matrix = []
+
+    for criterion in criteria_names:
+        data = detailed_stats[criterion]
+        weight = data["weight"]
+        raw_scores = data["scores"]
+
+        # Convert raw scores to percentage scores
+        percentages = [(s / weight) * 100 for s in raw_scores]
+
+        # Bin the percentages
+        bin_counts = [0] * (len(bins) - 1)
+        for p in percentages:
+            for i in range(len(bins) - 1):
+                if i == len(bins) - 2:
+                    if bins[i] <= p <= bins[i+1]:
+                        bin_counts[i] += 1
+                else:
+                    if bins[i] <= p < bins[i+1]:
+                        bin_counts[i] += 1
+        matrix.append(bin_counts)
+
+    return {
+        "matrix": matrix,
+        "labels": labels,
+        "criteria_names": criteria_names
+    }
+
+
+def get_radar_chart_data(df, columns_mapping, criteria_data, total_scores):
+    """
+    Calculate radar chart data showing average performance percentage for top 25% and bottom 25% students.
+
+    Args:
+        df: DataFrame with score data
+        columns_mapping: Mapping of criteria to their column names
+        criteria_data: Information about criteria weights
+        total_scores: Series of total scores used to identify top/bottom students
+
+    Returns:
+        Dictionary with radar chart data for top and bottom 25% of students
+    """
+    # Identify the cut-off scores for the top 25% and bottom 25%
+    top_25_cutoff = total_scores.quantile(0.75)
+    bottom_25_cutoff = total_scores.quantile(0.25)
+
+    # Create masks for the top and bottom students
+    top_students_mask = total_scores >= top_25_cutoff
+    bottom_students_mask = total_scores <= bottom_25_cutoff
+
+    # Filter the dataframes
+    top_df = df[top_students_mask]
+    bottom_df = df[bottom_students_mask]
+
+    # Calculate average scores as percentages for each criterion
+    top_percentages = []
+    bottom_percentages = []
+    criteria_names = []
+
+    for criterion, details in criteria_data.items():
+        if criterion in columns_mapping:
+            criteria_names.append(criterion)
+            weight = details["weight"]
+            score_col = columns_mapping[criterion]["score"]
+
+            # Calculate average percentage for top students (score / max possible score * 100)
+            if len(top_df) > 0:
+                top_percentage = (top_df[score_col].mean() / weight) * 100
+            else:
+                top_percentage = 0
+
+            # Calculate average percentage for bottom students
+            if len(bottom_df) > 0:
+                bottom_percentage = (
+                    bottom_df[score_col].mean() / weight) * 100
+            else:
+                bottom_percentage = 0
+
+            top_percentages.append(float(top_percentage))
+            bottom_percentages.append(float(bottom_percentage))
+
+    return {
+        "criteria": criteria_names,
+        "top_25_percent": top_percentages,
+        "bottom_25_percent": bottom_percentages
+    }
+
+
 def analyze_grading_performance(file_path, config_rubric):
     """
     Analyze grading performance for AI grading.
@@ -118,39 +221,63 @@ def analyze_grading_performance(file_path, config_rubric):
     # Calculate weighted total scores
     def calculate_total_score(df, columns_mapping):
         total_scores = pd.Series(0, index=df.index)
+        total_percentages = pd.Series(0, index=df.index)
         max_possible_score = 0
 
+        # First pass to calculate max_possible_score
+        for criterion, details in criteria_data.items():
+            if criterion in columns_mapping:
+                max_possible_score += details["weight"]
+
+        # Second pass to calculate scores and percentages
         for criterion, details in criteria_data.items():
             if criterion in columns_mapping:
                 weight = details["weight"]
                 score_col = columns_mapping[criterion]["score"]
-                # Don't divide weight by 100 since scores are already in their proper scale
+
+                # Raw scores
                 weighted_score = df[score_col]
                 total_scores += weighted_score
-                max_possible_score += weight
 
-        return total_scores, max_possible_score
+                # Calculate percentage achievement for this criterion
+                criterion_percentage = (df[score_col] / weight) * 100
+                # Weight the percentage by the criterion's weight relative to total
+                weighted_percentage = criterion_percentage * \
+                    (weight / max_possible_score)
+                total_percentages += weighted_percentage
 
-    # Calculate total scores for AI
-    df_ai["TOTAL_SCORE"], ai_max_score = calculate_total_score(
+        return total_scores, total_percentages, max_possible_score
+
+    # Calculate total scores and percentages for AI
+    df_ai["TOTAL_SCORE"], df_ai["TOTAL_PERCENTAGE"], ai_max_score = calculate_total_score(
         df_ai, ai_columns)
 
     # Generate detailed histogram data with specific bins
-    def generate_detailed_histogram(scores, max_score):
-        # Create percentage-based bins
-        percentages = [0, 20, 40, 60, 80, 100]
-        # Calculate bin edges based on max_score
+    def generate_detailed_histogram(scores, max_score, is_percentage=False):
+        if is_percentage:
+            # Use 20% intervals for percentage histogram
+            percentages = [0, 20, 40, 60, 80, 100]
+            labels = ["0-20%", "20-40%", "40-60%", "60-80%", "80-100%"]
+        else:
+            # Use 5% intervals for raw score histogram
+            percentages = [0, 5, 10, 15, 20, 25, 30, 35, 40,
+                           45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+            labels = [f"{i}-{i+5}%" for i in range(0, 100, 5)]
+
         bins = [max_score * (p/100) for p in percentages]
-        labels = ["0-20%", "20-40%", "40-60%", "60-80%", "80-100%"]
         counts = []
 
-        # Print debug information
         logger.info(f"Generating histogram with max_score: {max_score}")
         logger.info(f"Score distribution: {scores.describe()}")
         logger.info(f"Bin edges: {bins}")
 
         for i in range(len(bins)-1):
-            count = len(scores[(scores >= bins[i]) & (scores <= bins[i+1])])
+            # For the last bin, include the upper bound
+            if i == len(bins)-2:
+                count = len(scores[(scores >= bins[i])
+                            & (scores <= bins[i+1])])
+            else:
+                count = len(scores[(scores >= bins[i]) & (scores < bins[i+1])])
             counts.append(count)
             logger.info(
                 f"Bin {labels[i]}: {count} scores between {bins[i]:.1f} and {bins[i+1]:.1f}")
@@ -158,13 +285,12 @@ def analyze_grading_performance(file_path, config_rubric):
         return {
             "labels": labels,
             "counts": counts,
-            # Convert to float for JSON serialization
             "bins": [float(b) for b in bins],
             "max_score": float(max_score)
         }
 
     # Calculate statistics for each criterion
-    def compute_detailed_stats(df, columns_mapping):
+    def compute_detailed_stats(df, columns_mapping, criteria_data):
         stats = {}
         for criterion, columns in columns_mapping.items():
             score_col = columns["score"]
@@ -182,7 +308,9 @@ def analyze_grading_performance(file_path, config_rubric):
 
     # Construct the response data
     response_data = {
-        "histogram": generate_detailed_histogram(df_ai["TOTAL_SCORE"], ai_max_score),
+        "total_students": int(df_ai["TOTAL_SCORE"].count()),
+        "histogram": generate_detailed_histogram(df_ai["TOTAL_SCORE"], ai_max_score, is_percentage=False),
+        "percentage_histogram": generate_detailed_histogram(df_ai["TOTAL_PERCENTAGE"], 100, is_percentage=True),
         "statistics": {
             "count": float(df_ai["TOTAL_SCORE"].count()),
             "mean": float(df_ai["TOTAL_SCORE"].mean()),
@@ -191,7 +319,13 @@ def analyze_grading_performance(file_path, config_rubric):
             "25%": float(df_ai["TOTAL_SCORE"].quantile(0.25)),
             "50%": float(df_ai["TOTAL_SCORE"].quantile(0.50)),
             "75%": float(df_ai["TOTAL_SCORE"].quantile(0.75)),
-            "max": float(df_ai["TOTAL_SCORE"].max())
+            "max": float(df_ai["TOTAL_SCORE"].max()),
+            "percentage_stats": {
+                "mean": float(df_ai["TOTAL_PERCENTAGE"].mean()),
+                "std": float(df_ai["TOTAL_PERCENTAGE"].std()),
+                "min": float(df_ai["TOTAL_PERCENTAGE"].min()),
+                "max": float(df_ai["TOTAL_PERCENTAGE"].max()),
+            }
         },
         "rubric_evaluation": {
             "criteria": list(criteria_data.keys()),
@@ -199,10 +333,19 @@ def analyze_grading_performance(file_path, config_rubric):
             "ai": {
                 "means": [float(df_ai[ai_columns[c]["score"]].mean()) if c in ai_columns else 0
                           for c in criteria_data.keys()],
-                "detailed_stats": compute_detailed_stats(df_ai, ai_columns)
+                "detailed_stats": compute_detailed_stats(df_ai, ai_columns, criteria_data)
             }
         }
     }
+
+    # Add the score distribution data
+    detailed_stats = response_data["rubric_evaluation"]["ai"]["detailed_stats"]
+    response_data["score_distribution_data"] = get_score_distribution_data(
+        detailed_stats)
+
+    # Add radar chart data
+    response_data["radar_chart_data"] = get_radar_chart_data(
+        df_ai, ai_columns, criteria_data, df_ai["TOTAL_SCORE"])
 
     return response_data
 
@@ -215,7 +358,9 @@ def analyze_grading():
     """
     try:
         data = request.get_json()
+        logger.info(f"Received data: {data}")
         required_fields = ["s3_file_path", "config_rubric"]
+
         if not data or not all(field in data for field in required_fields):
             return jsonify({"error": f"Missing required fields: {', '.join(required_fields)}"}), 400
 

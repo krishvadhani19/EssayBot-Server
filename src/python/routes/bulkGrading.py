@@ -11,6 +11,8 @@ import boto3
 import json
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import gc  # Add garbage collection
+from urllib.parse import urlparse, unquote
 
 # Assuming these are defined elsewhere
 from .rag_pipeline import retrieve_relevant_text
@@ -44,14 +46,16 @@ bulkGrading_bp = Blueprint("bulkGrading", __name__)
 
 # LLM API settings
 LLM_API_URL = "http://localhost:5001/api/generate"
-S3_BUCKET = os.getenv("AWS_S3_BUCKET", "essaybotbucket")
-AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 s3_client = boto3.client(
     "s3",
-    region_name=AWS_REGION,
-    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY")
+    endpoint_url=os.getenv("MINIO_ENDPOINT", "http://127.0.0.1:9000"),
+    aws_access_key_id=os.getenv("MINIO_ACCESS_KEY"),
+    aws_secret_access_key=os.getenv("MINIO_SECRET_KEY"),
+    region_name="us-east-1",
+    config=boto3.session.Config(signature_version='s3v4')
 )
+S3_BUCKET = os.getenv("MINIO_BUCKET", "essaybot")
+MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "http://127.0.0.1:9000")
 
 
 def send_post_request_sync(
@@ -204,34 +208,43 @@ def run_threaded_grading(
     grading_results = [None] * len(essays)
     progress = GradingProgress(total_essays=len(essays))
 
+    # Use context manager to ensure proper cleanup
     with ThreadPoolExecutor(max_workers=MAX_CONCURRENT_REQUESTS) as executor:
-        # Submit all tasks and map them to their original indices
-        future_to_index = {
-            executor.submit(
-                grade_essay_sync,
-                essay, question, config_prompt,
-                professor_username, course_id, assignment_title, model, progress, tone
-            ): i
-            for i, essay in enumerate(essays)
-        }
+        try:
+            # Submit all tasks and map them to their original indices
+            future_to_index = {
+                executor.submit(
+                    grade_essay_sync,
+                    essay, question, config_prompt,
+                    professor_username, course_id, assignment_title, model, progress, tone
+                ): i
+                for i, essay in enumerate(essays)
+            }
 
-        for future in as_completed(future_to_index):
-            idx = future_to_index[future]
-            try:
-                result = future.result()
-                grading_results[idx] = result
-            except Exception as e:
-                logger.error(f"Grading failed for essay index {idx}: {e}")
+            for future in as_completed(future_to_index):
+                idx = future_to_index[future]
+                try:
+                    result = future.result()
+                    grading_results[idx] = result
+                except Exception as e:
+                    logger.error(f"Grading failed for essay index {idx}: {e}")
 
-                # Get criteria names to ensure we return a result for all criteria
-                criteria = []
-                if isinstance(config_prompt, dict) and "criteria_prompts" in config_prompt:
-                    criteria = list(config_prompt["criteria_prompts"].keys())
+                    # Get criteria names to ensure we return a result for all criteria
+                    criteria = []
+                    if isinstance(config_prompt, dict) and "criteria_prompts" in config_prompt:
+                        criteria = list(
+                            config_prompt["criteria_prompts"].keys())
 
-                grading_results[idx] = {
-                    criterion: {"score": 0, "feedback": f"Error: {str(e)}"}
-                    for criterion in criteria
-                }
+                    grading_results[idx] = {
+                        criterion: {"score": 0, "feedback": f"Error: {str(e)}"}
+                        for criterion in criteria
+                    }
+        finally:
+            # Explicitly shutdown the executor and clear futures
+            executor.shutdown(wait=True)
+            future_to_index.clear()
+            # Force garbage collection to ensure resources are released
+            gc.collect()
 
     logger.info(
         f"Completed grading {progress.completed_essays} essays. Failed: {progress.failed_essays}")
@@ -253,7 +266,9 @@ def upload_file_to_s3(file_obj: BytesIO, s3_key: str) -> str:
     """Upload a file to S3 bucket and return the URL."""
     try:
         s3_client.upload_fileobj(file_obj, S3_BUCKET, s3_key)
-        url = f"https://{S3_BUCKET}.s3.amazonaws.com/{s3_key}"
+        # ✅ this works with MinIO
+        url = f"{MINIO_ENDPOINT}/{S3_BUCKET}/{s3_key}"
+
         logger.info(f"Uploaded to S3: {url}")
         return url
     except Exception as e:
@@ -286,9 +301,20 @@ def grade_bulk_essays() -> Tuple[Dict[str, Any], int]:
         tone = data.get("tone", "moderate")  # Get tone or use default
 
         # Parse S3 path from link
-        s3_key = s3_excel_link.replace(
-            f"https://{S3_BUCKET}.s3.amazonaws.com/", "")
+        # Parse S3 path from link
+        parsed_url = urlparse(s3_excel_link)
+        s3_key = unquote(parsed_url.path.lstrip("/"))  # Removes leading '/'
+
+        # If S3 key includes the bucket name as prefix, strip it
+        if s3_key.startswith(f"{S3_BUCKET}/"):
+            s3_key = s3_key[len(S3_BUCKET) + 1:]
+
+        logger.info(f"Parsed S3 key: {s3_key}")
         folder = "/".join(s3_key.split("/")[:-1])
+        logger.info(f"Parsed folder: {folder}")
+
+        logger.info(f"Parsed S3 key: {s3_key}")
+        logger.info(f"Parsed folder: {folder}")
 
         # Download and read the Excel file
         excel_file = download_file_from_s3(s3_key)
@@ -301,6 +327,9 @@ def grade_bulk_essays() -> Tuple[Dict[str, Any], int]:
             df["Response"].tolist(),
             question, config_prompt, professor_username, course_id, assignment_title, model, tone
         )
+
+        # Additional cleanup to prevent resource leaks
+        gc.collect()
 
         # Prepare output data
         # Get criteria names from the config_prompt
@@ -335,8 +364,9 @@ def grade_bulk_essays() -> Tuple[Dict[str, Any], int]:
 
         # Create output Excel file
         output_df = pd.DataFrame(output_data)
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        output_key = f"{folder}/graded_response_{timestamp}.xlsx"
+        # Use a Minio-compatible timestamp format (YYYY-MM-DD-HH-mm-ss)
+        timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        output_key = f"{folder}/gradedFiles/graded_response_{timestamp}.xlsx"
         output_buffer = BytesIO()
         output_df.to_excel(output_buffer, index=False)
         output_buffer.seek(0)

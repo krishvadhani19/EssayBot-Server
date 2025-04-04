@@ -3,7 +3,9 @@ import axios from "axios";
 import { Schema } from "mongoose";
 import { Course } from "../../models/Course";
 import { Assignment } from "../../models/Assignment";
+import { GradingStats } from "../../models/GradingStats";
 import { Criterion } from "../assignments";
+import { GradingHistory } from "../../models/GradingHistory";
 
 interface AuthenticatedRequest extends Request {
   user: {
@@ -15,6 +17,7 @@ interface AuthenticatedRequest extends Request {
 interface AnalyzeGradingRequest {
   courseId: string;
   assignmentId: string;
+  gradingHistoryId?: string; // Optional parameter to specify which grading history to analyze
   config_rubric: {
     criteria: Criterion[];
   };
@@ -25,14 +28,14 @@ export const analyzeGradingPerformance = async (
   res: Response
 ) => {
   try {
-    const { courseId, assignmentId } = req.body as AnalyzeGradingRequest;
+    const { courseId, assignmentId, gradingHistoryId } =
+      req.body as AnalyzeGradingRequest;
     const username = req.user.username;
 
     // Validate required fields
     if (!courseId || !assignmentId) {
       return res.status(400).json({
-        message:
-          "Missing required fields: courseId, assignmentId, config_rubric",
+        message: "Missing required fields: courseId, assignmentId",
       });
     }
 
@@ -53,20 +56,34 @@ export const analyzeGradingPerformance = async (
       });
     }
 
-    // Check if graded files exist
-    if (!assignment.gradedFiles || assignment.gradedFiles.length === 0) {
+    // Find the GradingHistory record based on the provided ID or get the latest one
+    const gradingHistory = await GradingHistory.findById(gradingHistoryId)
+      
+
+    if (!gradingHistory) {
       return res.status(400).json({
-        message: "No graded files found for this assignment",
+        message: "No grading history found for this assignment",
       });
     }
-    console.log(assignment.gradedFiles[0].url);
+
+    // Get the GradingStats record using the gradingStatsId
+    const gradingStats = await GradingStats.findById(
+      gradingHistory.gradingStatsId
+    );
+    if (!gradingStats || !gradingStats.gradeFile?.url) {
+      return res.status(400).json({
+        message: "No grading file found for this grading attempt",
+      });
+    }
+
+    console.log(gradingStats.gradeFile.url);
 
     // Call the Python backend service
     const pythonServiceUrl =
       process.env.PYTHON_SERVICE_URL || "http://localhost:6000";
     const response = await axios.post(`${pythonServiceUrl}/analyze_grading`, {
-      s3_file_path: assignment.gradedFiles[0].url,
-      config_rubric: assignment.config_rubric,
+      s3_file_path: gradingStats.gradeFile.url,
+      config_rubric: gradingHistory.config_rubric, // Use the rubric from GradingHistory
     });
 
     // Return the analysis results

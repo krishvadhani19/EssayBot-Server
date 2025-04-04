@@ -4,6 +4,9 @@ import { gradeSingleEssay } from "../controllers/grading/gradeSingleEssay";
 import { uploadExcelGrades } from "../controllers/grading/uploadExcelGrades";
 import { getExcelFile } from "../controllers/grading/getExcelFile";
 import { gradeBulkEssays } from "../controllers/grading/bulkGrading";
+import { getGradingStats } from "../controllers/grading/getGradingStats";
+import { approveGrading } from "../controllers/grading/approveGrading";
+import { getGradingHistory } from "../controllers/grading/getGradingHistory";
 
 const router = express.Router();
 
@@ -24,6 +27,18 @@ router.post(
 router.get(
   "/excel-files/:courseId/:assignmentId",
   getExcelFile as unknown as RequestHandler
+);
+
+router.get("/stats", getGradingStats as unknown as RequestHandler);
+
+router.post(
+  "/approve/:courseId/:assignmentId",
+  approveGrading as unknown as RequestHandler
+);
+
+router.get(
+  "/:courseId/:assignmentId/history",
+  getGradingHistory as unknown as RequestHandler
 );
 
 export default router;

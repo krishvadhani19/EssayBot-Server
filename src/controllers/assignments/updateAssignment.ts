@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Course } from "../../models/Course";
 import { Assignment } from "../../models/Assignment";
+import { GradingHistory } from "../../models/GradingHistory";
 import axios from "axios";
 import { AssignmentUpdatePayload } from ".";
 
@@ -162,7 +163,17 @@ export const finalizeRubricAndGeneratePrompt = async (
     assignment.config_rubric = config_rubric;
     await assignment.save();
 
-    // Step 3: Generate prompts using the Python service
+    // Step 3: Create a GradingHistory record for this rubric
+    // Note: gradingStatsId will be null initially since grading happens after rubric creation
+    await GradingHistory.create({
+      courseId: course._id,
+      assignmentId: assignment._id,
+      config_rubric,
+      createdBy: req.user.id,
+      createdAt: new Date(),
+    });
+
+    // Step 4: Generate prompts using the Python service
     const requestData = {
       criteria: config_rubric.criteria,
       courseId,
@@ -182,11 +193,11 @@ export const finalizeRubricAndGeneratePrompt = async (
 
     console.log("Cleaned Grading Result:", cleanedData);
 
-    // Step 4: Update the assignment with the generated prompts
+    // Step 5: Update the assignment with the generated prompts
     assignment.config_prompt = cleanedData.criteria_prompts;
     await assignment.save();
 
-    // Step 5: Return the updated assignment
+    // Step 6: Return the updated assignment
     return res.status(200).json({
       message: "Rubric updated and prompts generated successfully",
       assignment,

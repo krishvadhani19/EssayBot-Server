@@ -14,6 +14,9 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
+    // Update lastLogin timestamp
+    await User.findByIdAndUpdate(user._id, { lastLogin: new Date() });
+
     // Generate JWT token
     const token = jwt.sign(
       { id: user._id, username: user.username },

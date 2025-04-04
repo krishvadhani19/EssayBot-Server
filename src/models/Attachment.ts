@@ -2,20 +2,27 @@ import { Schema, model, Document, CallbackError } from "mongoose";
 import { Course } from "./Course";
 import { S3Client, DeleteObjectCommand } from "@aws-sdk/client-s3";
 
-// Configure S3 client
-if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
-  throw new Error("AWS credentials are not provided in environment variables");
+// Validate env
+if (
+  !process.env.MINIO_ACCESS_KEY ||
+  !process.env.MINIO_SECRET_KEY ||
+  !process.env.MINIO_ENDPOINT
+) {
+  throw new Error(
+    "MinIO credentials are not provided in environment variables"
+  );
 }
 
 const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-east-1",
+  region: "us-east-1",
+  endpoint: process.env.MINIO_ENDPOINT,
+  forcePathStyle: true,
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.MINIO_ACCESS_KEY,
+    secretAccessKey: process.env.MINIO_SECRET_KEY,
   },
 });
 
-// Allowed MIME types (should match FileUploadService)
 const ALLOWED_MIME_TYPES = [
   "application/pdf",
   "application/msword",
@@ -24,13 +31,13 @@ const ALLOWED_MIME_TYPES = [
 
 export interface IAttachment extends Document {
   fileName: string;
-  fileUrl: string; // URL to the file in S3
+  fileUrl: string;
   fileType: string;
   fileSize: number;
-  courseId: Schema.Types.ObjectId; // Reference to the Course
-  assignmentId: Schema.Types.ObjectId; // Reference to the Assignment
-  faissIndexUrl: string; // URL to the FAISS index file in S3
-  chunksFileUrl: string; // URL to the JSON chunks file in S3
+  courseId: Schema.Types.ObjectId;
+  assignmentId: Schema.Types.ObjectId;
+  faissIndexUrl: string;
+  chunksFileUrl: string;
   uploadedAt: Date;
 }
 
@@ -38,11 +45,7 @@ const attachmentSchema = new Schema<IAttachment>(
   {
     fileName: { type: String, required: true },
     fileUrl: { type: String, required: true },
-    fileType: {
-      type: String,
-      required: true,
-      enum: ALLOWED_MIME_TYPES,
-    },
+    fileType: { type: String, required: true, enum: ALLOWED_MIME_TYPES },
     fileSize: { type: Number, required: true, min: 0 },
     courseId: { type: Schema.Types.ObjectId, ref: "Course", required: true },
     assignmentId: {
@@ -59,7 +62,6 @@ const attachmentSchema = new Schema<IAttachment>(
   }
 );
 
-// Add indexes after schema creation
 attachmentSchema.index({ courseId: 1 });
 attachmentSchema.index({ assignmentId: 1 });
 attachmentSchema.index(
@@ -67,12 +69,7 @@ attachmentSchema.index(
   { unique: true }
 );
 
-// Retry function for S3 operations
-const retry = async (
-  fn: () => Promise<any>,
-  retries: number = 3,
-  delay: number = 1000
-) => {
+const retry = async (fn: () => Promise<any>, retries = 3, delay = 1000) => {
   for (let i = 0; i < retries; i++) {
     try {
       return await fn();
@@ -84,74 +81,35 @@ const retry = async (
   }
 };
 
-// Pre middleware to handle S3 cleanup before deletion
 attachmentSchema.pre("findOneAndDelete", async function (next) {
   try {
     const doc = await this.model.findOne(this.getQuery());
     if (doc) {
-      const bucket = process.env.AWS_S3_BUCKET;
-      if (!bucket) {
-        throw new Error("AWS_S3_BUCKET environment variable is not set");
-      }
+      const bucket = process.env.MINIO_BUCKET;
+      if (!bucket)
+        throw new Error("MINIO_BUCKET environment variable is not set");
 
-      // Validate S3 URLs
-      const isValidS3Url = (url: string) =>
-        url && url.startsWith(`https://${bucket}.s3.amazonaws.com/`);
+      const host = process.env.MINIO_ENDPOINT?.replace(/^https?:\/\//, "");
 
-      // Delete the main file from S3
-      if (!isValidS3Url(doc.fileUrl)) {
-        throw new Error(`Invalid S3 URL for file: ${doc.fileUrl}`);
-      }
-      const fileKey = doc.fileUrl.split(".com/")[1];
-      const deleteFileParams = {
-        Bucket: bucket,
-        Key: fileKey,
+      const extractKey = (url: string) => {
+        const pathname = new URL(url).pathname;
+        return pathname.replace(`/${bucket}/`, "").replace(/^\//, "");
       };
-      await retry(async () => {
-        const deleteFileCommand = new DeleteObjectCommand(deleteFileParams);
-        await s3Client.send(deleteFileCommand);
-      });
-      console.log(`Deleted file from S3: ${doc.fileUrl}`);
 
-      // Delete the JSON chunks file from S3 (if it exists)
-      if (doc.chunksFileUrl) {
-        if (!isValidS3Url(doc.chunksFileUrl)) {
-          throw new Error(
-            `Invalid S3 URL for chunks file: ${doc.chunksFileUrl}`
-          );
+      const deleteIfValid = async (url: string, label: string) => {
+        if (url && url.includes(`${host}/${bucket}/`)) {
+          const key = extractKey(url);
+          const params = { Bucket: bucket, Key: key };
+          await retry(async () => {
+            await s3Client.send(new DeleteObjectCommand(params));
+          });
+          console.log(`Deleted ${label} from MinIO: ${url}`);
         }
-        const chunksFileKey = doc.chunksFileUrl.split(".com/")[1];
-        const deleteChunksParams = {
-          Bucket: bucket,
-          Key: chunksFileKey,
-        };
-        await retry(async () => {
-          const deleteChunksCommand = new DeleteObjectCommand(
-            deleteChunksParams
-          );
-          await s3Client.send(deleteChunksCommand);
-        });
-        console.log(`Deleted chunks file from S3: ${doc.chunksFileUrl}`);
-      }
+      };
 
-      // Delete the FAISS index file from S3 (if it exists)
-      if (doc.faissIndexUrl) {
-        if (!isValidS3Url(doc.faissIndexUrl)) {
-          throw new Error(
-            `Invalid S3 URL for FAISS index: ${doc.faissIndexUrl}`
-          );
-        }
-        const faissFileKey = doc.faissIndexUrl.split(".com/")[1];
-        const deleteFaissParams = {
-          Bucket: bucket,
-          Key: faissFileKey,
-        };
-        await retry(async () => {
-          const deleteFaissCommand = new DeleteObjectCommand(deleteFaissParams);
-          await s3Client.send(deleteFaissCommand);
-        });
-        console.log(`Deleted FAISS index file from S3: ${doc.faissIndexUrl}`);
-      }
+      await deleteIfValid(doc.fileUrl, "file");
+      await deleteIfValid(doc.chunksFileUrl, "chunks file");
+      await deleteIfValid(doc.faissIndexUrl, "FAISS index file");
     }
     next();
   } catch (error) {
@@ -163,7 +121,6 @@ attachmentSchema.pre("findOneAndDelete", async function (next) {
   }
 });
 
-// Post middleware to add attachmentId to Course on save
 attachmentSchema.post("save", async function (doc: IAttachment) {
   try {
     const courseId = doc.courseId;
@@ -171,9 +128,7 @@ attachmentSchema.post("save", async function (doc: IAttachment) {
 
     const updatedCourse = await Course.findByIdAndUpdate(
       courseId,
-      {
-        $push: { attachments: attachmentId },
-      },
+      { $push: { attachments: attachmentId } },
       { new: true }
     );
 
@@ -186,7 +141,6 @@ attachmentSchema.post("save", async function (doc: IAttachment) {
   }
 });
 
-// Post middleware to remove attachmentId from Course on delete
 attachmentSchema.post(
   "findOneAndDelete",
   async function (doc: IAttachment | null) {
@@ -197,9 +151,7 @@ attachmentSchema.post(
 
         const updatedCourse = await Course.findByIdAndUpdate(
           courseId,
-          {
-            $pull: { attachments: attachmentId },
-          },
+          { $pull: { attachments: attachmentId } },
           { new: true }
         );
 

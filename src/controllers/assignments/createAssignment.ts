@@ -8,7 +8,7 @@ export const createAssignment = async (req: Request, res: Response) => {
     const { courseId } = req.params;
     const { title, question, config_rubric, config_prompt } = req.body;
 
-    // Find the course by courseCode
+    // Find the course by ID
     const course = await Course.findById(courseId);
     if (!course) {
       return res.status(404).json({ message: "Course not found" });

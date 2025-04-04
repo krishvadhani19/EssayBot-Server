@@ -8,16 +8,17 @@ import { Attachment, IAttachment } from "../models/Attachment";
 import { Assignment } from "../models/Assignment";
 import { MulterFile } from "../types/multer";
 
-// Configure S3 client
+// Configure MinIO client
 const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-east-1",
+  region: "us-east-1",
+  endpoint: process.env.MINIO_ENDPOINT,
+  forcePathStyle: true,
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+    accessKeyId: process.env.MINIO_ACCESS_KEY || "",
+    secretAccessKey: process.env.MINIO_SECRET_KEY || "",
   },
 });
 
-// Allowed file types and their MIME types
 const ALLOWED_FILE_TYPES = {
   "application/pdf": ".pdf",
   "application/msword": ".doc",
@@ -28,14 +29,13 @@ const ALLOWED_FILE_TYPES = {
   "text/csv": ".csv",
 };
 
-// Maximum file size (10MB)
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 export class FileUploadService {
   private bucket: string;
 
   constructor() {
-    this.bucket = process.env.AWS_S3_BUCKET || "essaybotbucket";
+    this.bucket = process.env.MINIO_BUCKET || "essaybotbucket";
   }
 
   private validateFileType(mimetype: string): void {
@@ -59,14 +59,12 @@ export class FileUploadService {
   }
 
   private sanitizeFileName(fileName: string): string {
-    // Remove special characters and spaces, keep extension
     const extension = fileName.slice(fileName.lastIndexOf("."));
     const name = fileName.slice(0, fileName.lastIndexOf("."));
     const sanitized = name.replace(/[^a-zA-Z0-9]/g, "-");
     return `${sanitized}${extension}`;
   }
 
-  // Check if a file with the same key already exists in S3
   private async checkFileExistsInS3(fileKey: string): Promise<boolean> {
     try {
       const command = new HeadObjectCommand({
@@ -74,16 +72,15 @@ export class FileUploadService {
         Key: fileKey,
       });
       await s3Client.send(command);
-      return true; // File exists
+      return true;
     } catch (error: any) {
       if (error.$metadata?.httpStatusCode === 404) {
-        return false; // File does not exist
+        return false;
       }
-      throw new Error("Error checking file existence in S3");
+      throw new Error("Error checking file existence in MinIO");
     }
   }
 
-  // Check if an attachment with the same fileName, courseId, and assignmentId already exists in MongoDB
   private async checkAttachmentExists(
     fileName: string,
     courseId: string,
@@ -103,22 +100,18 @@ export class FileUploadService {
     professorUsername: string,
     overwrite: boolean = false
   ): Promise<string> {
-    // Validate file type and size
     this.validateFileType(file.mimetype);
     this.validateFileSize(file.size);
 
-    // Fetch the assignment to get the assignmentTitle for the S3 key
     const assignment = await Assignment.findById(assignmentId);
     if (!assignment) {
       throw new Error("Assignment not found");
     }
     const assignmentTitle = assignment.title;
 
-    // Sanitize file name and create key
     const sanitizedFileName = this.sanitizeFileName(file.originalname);
     const fileKey = `${professorUsername}/${courseId}/${assignmentTitle}/${sanitizedFileName}`;
 
-    // Check if an attachment already exists in MongoDB
     const existingAttachment = await this.checkAttachmentExists(
       file.originalname,
       courseId,
@@ -131,11 +124,10 @@ export class FileUploadService {
       );
     }
 
-    // Double-check S3 for consistency
     const fileExistsInS3 = await this.checkFileExistsInS3(fileKey);
     if (fileExistsInS3 && !overwrite) {
       throw new Error(
-        `File '${file.originalname}' already exists in S3 for this course and assignment.`
+        `File '${file.originalname}' already exists in MinIO for this course and assignment.`
       );
     }
 
@@ -149,19 +141,19 @@ export class FileUploadService {
 
     try {
       const command = new PutObjectCommand(uploadParams);
-      const uploadResult = await s3Client.send(command);
-      // Construct the file URL manually since PutObjectCommand doesn't return it
-      const fileUrl = `https://${this.bucket}.s3.amazonaws.com/${fileKey}`;
+      await s3Client.send(command);
+      const host = process.env.MINIO_ENDPOINT?.replace(/^https?:\/\//, "");
+      const fileUrl = `${process.env.MINIO_ENDPOINT}/${this.bucket}/${fileKey}`;
       return fileUrl;
     } catch (error) {
-      console.error("Error uploading file to S3:", error);
+      console.error("Error uploading file to MinIO:", error);
       throw new Error("Failed to upload file");
     }
   }
 
   async deleteFile(fileUrl: string): Promise<void> {
-    // Extract key from public URL
-    const key = fileUrl.split(".com/")[1];
+    const url = new URL(fileUrl);
+    const key = url.pathname.replace(`/${this.bucket}/`, "").replace(/^\//, "");
 
     const deleteParams = {
       Bucket: this.bucket,
@@ -172,11 +164,10 @@ export class FileUploadService {
       const command = new DeleteObjectCommand(deleteParams);
       await s3Client.send(command);
     } catch (error) {
-      console.error("Error deleting file from S3:", error);
+      console.error("Error deleting file from MinIO:", error);
       throw new Error("Failed to delete file");
     }
   }
 }
 
-// Export a singleton instance
 export const fileUploadService = new FileUploadService();

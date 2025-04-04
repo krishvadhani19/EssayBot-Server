@@ -9,7 +9,8 @@ import axios from "axios";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
+console.log("Using PORT:", PORT);
 
 app.use(express.json());
 

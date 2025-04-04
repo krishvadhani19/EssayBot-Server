@@ -41,14 +41,15 @@ embeddings_model = HuggingFaceEmbeddings(model_name="BAAI/bge-large-en")
 tokenizer = AutoTokenizer.from_pretrained("BAAI/bge-large-en")
 MAX_TOKEN_LENGTH = 512
 
-S3_BUCKET = os.getenv("AWS_S3_BUCKET", "essaybotbucket")
-AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 s3_client = boto3.client(
     "s3",
-    region_name=AWS_REGION,
-    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY")
+    endpoint_url=os.getenv("MINIO_ENDPOINT", "http://127.0.0.1:9000"),
+    aws_access_key_id=os.getenv("MINIO_ACCESS_KEY"),
+    aws_secret_access_key=os.getenv("MINIO_SECRET_KEY"),
+    region_name="us-east-1",
+    config=boto3.session.Config(signature_version='s3v4')
 )
+S3_BUCKET = os.getenv("MINIO_BUCKET", "essaybot")
 
 
 def download_file_from_s3(s3_key: str) -> BytesIO:
@@ -345,12 +346,26 @@ def index_multiple_pdfs():
 
 
 def get_faiss_index_from_s3(index_key: str) -> faiss.Index:
+    logger.info(f"Attempting to download FAISS index from key: {index_key}")
+    try:
+        # HEAD check
+        s3_client.head_object(Bucket=S3_BUCKET, Key=index_key)
+    except Exception as e:
+        logger.error(f"FAISS index does not exist or is inaccessible: {e}")
+        raise ValueError(f"Index file not found at key: {index_key}")
+
     with tempfile.NamedTemporaryFile(delete=False, suffix=".index") as temp_file:
-        s3_client.download_file(
-            Bucket=S3_BUCKET, Key=index_key, Filename=temp_file.name)
-        index = faiss.read_index(temp_file.name)
-    os.remove(temp_file.name)
-    return index
+        try:
+            s3_client.download_file(
+                Bucket=S3_BUCKET, Key=index_key, Filename=temp_file.name)
+            index = faiss.read_index(temp_file.name)
+            logger.info("FAISS index downloaded and loaded successfully")
+            return index
+        except Exception as e:
+            logger.error(f"Error downloading or loading FAISS index: {e}")
+            raise
+        finally:
+            os.remove(temp_file.name)
 
 
 def download_json_from_s3(json_key: str) -> dict:
@@ -387,9 +402,10 @@ def retrieve_relevant_text(query: str, faiss_index: Optional[faiss.Index] = None
         raise ValueError(
             "professor_username, course_id, and assignmentTitle are required")
 
-    professor_dir = f"{professor_username}/{course_id}/{assignmentTitle}"
-    index_key = f"{professor_dir}/faiss_index.index"
-    chunks_key = f"{professor_dir}/chunks.json"
+    index_key = f"{professor_username}/{course_id}/{assignmentTitle}/faiss_index.index"
+    chunks_key = f"{professor_username}/{course_id}/{assignmentTitle}/chunks.json"
+    logger.info(f"Index key: {index_key}")
+    logger.info(f"Chunks key: {chunks_key}")
 
     try:
         faiss_index = faiss_index or get_faiss_index_from_s3(index_key)
