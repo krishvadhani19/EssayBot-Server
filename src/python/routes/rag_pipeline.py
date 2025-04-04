@@ -197,16 +197,22 @@ def create_quantized_index(embeddings: np.ndarray, nlist: Optional[int] = None, 
 
 @rag_bp.route("/index", methods=["POST"])
 def index_pdf():
+    logger.info("Entered index_pdf function")
     data = request.get_json()
+    logger.debug(f"Received data: {data}")
     s3_file_key = data.get("s3_file_key")
     professor_username = data.get("username")
     course_id = data.get("courseId")
     assignment_title = data.get("assignmentTitle")
+    logger.debug(
+        f"s3_file_key: {s3_file_key}, username: {professor_username}, courseId: {course_id}, assignmentTitle: {assignment_title}")
     if not all([s3_file_key, professor_username, course_id, assignment_title]):
+        logger.error("Missing required fields in request data")
         return jsonify({"error": "s3_file_key, username, courseId, and assignmentTitle are required"}), 400
 
     try:
         file_obj = download_file_from_s3(s3_file_key)
+        logger.info("File downloaded successfully from S3")
 
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=CHUNK_SIZE,
@@ -222,6 +228,7 @@ def index_pdf():
             all_text_chunks.extend(chunks)
 
         if not all_text_chunks:
+            logger.warning("No text chunks generated from PDF")
             return jsonify({"error": "No text chunks generated from PDF"}), 400
 
         if all_text_chunks:
@@ -232,7 +239,9 @@ def index_pdf():
 
         all_text_chunks = list(dict.fromkeys(all_text_chunks))
         embeddings = embed_in_batches(all_text_chunks)
+        logger.info("Embeddings generated successfully")
         optimized_index = create_quantized_index(embeddings)
+        logger.info("FAISS index created successfully")
 
         professor_dir = f"{professor_username}/{course_id}/{assignment_title}"
         index_key = f"{professor_dir}/faiss_index.index"
@@ -240,6 +249,7 @@ def index_pdf():
 
         chunks_data = {"chunks": all_text_chunks, "index_key": index_key}
         chunks_url = upload_json_to_s3(chunks_data, chunks_key)
+        logger.info(f"Chunks uploaded to S3: {chunks_url}")
 
         with tempfile.NamedTemporaryFile(delete=False, suffix=".index") as temp_file:
             faiss.write_index(optimized_index, temp_file.name)
@@ -255,6 +265,7 @@ def index_pdf():
                 temp_file.name, index_key, "application/octet-stream")
         os.remove(temp_file.name)
 
+        logger.info(f"FAISS index uploaded to S3: {index_url}")
         return jsonify({
             "faiss_index_url": index_url,
             "index_key": index_key,
@@ -266,6 +277,8 @@ def index_pdf():
     except Exception as e:
         logger.exception(f"Error indexing PDF: {str(e)}")
         return jsonify({"error": f"Failed to index PDF: {str(e)}"}), 500
+    finally:
+        logger.info("Exiting index_pdf function")
 
 
 @rag_bp.route("/index-multiple", methods=["POST"])

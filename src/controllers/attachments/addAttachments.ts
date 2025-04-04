@@ -46,25 +46,36 @@ export const addAttachments = [
   (req: Request, res: Response, next: NextFunction) => {
     upload(req, res, (err) => {
       if (err instanceof multer.MulterError || err) {
-        return res.status(400).json({ message: "Upload error", error: err.message });
+        return res
+          .status(400)
+          .json({ message: "Upload error", error: err.message });
       }
       next();
     });
   },
   async (req: AuthenticatedRequest, res: Response) => {
     const { courseId, assignmentId } = req.body;
+    console.log(req.body);
     const username = req.user.username;
     const files = req.files as Express.Multer.File[];
 
     if (!courseId || !assignmentId || !files?.length) {
-      return res.status(400).json({ message: "Missing fields or no files uploaded" });
+      return res
+        .status(400)
+        .json({ message: "Missing fields or no files uploaded" });
     }
 
     try {
       const course = await Course.findById(courseId);
       const assignment = await Assignment.findById(assignmentId);
-      if (!course || !assignment || !course.assignments.includes(assignmentId)) {
-        return res.status(404).json({ message: "Invalid course or assignment" });
+      if (
+        !course ||
+        !assignment ||
+        !course.assignments.includes(assignmentId)
+      ) {
+        return res
+          .status(404)
+          .json({ message: "Invalid course or assignment" });
       }
 
       const savedAttachments = [];
@@ -82,7 +93,9 @@ export const addAttachments = [
           );
 
           const url = new URL(fileUrl);
-          const key = url.pathname.replace(`/${process.env.MINIO_BUCKET}/`, "").replace(/^\//, "");
+          const key = url.pathname
+            .replace(`/${process.env.MINIO_BUCKET}/`, "")
+            .replace(/^\//, "");
           if (!key) throw new Error("Failed to extract file key");
 
           fileKeys.push(key);
@@ -112,7 +125,7 @@ export const addAttachments = [
               username,
               s3_file_keys: fileKeys,
               courseId,
-              assignmentTitle: assignment.title,
+              assignmentTitle: assignment._id,
             })
           );
 
@@ -137,7 +150,11 @@ export const addAttachments = [
       }
 
       if (errors.length > 0) {
-        return res.status(207).json({ message: "Partial success", success: savedAttachments, errors });
+        return res.status(207).json({
+          message: "Partial success",
+          success: savedAttachments,
+          errors,
+        });
       }
 
       res.status(201).json(savedAttachments);

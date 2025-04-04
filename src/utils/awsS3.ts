@@ -103,14 +103,8 @@ export class FileUploadService {
     this.validateFileType(file.mimetype);
     this.validateFileSize(file.size);
 
-    const assignment = await Assignment.findById(assignmentId);
-    if (!assignment) {
-      throw new Error("Assignment not found");
-    }
-    const assignmentTitle = assignment.title;
-
     const sanitizedFileName = this.sanitizeFileName(file.originalname);
-    const fileKey = `${professorUsername}/${courseId}/${assignmentTitle}/${sanitizedFileName}`;
+    const fileKey = `${professorUsername}/${courseId}/${assignmentId}/${sanitizedFileName}`;
 
     const existingAttachment = await this.checkAttachmentExists(
       file.originalname,

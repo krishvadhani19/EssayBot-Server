@@ -88,7 +88,7 @@ export const gradeBulkEssays = async (
     // Prepare request data for Flask API
     const requestData = {
       courseId,
-      assignmentTitle: assignment.title,
+      assignmentTitle: assignment._id,
       config_prompt: assignment.config_prompt,
       question: assignment.question,
       username,

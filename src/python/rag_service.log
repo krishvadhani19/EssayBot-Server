@@ -14843,3 +14843,407 @@ Name: TOTAL_PERCENTAGE, dtype: float64
 2025-04-04 12:54:32,100 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
 2025-04-04 12:54:36,160 - WARNING -  * Debugger is active!
 2025-04-04 12:54:36,183 - INFO -  * Debugger PIN: 239-316-530
+2025-04-04 15:04:01,471 - INFO - Use pytorch device_name: mps
+2025-04-04 15:04:01,471 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-04 15:04:04,932 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-04-04 15:04:04,932 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-04 15:04:04,933 - INFO -  * Restarting with stat
+2025-04-04 15:04:08,343 - INFO - Use pytorch device_name: mps
+2025-04-04 15:04:08,343 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-04 15:04:12,162 - WARNING -  * Debugger is active!
+2025-04-04 15:04:12,190 - INFO -  * Debugger PIN: 239-316-530
+2025-04-04 15:10:26,265 - INFO - Received data: {'s3_file_path': 'http://129.10.157.62:9000/essaybot/prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-20-29-47.xlsx', 'config_rubric': {'criteria': [{'description': 'Accuracy and completeness in identifying the four major steps in designing a customer-driven marketing strategy (market segmentation, targeting, differentiation, and positioning).', 'name': 'Identification of Four Steps', 'scoringLevels': {'full': 'Correctly identifies all four steps in the correct order with clear and concise descriptions.', 'minimal': 'Identifies fewer than 3 steps or demonstrates significant inaccuracies in the listed steps.', 'partial': 'Identifies most (3 out of 4) of the steps, potentially with some inaccuracies in description or order.'}, 'subCriteria': [], 'weight': 30}, {'description': 'Demonstrates understanding of the purpose and focus of market segmentation and targeting – specifically what a company is trying to accomplish in these initial stages.', 'name': 'Explanation of First Two Steps', 'scoringLevels': {'full': 'Clearly explains that the first two steps focus on *selecting* the customers a company will serve, emphasizing understanding customer groups and choosing which to pursue.', 'minimal': 'Offers a vague or inaccurate explanation of segmentation and targeting, failing to address the selection of customers.', 'partial': 'Provides a general explanation of segmentation and targeting but doesn’t clearly articulate the *selection* process or the purpose of identifying customer groups.'}, 'subCriteria': [], 'weight': 30}, {'description': 'Demonstrates understanding of the purpose and focus of differentiation and positioning – specifically how these steps differ from the first two and what a company seeks to accomplish with them.', 'name': 'Explanation of Last Two Steps', 'scoringLevels': {'full': 'Clearly explains that differentiation and positioning focus on *how* a company will serve the chosen customers – creating value and establishing a unique place in the market.', 'minimal': 'Offers a vague or inaccurate explanation of differentiation and positioning, failing to connect these steps to serving chosen customers.', 'partial': 'Provides a general explanation of differentiation and positioning but doesn’t clearly articulate the creation of value or establishing a market position.'}, 'subCriteria': [], 'weight': 30}, {'description': "The response is presented in a clear, concise, and organized manner, making it easy to follow the student's reasoning.", 'name': 'Overall Clarity & Organization', 'scoringLevels': {'full': 'The response is exceptionally well-organized, easy to understand, and uses clear language.', 'minimal': 'The response is difficult to follow due to poor organization, unclear language, or significant errors.', 'partial': 'The response is generally understandable but may lack some organization or clarity.'}, 'subCriteria': [], 'weight': 10}]}}
+2025-04-04 15:10:26,266 - INFO - Downloading file from S3: http://129.10.157.62:9000/essaybot/prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-20-29-47.xlsx
+2025-04-04 15:10:26,266 - INFO - Final S3 key used for download: prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-20-29-47.xlsx
+2025-04-04 15:10:26,595 - INFO - Available columns in Excel: ['ID', 'Response', 'Identification of Four Steps_feedback', 'Identification of Four Steps_score', 'Explanation of First Two Steps_feedback', 'Explanation of First Two Steps_score', 'Explanation of Last Two Steps_feedback', 'Explanation of Last Two Steps_score', 'Overall Clarity & Organization_feedback', 'Overall Clarity & Organization_score', 'Total_Score']
+2025-04-04 15:10:26,601 - INFO - Generating histogram with max_score: 100
+2025-04-04 15:10:26,605 - INFO - Score distribution: count    12.000000
+mean     70.333333
+std       2.015095
+min      67.000000
+25%      69.000000
+50%      70.000000
+75%      71.250000
+max      74.000000
+Name: TOTAL_SCORE, dtype: float64
+2025-04-04 15:10:26,605 - INFO - Bin edges: [0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0, 55.00000000000001, 60.0, 65.0, 70.0, 75.0, 80.0, 85.0, 90.0, 95.0, 100.0]
+2025-04-04 15:10:26,605 - INFO - Bin 0-5%: 0 scores between 0.0 and 5.0
+2025-04-04 15:10:26,605 - INFO - Bin 5-10%: 0 scores between 5.0 and 10.0
+2025-04-04 15:10:26,605 - INFO - Bin 10-15%: 0 scores between 10.0 and 15.0
+2025-04-04 15:10:26,605 - INFO - Bin 15-20%: 0 scores between 15.0 and 20.0
+2025-04-04 15:10:26,606 - INFO - Bin 20-25%: 0 scores between 20.0 and 25.0
+2025-04-04 15:10:26,606 - INFO - Bin 25-30%: 0 scores between 25.0 and 30.0
+2025-04-04 15:10:26,606 - INFO - Bin 30-35%: 0 scores between 30.0 and 35.0
+2025-04-04 15:10:26,606 - INFO - Bin 35-40%: 0 scores between 35.0 and 40.0
+2025-04-04 15:10:26,606 - INFO - Bin 40-45%: 0 scores between 40.0 and 45.0
+2025-04-04 15:10:26,606 - INFO - Bin 45-50%: 0 scores between 45.0 and 50.0
+2025-04-04 15:10:26,606 - INFO - Bin 50-55%: 0 scores between 50.0 and 55.0
+2025-04-04 15:10:26,606 - INFO - Bin 55-60%: 0 scores between 55.0 and 60.0
+2025-04-04 15:10:26,607 - INFO - Bin 60-65%: 0 scores between 60.0 and 65.0
+2025-04-04 15:10:26,607 - INFO - Bin 65-70%: 4 scores between 65.0 and 70.0
+2025-04-04 15:10:26,607 - INFO - Bin 70-75%: 8 scores between 70.0 and 75.0
+2025-04-04 15:10:26,607 - INFO - Bin 75-80%: 0 scores between 75.0 and 80.0
+2025-04-04 15:10:26,607 - INFO - Bin 80-85%: 0 scores between 80.0 and 85.0
+2025-04-04 15:10:26,608 - INFO - Bin 85-90%: 0 scores between 85.0 and 90.0
+2025-04-04 15:10:26,608 - INFO - Bin 90-95%: 0 scores between 90.0 and 95.0
+2025-04-04 15:10:26,608 - INFO - Bin 95-100%: 0 scores between 95.0 and 100.0
+2025-04-04 15:10:26,608 - INFO - Generating histogram with max_score: 100
+2025-04-04 15:10:26,609 - INFO - Score distribution: count    12.000000
+mean     70.333333
+std       2.015095
+min      67.000000
+25%      69.000000
+50%      70.000000
+75%      71.250000
+max      74.000000
+Name: TOTAL_PERCENTAGE, dtype: float64
+2025-04-04 15:10:26,609 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-04-04 15:10:26,610 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-04-04 15:10:26,610 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-04-04 15:10:26,610 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-04-04 15:10:26,610 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-04-04 15:10:26,610 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-04-04 15:10:26,614 - INFO - 127.0.0.1 - - [04/Apr/2025 15:10:26] "POST /analyze_grading HTTP/1.1" 200 -
+2025-04-04 15:10:32,545 - INFO - Received data: {'s3_file_path': 'http://129.10.157.62:9000/essaybot/prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-12-38-44.xlsx', 'config_rubric': {'criteria': [{'description': 'Accuracy and completeness in identifying the four major steps in designing a customer-driven marketing strategy (market segmentation, targeting, differentiation, and positioning).', 'name': 'Identification of Four Steps', 'scoringLevels': {'full': 'Correctly identifies all four steps in the correct order with clear and concise descriptions.', 'minimal': 'Identifies fewer than 3 steps or demonstrates significant inaccuracies in the listed steps.', 'partial': 'Identifies most (3 out of 4) of the steps, potentially with some inaccuracies in description or order.'}, 'subCriteria': [], 'weight': 30}, {'description': 'Demonstrates understanding of the purpose and focus of market segmentation and targeting – specifically what a company is trying to accomplish in these initial stages.', 'name': 'Explanation of First Two Steps', 'scoringLevels': {'full': 'Clearly explains that the first two steps focus on *selecting* the customers a company will serve, emphasizing understanding customer groups and choosing which to pursue.', 'minimal': 'Offers a vague or inaccurate explanation of segmentation and targeting, failing to address the selection of customers.', 'partial': 'Provides a general explanation of segmentation and targeting but doesn’t clearly articulate the *selection* process or the purpose of identifying customer groups.'}, 'subCriteria': [], 'weight': 30}, {'description': 'Demonstrates understanding of the purpose and focus of differentiation and positioning – specifically how these steps differ from the first two and what a company seeks to accomplish with them.', 'name': 'Explanation of Last Two Steps', 'scoringLevels': {'full': 'Clearly explains that differentiation and positioning focus on *how* a company will serve the chosen customers – creating value and establishing a unique place in the market.', 'minimal': 'Offers a vague or inaccurate explanation of differentiation and positioning, failing to connect these steps to serving chosen customers.', 'partial': 'Provides a general explanation of differentiation and positioning but doesn’t clearly articulate the creation of value or establishing a market position.'}, 'subCriteria': [], 'weight': 30}, {'description': "The response is presented in a clear, concise, and organized manner, making it easy to follow the student's reasoning.", 'name': 'Overall Clarity & Organization', 'scoringLevels': {'full': 'The response is exceptionally well-organized, easy to understand, and uses clear language.', 'minimal': 'The response is difficult to follow due to poor organization, unclear language, or significant errors.', 'partial': 'The response is generally understandable but may lack some organization or clarity.'}, 'subCriteria': [], 'weight': 10}]}}
+2025-04-04 15:10:32,546 - INFO - Downloading file from S3: http://129.10.157.62:9000/essaybot/prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-12-38-44.xlsx
+2025-04-04 15:10:32,546 - INFO - Final S3 key used for download: prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-12-38-44.xlsx
+2025-04-04 15:10:32,630 - INFO - Available columns in Excel: ['ID', 'Response', 'Identification of Four Steps_feedback', 'Identification of Four Steps_score', 'Explanation of First Two Steps_feedback', 'Explanation of First Two Steps_score', 'Explanation of Last Two Steps_feedback', 'Explanation of Last Two Steps_score', 'Overall Clarity & Organization_feedback', 'Overall Clarity & Organization_score', 'Total_Score']
+2025-04-04 15:10:32,631 - INFO - Generating histogram with max_score: 100
+2025-04-04 15:10:32,631 - INFO - Score distribution: count    12.00000
+mean     74.75000
+std       1.13818
+min      73.00000
+25%      74.50000
+50%      75.00000
+75%      75.25000
+max      76.00000
+Name: TOTAL_SCORE, dtype: float64
+2025-04-04 15:10:32,631 - INFO - Bin edges: [0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0, 55.00000000000001, 60.0, 65.0, 70.0, 75.0, 80.0, 85.0, 90.0, 95.0, 100.0]
+2025-04-04 15:10:32,632 - INFO - Bin 0-5%: 0 scores between 0.0 and 5.0
+2025-04-04 15:10:32,632 - INFO - Bin 5-10%: 0 scores between 5.0 and 10.0
+2025-04-04 15:10:32,632 - INFO - Bin 10-15%: 0 scores between 10.0 and 15.0
+2025-04-04 15:10:32,632 - INFO - Bin 15-20%: 0 scores between 15.0 and 20.0
+2025-04-04 15:10:32,632 - INFO - Bin 20-25%: 0 scores between 20.0 and 25.0
+2025-04-04 15:10:32,632 - INFO - Bin 25-30%: 0 scores between 25.0 and 30.0
+2025-04-04 15:10:32,633 - INFO - Bin 30-35%: 0 scores between 30.0 and 35.0
+2025-04-04 15:10:32,633 - INFO - Bin 35-40%: 0 scores between 35.0 and 40.0
+2025-04-04 15:10:32,633 - INFO - Bin 40-45%: 0 scores between 40.0 and 45.0
+2025-04-04 15:10:32,633 - INFO - Bin 45-50%: 0 scores between 45.0 and 50.0
+2025-04-04 15:10:32,633 - INFO - Bin 50-55%: 0 scores between 50.0 and 55.0
+2025-04-04 15:10:32,633 - INFO - Bin 55-60%: 0 scores between 55.0 and 60.0
+2025-04-04 15:10:32,633 - INFO - Bin 60-65%: 0 scores between 60.0 and 65.0
+2025-04-04 15:10:32,633 - INFO - Bin 65-70%: 0 scores between 65.0 and 70.0
+2025-04-04 15:10:32,633 - INFO - Bin 70-75%: 3 scores between 70.0 and 75.0
+2025-04-04 15:10:32,634 - INFO - Bin 75-80%: 9 scores between 75.0 and 80.0
+2025-04-04 15:10:32,634 - INFO - Bin 80-85%: 0 scores between 80.0 and 85.0
+2025-04-04 15:10:32,634 - INFO - Bin 85-90%: 0 scores between 85.0 and 90.0
+2025-04-04 15:10:32,634 - INFO - Bin 90-95%: 0 scores between 90.0 and 95.0
+2025-04-04 15:10:32,634 - INFO - Bin 95-100%: 0 scores between 95.0 and 100.0
+2025-04-04 15:10:32,634 - INFO - Generating histogram with max_score: 100
+2025-04-04 15:10:32,635 - INFO - Score distribution: count    12.00000
+mean     74.75000
+std       1.13818
+min      73.00000
+25%      74.50000
+50%      75.00000
+75%      75.25000
+max      76.00000
+Name: TOTAL_PERCENTAGE, dtype: float64
+2025-04-04 15:10:32,635 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-04-04 15:10:32,635 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-04-04 15:10:32,635 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-04-04 15:10:32,635 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-04-04 15:10:32,635 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-04-04 15:10:32,636 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-04-04 15:10:32,637 - INFO - 127.0.0.1 - - [04/Apr/2025 15:10:32] "POST /analyze_grading HTTP/1.1" 200 -
+2025-04-04 15:10:35,293 - INFO - Received data: {'s3_file_path': 'http://129.10.157.62:9000/essaybot/prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-20-29-47.xlsx', 'config_rubric': {'criteria': [{'description': 'Accuracy and completeness in identifying the four major steps in designing a customer-driven marketing strategy (market segmentation, targeting, differentiation, and positioning).', 'name': 'Identification of Four Steps', 'scoringLevels': {'full': 'Correctly identifies all four steps in the correct order with clear and concise descriptions.', 'minimal': 'Identifies fewer than 3 steps or demonstrates significant inaccuracies in the listed steps.', 'partial': 'Identifies most (3 out of 4) of the steps, potentially with some inaccuracies in description or order.'}, 'subCriteria': [], 'weight': 30}, {'description': 'Demonstrates understanding of the purpose and focus of market segmentation and targeting – specifically what a company is trying to accomplish in these initial stages.', 'name': 'Explanation of First Two Steps', 'scoringLevels': {'full': 'Clearly explains that the first two steps focus on *selecting* the customers a company will serve, emphasizing understanding customer groups and choosing which to pursue.', 'minimal': 'Offers a vague or inaccurate explanation of segmentation and targeting, failing to address the selection of customers.', 'partial': 'Provides a general explanation of segmentation and targeting but doesn’t clearly articulate the *selection* process or the purpose of identifying customer groups.'}, 'subCriteria': [], 'weight': 30}, {'description': 'Demonstrates understanding of the purpose and focus of differentiation and positioning – specifically how these steps differ from the first two and what a company seeks to accomplish with them.', 'name': 'Explanation of Last Two Steps', 'scoringLevels': {'full': 'Clearly explains that differentiation and positioning focus on *how* a company will serve the chosen customers – creating value and establishing a unique place in the market.', 'minimal': 'Offers a vague or inaccurate explanation of differentiation and positioning, failing to connect these steps to serving chosen customers.', 'partial': 'Provides a general explanation of differentiation and positioning but doesn’t clearly articulate the creation of value or establishing a market position.'}, 'subCriteria': [], 'weight': 30}, {'description': "The response is presented in a clear, concise, and organized manner, making it easy to follow the student's reasoning.", 'name': 'Overall Clarity & Organization', 'scoringLevels': {'full': 'The response is exceptionally well-organized, easy to understand, and uses clear language.', 'minimal': 'The response is difficult to follow due to poor organization, unclear language, or significant errors.', 'partial': 'The response is generally understandable but may lack some organization or clarity.'}, 'subCriteria': [], 'weight': 10}]}}
+2025-04-04 15:10:35,293 - INFO - Downloading file from S3: http://129.10.157.62:9000/essaybot/prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-20-29-47.xlsx
+2025-04-04 15:10:35,293 - INFO - Final S3 key used for download: prof_sean/67edfade813aaaec18d87bef/Task1/gradedFiles/graded_response_2025-04-03-20-29-47.xlsx
+2025-04-04 15:10:35,396 - INFO - Available columns in Excel: ['ID', 'Response', 'Identification of Four Steps_feedback', 'Identification of Four Steps_score', 'Explanation of First Two Steps_feedback', 'Explanation of First Two Steps_score', 'Explanation of Last Two Steps_feedback', 'Explanation of Last Two Steps_score', 'Overall Clarity & Organization_feedback', 'Overall Clarity & Organization_score', 'Total_Score']
+2025-04-04 15:10:35,397 - INFO - Generating histogram with max_score: 100
+2025-04-04 15:10:35,398 - INFO - Score distribution: count    12.000000
+mean     70.333333
+std       2.015095
+min      67.000000
+25%      69.000000
+50%      70.000000
+75%      71.250000
+max      74.000000
+Name: TOTAL_SCORE, dtype: float64
+2025-04-04 15:10:35,398 - INFO - Bin edges: [0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0, 55.00000000000001, 60.0, 65.0, 70.0, 75.0, 80.0, 85.0, 90.0, 95.0, 100.0]
+2025-04-04 15:10:35,398 - INFO - Bin 0-5%: 0 scores between 0.0 and 5.0
+2025-04-04 15:10:35,398 - INFO - Bin 5-10%: 0 scores between 5.0 and 10.0
+2025-04-04 15:10:35,398 - INFO - Bin 10-15%: 0 scores between 10.0 and 15.0
+2025-04-04 15:10:35,398 - INFO - Bin 15-20%: 0 scores between 15.0 and 20.0
+2025-04-04 15:10:35,399 - INFO - Bin 20-25%: 0 scores between 20.0 and 25.0
+2025-04-04 15:10:35,399 - INFO - Bin 25-30%: 0 scores between 25.0 and 30.0
+2025-04-04 15:10:35,399 - INFO - Bin 30-35%: 0 scores between 30.0 and 35.0
+2025-04-04 15:10:35,399 - INFO - Bin 35-40%: 0 scores between 35.0 and 40.0
+2025-04-04 15:10:35,399 - INFO - Bin 40-45%: 0 scores between 40.0 and 45.0
+2025-04-04 15:10:35,399 - INFO - Bin 45-50%: 0 scores between 45.0 and 50.0
+2025-04-04 15:10:35,399 - INFO - Bin 50-55%: 0 scores between 50.0 and 55.0
+2025-04-04 15:10:35,399 - INFO - Bin 55-60%: 0 scores between 55.0 and 60.0
+2025-04-04 15:10:35,399 - INFO - Bin 60-65%: 0 scores between 60.0 and 65.0
+2025-04-04 15:10:35,400 - INFO - Bin 65-70%: 4 scores between 65.0 and 70.0
+2025-04-04 15:10:35,400 - INFO - Bin 70-75%: 8 scores between 70.0 and 75.0
+2025-04-04 15:10:35,400 - INFO - Bin 75-80%: 0 scores between 75.0 and 80.0
+2025-04-04 15:10:35,400 - INFO - Bin 80-85%: 0 scores between 80.0 and 85.0
+2025-04-04 15:10:35,400 - INFO - Bin 85-90%: 0 scores between 85.0 and 90.0
+2025-04-04 15:10:35,400 - INFO - Bin 90-95%: 0 scores between 90.0 and 95.0
+2025-04-04 15:10:35,400 - INFO - Bin 95-100%: 0 scores between 95.0 and 100.0
+2025-04-04 15:10:35,400 - INFO - Generating histogram with max_score: 100
+2025-04-04 15:10:35,401 - INFO - Score distribution: count    12.000000
+mean     70.333333
+std       2.015095
+min      67.000000
+25%      69.000000
+50%      70.000000
+75%      71.250000
+max      74.000000
+Name: TOTAL_PERCENTAGE, dtype: float64
+2025-04-04 15:10:35,402 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-04-04 15:10:35,402 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-04-04 15:10:35,402 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-04-04 15:10:35,402 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-04-04 15:10:35,402 - INFO - Bin 60-80%: 12 scores between 60.0 and 80.0
+2025-04-04 15:10:35,402 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-04-04 15:10:35,405 - INFO - 127.0.0.1 - - [04/Apr/2025 15:10:35] "POST /analyze_grading HTTP/1.1" 200 -
+2025-04-04 18:55:36,310 - INFO - Processing file: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 18:55:36,311 - INFO - Downloading file from S3: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 18:55:36,395 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 18:55:36,395 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 294, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 18:55:36,402 - INFO - 127.0.0.1 - - [04/Apr/2025 18:55:36] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 18:55:37,431 - INFO - Processing file: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 18:55:37,431 - INFO - Downloading file from S3: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 18:55:37,451 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 18:55:37,451 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 294, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 18:55:37,451 - INFO - 127.0.0.1 - - [04/Apr/2025 18:55:37] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 18:55:38,465 - INFO - Processing file: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 18:55:38,466 - INFO - Downloading file from S3: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 18:55:38,488 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 18:55:38,488 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 294, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 18:55:38,489 - INFO - 127.0.0.1 - - [04/Apr/2025 18:55:38] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 18:59:48,375 - INFO - Use pytorch device_name: mps
+2025-04-04 18:59:48,375 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-04 18:59:52,114 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-04-04 18:59:52,115 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-04 18:59:52,116 - INFO -  * Restarting with stat
+2025-04-04 18:59:55,043 - INFO - Use pytorch device_name: mps
+2025-04-04 18:59:55,043 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-04 18:59:58,329 - WARNING -  * Debugger is active!
+2025-04-04 18:59:58,356 - INFO -  * Debugger PIN: 239-316-530
+2025-04-04 19:00:05,460 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py', reloading
+2025-04-04 19:00:06,111 - INFO -  * Restarting with stat
+2025-04-04 19:00:09,305 - INFO - Use pytorch device_name: mps
+2025-04-04 19:00:09,305 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-04 19:00:12,433 - WARNING -  * Debugger is active!
+2025-04-04 19:00:12,447 - INFO -  * Debugger PIN: 239-316-530
+2025-04-04 19:01:30,147 - INFO - Processing file: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:01:30,148 - INFO - Downloading file from S3: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:01:30,208 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:01:30,208 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:01:30,210 - INFO - 127.0.0.1 - - [04/Apr/2025 19:01:30] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:01:31,228 - INFO - Processing file: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:01:31,229 - INFO - Downloading file from S3: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:01:31,248 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:01:31,248 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:01:31,249 - INFO - 127.0.0.1 - - [04/Apr/2025 19:01:31] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:01:32,255 - INFO - Processing file: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:01:32,256 - INFO - Downloading file from S3: dash_user/67f06287fc219efa5a139559/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:01:32,282 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:01:32,283 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:01:32,284 - INFO - 127.0.0.1 - - [04/Apr/2025 19:01:32] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:03:19,229 - INFO - Processing file: dash_user/67f06287fc219efa5a139559/MSMARCO/1611-09268v3-2.pdf
+2025-04-04 19:03:19,229 - INFO - Downloading file from S3: dash_user/67f06287fc219efa5a139559/MSMARCO/1611-09268v3-2.pdf
+2025-04-04 19:03:20,152 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-04 19:03:26,097 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-04 19:03:26,179 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f06287fc219efa5a139559/MSMARCO/chunks.json
+2025-04-04 19:03:26,263 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f06287fc219efa5a139559/MSMARCO/faiss_index.index
+2025-04-04 19:03:26,264 - INFO - 127.0.0.1 - - [04/Apr/2025 19:03:26] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-04 19:13:49,855 - INFO - Processing file: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:13:49,855 - INFO - Downloading file from S3: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:13:49,903 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:13:49,903 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:13:49,904 - INFO - 127.0.0.1 - - [04/Apr/2025 19:13:49] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:13:50,921 - INFO - Processing file: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:13:50,921 - INFO - Downloading file from S3: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:13:50,940 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:13:50,940 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:13:50,941 - INFO - 127.0.0.1 - - [04/Apr/2025 19:13:50] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:13:51,945 - INFO - Processing file: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:13:51,945 - INFO - Downloading file from S3: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:13:51,972 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:13:51,973 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:13:51,973 - INFO - 127.0.0.1 - - [04/Apr/2025 19:13:51] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:16:25,971 - INFO - Processing file: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:16:25,974 - INFO - Downloading file from S3: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:16:26,026 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:16:26,027 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:16:26,028 - INFO - 127.0.0.1 - - [04/Apr/2025 19:16:26] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:16:27,049 - INFO - Processing file: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:16:27,049 - INFO - Downloading file from S3: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:16:27,073 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:16:27,073 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:16:27,073 - INFO - 127.0.0.1 - - [04/Apr/2025 19:16:27] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:16:28,084 - INFO - Processing file: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:16:28,084 - INFO - Downloading file from S3: dash_user/67f06795fb22259e2ed428ae/MS%20MARCO/1611-09268v3-2.pdf
+2025-04-04 19:16:28,108 - ERROR - Failed to download from S3: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:16:28,109 - ERROR - Error indexing multiple PDFs: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+Traceback (most recent call last):
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 307, in index_multiple_pdfs
+    file_obj = download_file_from_s3(s3_file_key)
+  File "/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/rag_pipeline.py", line 58, in download_file_from_s3
+    response = s3_client.get_object(Bucket=S3_BUCKET, Key=s3_key)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/context.py", line 124, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/essaybot-env/lib/python3.9/site-packages/botocore/client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.
+2025-04-04 19:16:28,110 - INFO - 127.0.0.1 - - [04/Apr/2025 19:16:28] "[35m[1mPOST /index-multiple HTTP/1.1[0m" 500 -
+2025-04-04 19:17:43,146 - INFO - Processing file: dash_user/67f06795fb22259e2ed428ae/67f067a7fb22259e2ed428b4/1611-09268v3-2.pdf
+2025-04-04 19:17:43,148 - INFO - Downloading file from S3: dash_user/67f06795fb22259e2ed428ae/67f067a7fb22259e2ed428b4/1611-09268v3-2.pdf
+2025-04-04 19:17:44,588 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-04 19:17:50,206 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-04 19:17:50,314 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f06795fb22259e2ed428ae/67f067a7fb22259e2ed428b4/chunks.json
+2025-04-04 19:17:50,434 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f06795fb22259e2ed428ae/67f067a7fb22259e2ed428b4/faiss_index.index
+2025-04-04 19:17:50,438 - INFO - 127.0.0.1 - - [04/Apr/2025 19:17:50] "POST /index-multiple HTTP/1.1" 200 -

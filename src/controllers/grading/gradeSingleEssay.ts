@@ -31,7 +31,7 @@ export const gradeSingleEssay = async (
     }
     const requestData = {
       courseId,
-      assignmentTitle: assignment.title,
+      assignmentTitle: assignment._id,
       essay,
       config_prompt: assignment.config_prompt,
       question: assignment.question,
