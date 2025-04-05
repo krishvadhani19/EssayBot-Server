@@ -23,20 +23,12 @@ export const createRubric = async (
       });
     }
 
-    const assignment: IAssignment | null = await Assignment.findById(
-      assignmentId
-    );
-
-    if (!assignment) {
-      return res.status(404).json({ message: "Assignment not found" });
-    }
-
     // Prepare request payload for Flask
     const payload = {
       courseId,
       question,
       username,
-      title: assignment.title,
+      title: assignmentId,
       model,
     };
 

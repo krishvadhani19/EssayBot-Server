@@ -75,18 +75,27 @@ export const getGradingHistory = async (
     // Transform the data to match our response format
     const history = (
       historyRecords as unknown as PopulatedGradingHistory[]
-    ).map((record) => ({
-      _id: record._id.toString(),
-      config_rubric: record.config_rubric,
-      createdAt: record.createdAt,
-      gradingDetails: record.gradingStatsId
+    ).map((record) => {
+      // Handle case where gradingStatsId is null or undefined
+      const gradingDetails = record.gradingStatsId
         ? {
-            modelName: record.gradingStatsId.modelName,
-            completedAt: record.gradingStatsId.completedAt,
-            gradeFile: record.gradingStatsId.gradeFile,
+            modelName: record.gradingStatsId.modelName || "Unknown",
+            completedAt: record.gradingStatsId.completedAt || new Date(),
+            gradeFile: record.gradingStatsId.gradeFile || {
+              url: "",
+              originalName: "No file available",
+              uploadedAt: new Date(),
+            },
           }
-        : undefined,
-    }));
+        : undefined;
+
+      return {
+        _id: record._id.toString(),
+        config_rubric: record.config_rubric,
+        createdAt: record.createdAt,
+        gradingDetails,
+      };
+    });
 
     return res.status(200).json({
       message: "Grading history retrieved successfully",
