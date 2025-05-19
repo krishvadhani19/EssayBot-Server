@@ -13,7 +13,7 @@ export interface ICourse extends Document {
 
 const courseSchema = new Schema<ICourse>(
   {
-    title: { type: String, required: true },
+    title: { type: String, required: true, unique: true },
     description: { type: String },
     createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
     assignments: [{ type: Schema.Types.ObjectId, ref: "Assignment" }],

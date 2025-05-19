@@ -316,9 +316,15 @@ def grade_bulk_essays() -> Tuple[Dict[str, Any], int]:
         logger.info(f"Parsed S3 key: {s3_key}")
         logger.info(f"Parsed folder: {folder}")
 
-        # Download and read the Excel file
-        excel_file = download_file_from_s3(s3_key)
-        df = pd.read_excel(excel_file)
+        # Download and read the file
+        file_obj = download_file_from_s3(s3_key)
+
+        # Check file extension and read accordingly
+        if s3_key.lower().endswith('.csv'):
+            df = pd.read_csv(file_obj)
+        else:
+            df = pd.read_excel(file_obj, engine='openpyxl')
+
         if "ID" not in df.columns or "Response" not in df.columns:
             return jsonify({"error": "Excel must contain 'ID' and 'Response' columns"}), 400
 

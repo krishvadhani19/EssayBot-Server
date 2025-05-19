@@ -15311,3 +15311,706 @@ botocore.errorfactory.NoSuchKey: An error occurred (NoSuchKey) when calling the 
 2025-04-05 17:44:25,891 - INFO - Retrieved 6 chunks for query: What are the three challenges of diverse difficult...
 2025-04-05 17:44:25,892 - INFO - RAG context retrieved for grading: H.,andFarhadi,A. Adiagramisworthadozenimages. towardsreal-worldvision-languageunderstanding. arXiv InComputerVision–ECCV2016: 14thEuropeanConfer- preprintarXiv:2403.05525,2024a. ence,Amsterdam,TheNeth...
 2025-04-05 17:44:46,836 - INFO - 127.0.0.1 - - [05/Apr/2025 17:44:46] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-04-06 16:07:19,418 - INFO - Use pytorch device_name: mps
+2025-04-06 16:07:19,418 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-06 16:07:23,412 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.59.5.211:6000
+2025-04-06 16:07:23,412 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-06 16:07:23,413 - INFO -  * Restarting with stat
+2025-04-06 16:07:26,945 - INFO - Use pytorch device_name: mps
+2025-04-06 16:07:26,946 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-06 16:07:30,490 - WARNING -  * Debugger is active!
+2025-04-06 16:07:30,516 - INFO -  * Debugger PIN: 239-316-530
+2025-04-06 16:38:23,486 - INFO - Processing file: dash_user/67f2e5cc7bfd0f0f849e74f3/67f2e6207bfd0f0f849e74f9/1611-09268v3-2.pdf
+2025-04-06 16:38:23,487 - INFO - Downloading file from S3: dash_user/67f2e5cc7bfd0f0f849e74f3/67f2e6207bfd0f0f849e74f9/1611-09268v3-2.pdf
+2025-04-06 16:38:24,864 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-06 16:38:30,755 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-06 16:38:30,870 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f2e5cc7bfd0f0f849e74f3/67f2e6207bfd0f0f849e74f9/chunks.json
+2025-04-06 16:38:30,983 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f2e5cc7bfd0f0f849e74f3/67f2e6207bfd0f0f849e74f9/faiss_index.index
+2025-04-06 16:38:30,987 - INFO - 127.0.0.1 - - [06/Apr/2025 16:38:30] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-06 16:39:40,917 - INFO - Index key: dash_user/67f2e5cc7bfd0f0f849e74f3/67f2e6207bfd0f0f849e74f9/faiss_index.index
+2025-04-06 16:39:40,917 - INFO - Chunks key: dash_user/67f2e5cc7bfd0f0f849e74f3/67f2e6207bfd0f0f849e74f9/chunks.json
+2025-04-06 16:39:40,917 - INFO - Attempting to download FAISS index from key: dash_user/67f2e5cc7bfd0f0f849e74f3/67f2e6207bfd0f0f849e74f9/faiss_index.index
+2025-04-06 16:39:41,071 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 16:39:41,072 - INFO - Downloading JSON from S3: dash_user/67f2e5cc7bfd0f0f849e74f3/67f2e6207bfd0f0f849e74f9/chunks.json
+2025-04-06 16:39:41,134 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 16:39:42,125 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 16:39:42,125 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-06 16:39:42,125 - INFO - Sending request to local model: gemma3:12b
+2025-04-06 16:40:00,571 - INFO - Successfully generated sample rubric
+2025-04-06 16:40:00,574 - INFO - 127.0.0.1 - - [06/Apr/2025 16:40:00] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-06 22:55:45,046 - INFO - Processing file: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/1611-09268v3-2.pdf
+2025-04-06 22:55:45,047 - INFO - Downloading file from S3: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/1611-09268v3-2.pdf
+2025-04-06 22:55:46,333 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-06 22:55:59,622 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-06 22:55:59,727 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/chunks.json
+2025-04-06 22:55:59,825 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/faiss_index.index
+2025-04-06 22:55:59,826 - INFO - 127.0.0.1 - - [06/Apr/2025 22:55:59] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-06 22:57:21,256 - INFO - Index key: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/faiss_index.index
+2025-04-06 22:57:21,257 - INFO - Chunks key: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/chunks.json
+2025-04-06 22:57:21,257 - INFO - Attempting to download FAISS index from key: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/faiss_index.index
+2025-04-06 22:57:21,451 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 22:57:21,452 - INFO - Downloading JSON from S3: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/chunks.json
+2025-04-06 22:57:21,525 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 22:57:22,541 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 22:57:22,541 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-06 22:57:22,541 - INFO - Sending request to local model: gemma3:12b
+2025-04-06 22:57:36,315 - INFO - Successfully generated sample rubric
+2025-04-06 22:57:36,320 - INFO - 127.0.0.1 - - [06/Apr/2025 22:57:36] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-06 22:59:15,071 - INFO - Generated prompt for criterion: Dataset Understanding & Task Identification
+2025-04-06 22:59:19,013 - INFO - Generated prompt for criterion: Task Differentiation & Challenges
+2025-04-06 22:59:22,571 - INFO - Generated prompt for criterion: Related Work Contextualization
+2025-04-06 22:59:22,572 - INFO - 127.0.0.1 - - [06/Apr/2025 22:59:22] "POST /generate_prompt HTTP/1.1" 200 -
+2025-04-06 23:00:34,257 - INFO - Index key: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/faiss_index.index
+2025-04-06 23:00:34,258 - INFO - Chunks key: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/chunks.json
+2025-04-06 23:00:34,258 - INFO - Attempting to download FAISS index from key: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/faiss_index.index
+2025-04-06 23:00:34,422 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:00:34,422 - INFO - Downloading JSON from S3: dash_user/67f33e52304ba105a83f94d2/67f33e88304ba105a83f94d8/chunks.json
+2025-04-06 23:00:34,485 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:00:35,495 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:00:35,495 - INFO - RAG context retrieved for grading: arXivpreprintarXiv:1609.05284,2016. Siri. Siripersonalassistant. http://www.apple.com/ios/siri/,2018. S.Sukhbaatar,J.Weston,R.Fergus,etal. End-to-endmemorynetworks. InAdvancesinneuralinformation proce...
+2025-04-06 23:00:42,052 - INFO - 127.0.0.1 - - [06/Apr/2025 23:00:42] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-04-06 23:11:51,071 - INFO - Processing file: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/1611-09268v3-2.pdf
+2025-04-06 23:11:51,072 - INFO - Downloading file from S3: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/1611-09268v3-2.pdf
+2025-04-06 23:11:52,030 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-06 23:11:57,512 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-06 23:11:57,601 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:11:57,734 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:11:57,735 - INFO - 127.0.0.1 - - [06/Apr/2025 23:11:57] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-06 23:13:30,232 - INFO - Index key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:13:30,233 - INFO - Chunks key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:13:30,234 - INFO - Attempting to download FAISS index from key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:13:30,448 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:13:30,449 - INFO - Downloading JSON from S3: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:13:30,544 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:13:31,500 - INFO - Index key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:13:31,500 - INFO - Chunks key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:13:31,500 - INFO - Attempting to download FAISS index from key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:13:31,595 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:13:31,595 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-06 23:13:31,595 - INFO - Sending request to local model: gemma3:12b
+2025-04-06 23:13:31,660 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:13:31,660 - INFO - Downloading JSON from S3: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:13:31,725 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:13:31,769 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:13:31,769 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-06 23:13:31,769 - INFO - Sending request to local model: gemma3:12b
+2025-04-06 23:13:36,406 - INFO - Index key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:13:36,406 - INFO - Chunks key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:13:36,406 - INFO - Attempting to download FAISS index from key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:13:36,580 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:13:36,580 - INFO - Downloading JSON from S3: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:13:36,645 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:13:36,779 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:13:36,779 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-06 23:13:36,779 - INFO - Sending request to local model: gemma3:12b
+2025-04-06 23:13:55,112 - INFO - Successfully generated sample rubric
+2025-04-06 23:13:55,114 - INFO - 127.0.0.1 - - [06/Apr/2025 23:13:55] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-06 23:13:56,069 - INFO - Successfully generated sample rubric
+2025-04-06 23:13:56,070 - INFO - 127.0.0.1 - - [06/Apr/2025 23:13:56] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-06 23:13:56,346 - INFO - Successfully generated sample rubric
+2025-04-06 23:13:56,347 - INFO - 127.0.0.1 - - [06/Apr/2025 23:13:56] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-06 23:15:54,580 - INFO - Generated prompt for criterion: Dataset Understanding
+2025-04-06 23:15:59,147 - INFO - Generated prompt for criterion: Task Analysis & Differentiation
+2025-04-06 23:16:03,427 - INFO - Generated prompt for criterion: Technical Relevance & Alignment
+2025-04-06 23:16:06,654 - INFO - Generated prompt for criterion: Clarity and Organization
+2025-04-06 23:16:06,657 - INFO - 127.0.0.1 - - [06/Apr/2025 23:16:06] "POST /generate_prompt HTTP/1.1" 200 -
+2025-04-06 23:17:24,396 - INFO - Index key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:17:24,397 - INFO - Chunks key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:17:24,398 - INFO - Attempting to download FAISS index from key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:17:24,561 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:17:24,562 - INFO - Downloading JSON from S3: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:17:24,620 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:17:25,663 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:17:25,663 - INFO - RAG context retrieved for grading: arXivpreprintarXiv:1609.05284,2016. Siri. Siripersonalassistant. http://www.apple.com/ios/siri/,2018. S.Sukhbaatar,J.Weston,R.Fergus,etal. End-to-endmemorynetworks. InAdvancesinneuralinformation proce...
+2025-04-06 23:18:19,152 - INFO - 127.0.0.1 - - [06/Apr/2025 23:18:19] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-04-06 23:23:33,850 - INFO - Index key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:23:33,851 - INFO - Chunks key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:23:33,851 - INFO - Attempting to download FAISS index from key: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/faiss_index.index
+2025-04-06 23:23:34,020 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:23:34,020 - INFO - Downloading JSON from S3: dash_user/67f34230304ba105a83f9500/67f34252304ba105a83f9506/chunks.json
+2025-04-06 23:23:34,076 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:23:34,907 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:23:34,908 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-06 23:23:34,908 - INFO - Sending request to local model: gemma3:12b
+2025-04-06 23:23:52,412 - INFO - Successfully generated sample rubric
+2025-04-06 23:23:52,413 - INFO - 127.0.0.1 - - [06/Apr/2025 23:23:52] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-06 23:33:50,270 - INFO - Processing file: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/1611-09268v3-2.pdf
+2025-04-06 23:33:50,272 - INFO - Downloading file from S3: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/1611-09268v3-2.pdf
+2025-04-06 23:33:51,376 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-06 23:33:57,054 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-06 23:33:57,137 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/chunks.json
+2025-04-06 23:33:57,225 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/faiss_index.index
+2025-04-06 23:33:57,228 - INFO - 127.0.0.1 - - [06/Apr/2025 23:33:57] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-06 23:35:04,909 - INFO - Index key: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/faiss_index.index
+2025-04-06 23:35:04,909 - INFO - Chunks key: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/chunks.json
+2025-04-06 23:35:04,909 - INFO - Attempting to download FAISS index from key: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/faiss_index.index
+2025-04-06 23:35:05,126 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:35:05,127 - INFO - Downloading JSON from S3: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/chunks.json
+2025-04-06 23:35:05,196 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:35:05,345 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:35:05,345 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-06 23:35:05,345 - INFO - Sending request to local model: gemma3:12b
+2025-04-06 23:35:20,873 - INFO - Successfully generated sample rubric
+2025-04-06 23:35:20,874 - INFO - 127.0.0.1 - - [06/Apr/2025 23:35:20] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-06 23:37:29,931 - INFO - Generated prompt for criterion: Dataset Understanding & Task Identification
+2025-04-06 23:37:34,924 - INFO - Generated prompt for criterion: Task Complexity & Innovation
+2025-04-06 23:37:38,193 - INFO - Generated prompt for criterion: Comparison & Contextualization
+2025-04-06 23:37:38,195 - INFO - 127.0.0.1 - - [06/Apr/2025 23:37:38] "POST /generate_prompt HTTP/1.1" 200 -
+2025-04-06 23:38:47,072 - INFO - Index key: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/faiss_index.index
+2025-04-06 23:38:47,073 - INFO - Chunks key: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/chunks.json
+2025-04-06 23:38:47,073 - INFO - Attempting to download FAISS index from key: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/faiss_index.index
+2025-04-06 23:38:47,270 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:38:47,270 - INFO - Downloading JSON from S3: dash_user/67f3474e304ba105a83f952c/67f34779304ba105a83f9532/chunks.json
+2025-04-06 23:38:47,331 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:38:48,317 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:38:48,318 - INFO - RAG context retrieved for grading: arXivpreprintarXiv:1609.05284,2016. Siri. Siripersonalassistant. http://www.apple.com/ios/siri/,2018. S.Sukhbaatar,J.Weston,R.Fergus,etal. End-to-endmemorynetworks. InAdvancesinneuralinformation proce...
+2025-04-06 23:38:55,788 - INFO - 127.0.0.1 - - [06/Apr/2025 23:38:55] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-04-06 23:48:40,584 - INFO - Processing file: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/1611-09268v3-2.pdf
+2025-04-06 23:48:40,586 - INFO - Downloading file from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/1611-09268v3-2.pdf
+2025-04-06 23:48:41,570 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-06 23:48:47,268 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-06 23:48:47,359 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:48:47,490 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:48:47,494 - INFO - 127.0.0.1 - - [06/Apr/2025 23:48:47] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-06 23:49:44,580 - INFO - Index key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:49:44,580 - INFO - Chunks key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:49:44,580 - INFO - Attempting to download FAISS index from key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:49:44,799 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:49:44,800 - INFO - Downloading JSON from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:49:44,904 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:49:45,062 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:49:45,062 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-06 23:49:45,062 - INFO - Sending request to local model: gemma3:12b
+2025-04-06 23:49:59,820 - INFO - Successfully generated sample rubric
+2025-04-06 23:49:59,822 - INFO - 127.0.0.1 - - [06/Apr/2025 23:49:59] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-06 23:51:45,035 - INFO - Generated prompt for criterion: Dataset Understanding & Task Alignment
+2025-04-06 23:51:49,123 - INFO - Generated prompt for criterion: Task Justification & Relevance
+2025-04-06 23:51:53,038 - INFO - Generated prompt for criterion: Technical Detail & Feasibility
+2025-04-06 23:51:53,040 - INFO - 127.0.0.1 - - [06/Apr/2025 23:51:53] "POST /generate_prompt HTTP/1.1" 200 -
+2025-04-06 23:52:44,878 - INFO - Index key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:52:44,879 - INFO - Chunks key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:52:44,879 - INFO - Attempting to download FAISS index from key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:52:45,047 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:52:45,047 - INFO - Downloading JSON from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:52:45,131 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:52:46,058 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:52:46,058 - INFO - RAG context retrieved for grading: arXivpreprintarXiv:1609.05284,2016. Siri. Siripersonalassistant. http://www.apple.com/ios/siri/,2018. S.Sukhbaatar,J.Weston,R.Fergus,etal. End-to-endmemorynetworks. InAdvancesinneuralinformation proce...
+2025-04-06 23:52:52,771 - INFO - 127.0.0.1 - - [06/Apr/2025 23:52:52] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-04-06 23:55:10,256 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:10,258 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:55:10,258 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:10,258 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:55:10,258 - INFO - Downloading file from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:10,318 - ERROR - Error grading bulk essays: Excel file format cannot be determined, you must specify an engine manually.
+2025-04-06 23:55:10,319 - INFO - 127.0.0.1 - - [06/Apr/2025 23:55:10] "[35m[1mPOST /grade_bulk_essays HTTP/1.1[0m" 500 -
+2025-04-06 23:55:12,347 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:12,347 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:55:12,347 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:12,347 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:55:12,347 - INFO - Downloading file from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:12,379 - ERROR - Error grading bulk essays: Excel file format cannot be determined, you must specify an engine manually.
+2025-04-06 23:55:12,380 - INFO - 127.0.0.1 - - [06/Apr/2025 23:55:12] "[35m[1mPOST /grade_bulk_essays HTTP/1.1[0m" 500 -
+2025-04-06 23:55:13,408 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:13,408 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:55:13,408 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:13,408 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:55:13,408 - INFO - Downloading file from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:55:13,443 - ERROR - Error grading bulk essays: Excel file format cannot be determined, you must specify an engine manually.
+2025-04-06 23:55:13,443 - INFO - 127.0.0.1 - - [06/Apr/2025 23:55:13] "[35m[1mPOST /grade_bulk_essays HTTP/1.1[0m" 500 -
+2025-04-06 23:56:23,095 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:56:23,096 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:56:23,096 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:56:23,096 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:56:23,096 - INFO - Downloading file from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:56:23,142 - ERROR - Error grading bulk essays: Excel file format cannot be determined, you must specify an engine manually.
+2025-04-06 23:56:23,142 - INFO - 127.0.0.1 - - [06/Apr/2025 23:56:23] "[35m[1mPOST /grade_bulk_essays HTTP/1.1[0m" 500 -
+2025-04-06 23:57:13,883 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/bulkGrading.py', reloading
+2025-04-06 23:57:14,764 - INFO -  * Restarting with stat
+2025-04-06 23:57:18,536 - INFO - Use pytorch device_name: mps
+2025-04-06 23:57:18,536 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-06 23:57:21,515 - WARNING -  * Debugger is active!
+2025-04-06 23:57:21,529 - INFO -  * Debugger PIN: 239-316-530
+2025-04-06 23:57:30,229 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:57:30,229 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:57:30,229 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:57:30,229 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:57:30,229 - INFO - Downloading file from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:57:30,350 - ERROR - Error grading bulk essays: File is not a zip file
+2025-04-06 23:57:30,351 - INFO - 127.0.0.1 - - [06/Apr/2025 23:57:30] "[35m[1mPOST /grade_bulk_essays HTTP/1.1[0m" 500 -
+2025-04-06 23:57:48,925 - INFO -  * Detected change in '/Users/hetpatel/Downloads/EssayBot-Server/src/python/routes/bulkGrading.py', reloading
+2025-04-06 23:57:49,417 - INFO -  * Restarting with stat
+2025-04-06 23:57:52,833 - INFO - Use pytorch device_name: mps
+2025-04-06 23:57:52,833 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-06 23:57:55,475 - WARNING -  * Debugger is active!
+2025-04-06 23:57:55,488 - INFO -  * Debugger PIN: 239-316-530
+2025-04-06 23:57:58,110 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:57:58,110 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:57:58,110 - INFO - Parsed S3 key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:57:58,110 - INFO - Parsed folder: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c
+2025-04-06 23:57:58,110 - INFO - Downloading file from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/student-responses-2025-04-07T03-54-41-924Z.csv
+2025-04-06 23:57:58,176 - INFO - Starting threaded grading of 3 essays...
+2025-04-06 23:57:58,177 - INFO - Index key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:57:58,177 - INFO - Index key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:57:58,178 - INFO - Chunks key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:57:58,178 - INFO - Index key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:57:58,178 - INFO - Chunks key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:57:58,178 - INFO - Attempting to download FAISS index from key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:57:58,178 - INFO - Chunks key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:57:58,178 - INFO - Attempting to download FAISS index from key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:57:58,182 - INFO - Attempting to download FAISS index from key: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/faiss_index.index
+2025-04-06 23:57:58,385 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:57:58,386 - INFO - Downloading JSON from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:57:58,422 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:57:58,422 - INFO - FAISS index downloaded and loaded successfully
+2025-04-06 23:57:58,423 - INFO - Downloading JSON from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:57:58,423 - INFO - Downloading JSON from S3: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/chunks.json
+2025-04-06 23:57:58,442 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:57:58,483 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:57:58,488 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-06 23:57:58,726 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:57:58,726 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:57:58,726 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-06 23:57:58,726 - INFO - RAG context retrieved for essay 1/3
+2025-04-06 23:57:58,726 - INFO - RAG context retrieved for essay 1/3
+2025-04-06 23:57:58,727 - INFO - RAG context retrieved for essay 1/3
+2025-04-06 23:58:10,711 - INFO - Completed essay 1/3
+2025-04-06 23:58:10,949 - INFO - Completed essay 2/3
+2025-04-06 23:58:10,963 - INFO - Completed essay 3/3
+2025-04-06 23:58:11,068 - INFO - Completed grading 3 essays. Failed: 0
+2025-04-06 23:58:11,300 - INFO - Uploaded to S3: http://129.10.157.62:9000/essaybot/dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/gradedFiles/graded_response_2025-04-06-23-58-11.xlsx
+2025-04-06 23:58:11,300 - INFO - 127.0.0.1 - - [06/Apr/2025 23:58:11] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-04-06 23:59:38,754 - INFO - Received data: {'s3_file_path': 'http://129.10.157.62:9000/essaybot/dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/gradedFiles/graded_response_2025-04-06-23-58-11.xlsx', 'config_rubric': {'criteria': [{'description': 'Demonstrates a clear understanding of the MS MARCO dataset, its structure, and how the proposed tasks (novice, intermediate, passage re-ranking) relate to it.  Shows comprehension of the differences between the tasks and their increasing levels of complexity.', 'name': 'Dataset Understanding & Task Alignment', 'scoringLevels': {'full': 'Clearly and accurately describes the MS MARCO dataset, the task types, and how they build upon each other. Identifies the key distinctions between the tasks.', 'minimal': 'Demonstrates limited understanding of the dataset or tasks. Fails to accurately describe the differences between the tasks.', 'partial': 'Shows a general understanding of the dataset and tasks but may miss some nuances or distinctions. Provides a basic description but lacks detail.'}, 'subCriteria': [], 'weight': 30}, {'description': 'Provides strong justification for the chosen tasks. Explains why they are valuable for advancing machine learning research and development in the area of machine reading comprehension and open-domain question answering.  Connects the tasks to related work in the field.', 'name': 'Task Justification & Relevance', 'scoringLevels': {'full': 'Provides compelling and well-reasoned justification for each task, explicitly linking them to challenges and limitations in existing approaches.  Demonstrates a strong awareness of related work and its relevance to the proposed tasks.', 'minimal': 'Offers minimal or weak justification for the tasks.  Fails to connect the tasks to existing research or demonstrate their value.', 'partial': 'Provides some justification for the tasks, but the reasoning may be superficial or lack depth. Connections to related work are present but not thoroughly explained.'}, 'subCriteria': [], 'weight': 40}, {'description': 'Provides sufficient technical detail about the proposed tasks, including considerations for evaluation metrics, potential model architectures, and challenges in implementation. Demonstrates a realistic assessment of the feasibility of the tasks and the resources required.', 'name': 'Technical Detail & Feasibility', 'scoringLevels': {'full': 'Provides detailed and insightful technical considerations, including suggestions for appropriate evaluation metrics and model architectures. Demonstrates a realistic understanding of the implementation challenges and resource requirements.', 'minimal': 'Provides minimal or superficial technical considerations. Demonstrates a limited understanding of the technical challenges involved.', 'partial': 'Provides some technical considerations, but lacks depth or detail. Provides a general overview of potential approaches without addressing specific challenges.'}, 'subCriteria': [], 'weight': 30}]}}
+2025-04-06 23:59:38,755 - INFO - Downloading file from S3: http://129.10.157.62:9000/essaybot/dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/gradedFiles/graded_response_2025-04-06-23-58-11.xlsx
+2025-04-06 23:59:38,755 - INFO - Final S3 key used for download: dash_user/67f34ad1304ba105a83f9556/67f34af7304ba105a83f955c/gradedFiles/graded_response_2025-04-06-23-58-11.xlsx
+2025-04-06 23:59:38,825 - INFO - Available columns in Excel: ['ID', 'Response', 'Dataset Understanding & Task Alignment_feedback', 'Dataset Understanding & Task Alignment_score', 'Task Justification & Relevance_feedback', 'Task Justification & Relevance_score', 'Technical Detail & Feasibility_feedback', 'Technical Detail & Feasibility_score', 'Total_Score']
+2025-04-06 23:59:38,827 - INFO - Generating histogram with max_score: 100
+2025-04-06 23:59:38,829 - INFO - Score distribution: count     3.000000
+mean     73.333333
+std       2.081666
+min      71.000000
+25%      72.500000
+50%      74.000000
+75%      74.500000
+max      75.000000
+Name: TOTAL_SCORE, dtype: float64
+2025-04-06 23:59:38,829 - INFO - Bin edges: [0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0, 55.00000000000001, 60.0, 65.0, 70.0, 75.0, 80.0, 85.0, 90.0, 95.0, 100.0]
+2025-04-06 23:59:38,830 - INFO - Bin 0-5%: 0 scores between 0.0 and 5.0
+2025-04-06 23:59:38,830 - INFO - Bin 5-10%: 0 scores between 5.0 and 10.0
+2025-04-06 23:59:38,830 - INFO - Bin 10-15%: 0 scores between 10.0 and 15.0
+2025-04-06 23:59:38,830 - INFO - Bin 15-20%: 0 scores between 15.0 and 20.0
+2025-04-06 23:59:38,830 - INFO - Bin 20-25%: 0 scores between 20.0 and 25.0
+2025-04-06 23:59:38,830 - INFO - Bin 25-30%: 0 scores between 25.0 and 30.0
+2025-04-06 23:59:38,830 - INFO - Bin 30-35%: 0 scores between 30.0 and 35.0
+2025-04-06 23:59:38,830 - INFO - Bin 35-40%: 0 scores between 35.0 and 40.0
+2025-04-06 23:59:38,831 - INFO - Bin 40-45%: 0 scores between 40.0 and 45.0
+2025-04-06 23:59:38,831 - INFO - Bin 45-50%: 0 scores between 45.0 and 50.0
+2025-04-06 23:59:38,831 - INFO - Bin 50-55%: 0 scores between 50.0 and 55.0
+2025-04-06 23:59:38,831 - INFO - Bin 55-60%: 0 scores between 55.0 and 60.0
+2025-04-06 23:59:38,831 - INFO - Bin 60-65%: 0 scores between 60.0 and 65.0
+2025-04-06 23:59:38,831 - INFO - Bin 65-70%: 0 scores between 65.0 and 70.0
+2025-04-06 23:59:38,832 - INFO - Bin 70-75%: 2 scores between 70.0 and 75.0
+2025-04-06 23:59:38,832 - INFO - Bin 75-80%: 1 scores between 75.0 and 80.0
+2025-04-06 23:59:38,832 - INFO - Bin 80-85%: 0 scores between 80.0 and 85.0
+2025-04-06 23:59:38,832 - INFO - Bin 85-90%: 0 scores between 85.0 and 90.0
+2025-04-06 23:59:38,832 - INFO - Bin 90-95%: 0 scores between 90.0 and 95.0
+2025-04-06 23:59:38,832 - INFO - Bin 95-100%: 0 scores between 95.0 and 100.0
+2025-04-06 23:59:38,832 - INFO - Generating histogram with max_score: 100
+2025-04-06 23:59:38,833 - INFO - Score distribution: count     3.000000
+mean     73.333333
+std       2.081666
+min      71.000000
+25%      72.500000
+50%      74.000000
+75%      74.500000
+max      75.000000
+Name: TOTAL_PERCENTAGE, dtype: float64
+2025-04-06 23:59:38,833 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-04-06 23:59:38,834 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-04-06 23:59:38,834 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-04-06 23:59:38,834 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-04-06 23:59:38,834 - INFO - Bin 60-80%: 3 scores between 60.0 and 80.0
+2025-04-06 23:59:38,834 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-04-06 23:59:38,837 - INFO - 127.0.0.1 - - [06/Apr/2025 23:59:38] "POST /analyze_grading HTTP/1.1" 200 -
+2025-04-07 00:09:38,496 - INFO - Processing file: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/1611-09268v3-2.pdf
+2025-04-07 00:09:38,496 - INFO - Downloading file from S3: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/1611-09268v3-2.pdf
+2025-04-07 00:09:39,411 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-07 00:09:44,973 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-07 00:09:45,057 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:09:45,145 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:09:45,147 - INFO - 127.0.0.1 - - [07/Apr/2025 00:09:45] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-07 00:10:57,176 - INFO - Index key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:10:57,177 - INFO - Chunks key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:10:57,177 - INFO - Attempting to download FAISS index from key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:10:57,329 - INFO - FAISS index downloaded and loaded successfully
+2025-04-07 00:10:57,329 - INFO - Downloading JSON from S3: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:10:57,383 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-07 00:10:58,400 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-07 00:10:58,401 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-07 00:10:58,401 - INFO - Sending request to local model: gemma3:12b
+2025-04-07 00:11:16,658 - INFO - Successfully generated sample rubric
+2025-04-07 00:11:16,662 - INFO - 127.0.0.1 - - [07/Apr/2025 00:11:16] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-07 00:11:40,487 - INFO - Index key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:11:40,488 - INFO - Chunks key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:11:40,488 - INFO - Attempting to download FAISS index from key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:11:40,657 - INFO - FAISS index downloaded and loaded successfully
+2025-04-07 00:11:40,657 - INFO - Downloading JSON from S3: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:11:40,708 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-07 00:11:41,655 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-07 00:11:41,655 - INFO - Generating a sample rubric using model: gemma3:12b...
+2025-04-07 00:11:41,655 - INFO - Sending request to local model: gemma3:12b
+2025-04-07 00:11:53,917 - INFO - Successfully generated sample rubric
+2025-04-07 00:11:53,920 - INFO - 127.0.0.1 - - [07/Apr/2025 00:11:53] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-07 00:13:12,482 - INFO - Generated prompt for criterion: Dataset Understanding & Task Alignment
+2025-04-07 00:13:15,631 - INFO - Generated prompt for criterion: Criterion Clarity & Specificity
+2025-04-07 00:13:20,599 - INFO - Generated prompt for criterion: Relevance to MS MARCO Tasks
+2025-04-07 00:13:20,600 - INFO - 127.0.0.1 - - [07/Apr/2025 00:13:20] "POST /generate_prompt HTTP/1.1" 200 -
+2025-04-07 00:14:00,738 - INFO - Index key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:14:00,739 - INFO - Chunks key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:14:00,739 - INFO - Attempting to download FAISS index from key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:14:00,913 - INFO - FAISS index downloaded and loaded successfully
+2025-04-07 00:14:00,913 - INFO - Downloading JSON from S3: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:14:00,961 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-07 00:14:01,840 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-07 00:14:01,840 - INFO - RAG context retrieved for grading: arXivpreprintarXiv:1609.05284,2016. Siri. Siripersonalassistant. http://www.apple.com/ios/siri/,2018. S.Sukhbaatar,J.Weston,R.Fergus,etal. End-to-endmemorynetworks. InAdvancesinneuralinformation proce...
+2025-04-07 00:14:07,997 - INFO - 127.0.0.1 - - [07/Apr/2025 00:14:07] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-04-07 00:16:16,511 - INFO - Parsed S3 key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/student-responses-2025-04-07T04-15-50-498Z.csv
+2025-04-07 00:16:16,512 - INFO - Parsed folder: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be
+2025-04-07 00:16:16,512 - INFO - Parsed S3 key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/student-responses-2025-04-07T04-15-50-498Z.csv
+2025-04-07 00:16:16,512 - INFO - Parsed folder: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be
+2025-04-07 00:16:16,512 - INFO - Downloading file from S3: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/student-responses-2025-04-07T04-15-50-498Z.csv
+2025-04-07 00:16:16,580 - INFO - Starting threaded grading of 3 essays...
+2025-04-07 00:16:16,580 - INFO - Index key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:16:16,581 - INFO - Index key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:16:16,581 - INFO - Chunks key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:16:16,581 - INFO - Index key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:16:16,581 - INFO - Chunks key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:16:16,582 - INFO - Attempting to download FAISS index from key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:16:16,582 - INFO - Chunks key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:16:16,582 - INFO - Attempting to download FAISS index from key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:16:16,584 - INFO - Attempting to download FAISS index from key: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/faiss_index.index
+2025-04-07 00:16:16,747 - INFO - FAISS index downloaded and loaded successfully
+2025-04-07 00:16:16,747 - INFO - Downloading JSON from S3: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:16:16,752 - INFO - FAISS index downloaded and loaded successfully
+2025-04-07 00:16:16,752 - INFO - Downloading JSON from S3: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:16:16,776 - INFO - FAISS index downloaded and loaded successfully
+2025-04-07 00:16:16,776 - INFO - Downloading JSON from S3: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/chunks.json
+2025-04-07 00:16:16,808 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-07 00:16:16,819 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-07 00:16:16,834 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-07 00:16:17,742 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-07 00:16:17,742 - INFO - RAG context retrieved for essay 1/3
+2025-04-07 00:16:17,744 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-07 00:16:17,744 - INFO - RAG context retrieved for essay 1/3
+2025-04-07 00:16:17,746 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-07 00:16:17,746 - INFO - RAG context retrieved for essay 1/3
+2025-04-07 00:16:26,702 - INFO - Completed essay 1/3
+2025-04-07 00:16:26,811 - INFO - Completed essay 2/3
+2025-04-07 00:16:26,889 - INFO - Completed essay 3/3
+2025-04-07 00:16:27,119 - INFO - Completed grading 3 essays. Failed: 0
+2025-04-07 00:16:27,269 - INFO - Uploaded to S3: http://129.10.157.62:9000/essaybot/dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/gradedFiles/graded_response_2025-04-07-00-16-27.xlsx
+2025-04-07 00:16:27,269 - INFO - 127.0.0.1 - - [07/Apr/2025 00:16:27] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-04-07 00:18:13,231 - INFO - Received data: {'s3_file_path': 'http://129.10.157.62:9000/essaybot/dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/gradedFiles/graded_response_2025-04-07-00-16-27.xlsx', 'config_rubric': {'criteria': [{'description': "Demonstrates a clear understanding of the MS MARCO dataset's structure, content, and the proposed tasks (Novice, Intermediate, Passage Re-ranking).  Accurately aligns the rubric criteria to the stated goals of each task.", 'name': 'Dataset Understanding & Task Alignment', 'scoringLevels': {'full': "Provides a comprehensive understanding of the dataset's characteristics and explicitly links each rubric criterion to the specific challenges presented by the Novice, Intermediate, and Passage Re-ranking tasks.", 'minimal': 'Demonstrates limited understanding of the dataset or tasks. The rubric criteria seem disconnected from the proposed challenges.', 'partial': 'Shows general awareness of the dataset and tasks but may miss some nuances in their interrelationship.  Connections between the rubric and the tasks are present but not fully articulated.'}, 'subCriteria': [], 'weight': 30}, {'description': 'Each criterion is clearly and specifically defined, leaving no room for ambiguity regarding what is being assessed. The language used is precise and avoids vague or subjective terms.', 'name': 'Criterion Clarity & Specificity', 'scoringLevels': {'full': 'Criteria are impeccably clear, objective, and measurable.  The descriptions provide unambiguous guidelines for assessment. The criteria isolate specific aspects of task performance.', 'minimal': 'Criteria are vague and poorly defined.  The descriptions lack clarity and offer little guidance for assessment. The criteria are overly broad.', 'partial': 'Criteria are generally clear but could benefit from more precise wording. Some ambiguity may exist, potentially leading to subjective interpretations.'}, 'subCriteria': [], 'weight': 40}, {'description': 'The criteria directly assess skills and knowledge crucial for success in the MS MARCO tasks. The chosen criteria reflect the expected level of complexity and difficulty associated with each task.', 'name': 'Relevance to MS MARCO Tasks', 'scoringLevels': {'full': 'Each criterion clearly and directly addresses the core skills and knowledge required for success in the Novice, Intermediate, and Passage Re-ranking tasks. The weighting reflects the relative importance of each skill.', 'minimal': 'Criteria are largely irrelevant to the tasks and do not effectively assess the skills required for success. The weighting is inappropriate and does not correspond to the task demands.', 'partial': 'Most criteria are relevant to the tasks, but some may be less important or unnecessarily complex. The weighting may not accurately reflect the relative importance of each criterion.'}, 'subCriteria': [], 'weight': 30}]}}
+2025-04-07 00:18:13,233 - INFO - Downloading file from S3: http://129.10.157.62:9000/essaybot/dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/gradedFiles/graded_response_2025-04-07-00-16-27.xlsx
+2025-04-07 00:18:13,233 - INFO - Final S3 key used for download: dash_user/67f34fbf304ba105a83f95b8/67f34fe2304ba105a83f95be/gradedFiles/graded_response_2025-04-07-00-16-27.xlsx
+2025-04-07 00:18:13,304 - INFO - Available columns in Excel: ['ID', 'Response', 'Dataset Understanding & Task Alignment_feedback', 'Dataset Understanding & Task Alignment_score', 'Criterion Clarity & Specificity_feedback', 'Criterion Clarity & Specificity_score', 'Relevance to MS MARCO Tasks_feedback', 'Relevance to MS MARCO Tasks_score', 'Total_Score']
+2025-04-07 00:18:13,307 - INFO - Generating histogram with max_score: 100
+2025-04-07 00:18:13,312 - INFO - Score distribution: count     3.000000
+mean     69.666667
+std       1.527525
+min      68.000000
+25%      69.000000
+50%      70.000000
+75%      70.500000
+max      71.000000
+Name: TOTAL_SCORE, dtype: float64
+2025-04-07 00:18:13,312 - INFO - Bin edges: [0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0, 55.00000000000001, 60.0, 65.0, 70.0, 75.0, 80.0, 85.0, 90.0, 95.0, 100.0]
+2025-04-07 00:18:13,312 - INFO - Bin 0-5%: 0 scores between 0.0 and 5.0
+2025-04-07 00:18:13,312 - INFO - Bin 5-10%: 0 scores between 5.0 and 10.0
+2025-04-07 00:18:13,312 - INFO - Bin 10-15%: 0 scores between 10.0 and 15.0
+2025-04-07 00:18:13,313 - INFO - Bin 15-20%: 0 scores between 15.0 and 20.0
+2025-04-07 00:18:13,313 - INFO - Bin 20-25%: 0 scores between 20.0 and 25.0
+2025-04-07 00:18:13,313 - INFO - Bin 25-30%: 0 scores between 25.0 and 30.0
+2025-04-07 00:18:13,313 - INFO - Bin 30-35%: 0 scores between 30.0 and 35.0
+2025-04-07 00:18:13,313 - INFO - Bin 35-40%: 0 scores between 35.0 and 40.0
+2025-04-07 00:18:13,313 - INFO - Bin 40-45%: 0 scores between 40.0 and 45.0
+2025-04-07 00:18:13,313 - INFO - Bin 45-50%: 0 scores between 45.0 and 50.0
+2025-04-07 00:18:13,313 - INFO - Bin 50-55%: 0 scores between 50.0 and 55.0
+2025-04-07 00:18:13,314 - INFO - Bin 55-60%: 0 scores between 55.0 and 60.0
+2025-04-07 00:18:13,314 - INFO - Bin 60-65%: 0 scores between 60.0 and 65.0
+2025-04-07 00:18:13,314 - INFO - Bin 65-70%: 1 scores between 65.0 and 70.0
+2025-04-07 00:18:13,314 - INFO - Bin 70-75%: 2 scores between 70.0 and 75.0
+2025-04-07 00:18:13,314 - INFO - Bin 75-80%: 0 scores between 75.0 and 80.0
+2025-04-07 00:18:13,314 - INFO - Bin 80-85%: 0 scores between 80.0 and 85.0
+2025-04-07 00:18:13,314 - INFO - Bin 85-90%: 0 scores between 85.0 and 90.0
+2025-04-07 00:18:13,314 - INFO - Bin 90-95%: 0 scores between 90.0 and 95.0
+2025-04-07 00:18:13,315 - INFO - Bin 95-100%: 0 scores between 95.0 and 100.0
+2025-04-07 00:18:13,315 - INFO - Generating histogram with max_score: 100
+2025-04-07 00:18:13,316 - INFO - Score distribution: count     3.000000
+mean     69.666667
+std       1.527525
+min      68.000000
+25%      69.000000
+50%      70.000000
+75%      70.500000
+max      71.000000
+Name: TOTAL_PERCENTAGE, dtype: float64
+2025-04-07 00:18:13,316 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-04-07 00:18:13,316 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-04-07 00:18:13,316 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-04-07 00:18:13,316 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-04-07 00:18:13,316 - INFO - Bin 60-80%: 3 scores between 60.0 and 80.0
+2025-04-07 00:18:13,316 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-04-07 00:18:13,320 - INFO - 127.0.0.1 - - [07/Apr/2025 00:18:13] "POST /analyze_grading HTTP/1.1" 200 -
+2025-04-09 18:09:15,207 - INFO - Use pytorch device_name: mps
+2025-04-09 18:09:15,208 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-09 18:09:18,111 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://10.0.0.46:6000
+2025-04-09 18:09:18,111 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-09 18:09:18,112 - INFO -  * Restarting with stat
+2025-04-09 18:09:21,182 - INFO - Use pytorch device_name: mps
+2025-04-09 18:09:21,182 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en
+2025-04-09 18:09:24,798 - WARNING -  * Debugger is active!
+2025-04-09 18:09:24,811 - INFO -  * Debugger PIN: 239-316-530
+2025-04-09 18:32:37,362 - INFO - Processing file: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/1611-09268v3-2.pdf
+2025-04-09 18:32:37,363 - INFO - Downloading file from S3: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/1611-09268v3-2.pdf
+2025-04-09 18:32:38,298 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-09 18:32:44,234 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-09 18:32:44,326 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:32:44,415 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:32:44,417 - INFO - 127.0.0.1 - - [09/Apr/2025 18:32:44] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-09 18:33:11,275 - INFO - Index key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:33:11,276 - INFO - Chunks key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:33:11,276 - INFO - Attempting to download FAISS index from key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:33:11,397 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:33:11,398 - INFO - Downloading JSON from S3: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:33:11,439 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:33:11,662 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:33:11,662 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-04-09 18:33:11,662 - INFO - Sending request to local model: llama3.1:8b
+2025-04-09 18:33:19,684 - INFO - Successfully generated sample rubric
+2025-04-09 18:33:19,686 - INFO - 127.0.0.1 - - [09/Apr/2025 18:33:19] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-09 18:33:38,076 - INFO - Generated prompt for criterion: Task Understanding
+2025-04-09 18:33:39,135 - INFO - Generated prompt for criterion: Dataset Analysis
+2025-04-09 18:33:40,628 - INFO - Generated prompt for criterion: Task Design Critique
+2025-04-09 18:33:40,629 - INFO - 127.0.0.1 - - [09/Apr/2025 18:33:40] "POST /generate_prompt HTTP/1.1" 200 -
+2025-04-09 18:33:59,094 - INFO - Index key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:33:59,094 - INFO - Chunks key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:33:59,094 - INFO - Attempting to download FAISS index from key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:33:59,437 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:33:59,437 - INFO - Downloading JSON from S3: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:33:59,628 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:34:00,614 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:34:00,614 - INFO - RAG context retrieved for grading: arXivpreprintarXiv:1609.05284,2016. Siri. Siripersonalassistant. http://www.apple.com/ios/siri/,2018. S.Sukhbaatar,J.Weston,R.Fergus,etal. End-to-endmemorynetworks. InAdvancesinneuralinformation proce...
+2025-04-09 18:34:04,274 - INFO - 127.0.0.1 - - [09/Apr/2025 18:34:04] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-04-09 18:34:33,768 - INFO - Parsed S3 key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/student-responses-2025-04-09T22-34-23-037Z.csv
+2025-04-09 18:34:33,769 - INFO - Parsed folder: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9
+2025-04-09 18:34:33,769 - INFO - Parsed S3 key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/student-responses-2025-04-09T22-34-23-037Z.csv
+2025-04-09 18:34:33,769 - INFO - Parsed folder: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9
+2025-04-09 18:34:33,769 - INFO - Downloading file from S3: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/student-responses-2025-04-09T22-34-23-037Z.csv
+2025-04-09 18:34:33,839 - INFO - Starting threaded grading of 3 essays...
+2025-04-09 18:34:33,840 - INFO - Index key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:34:33,840 - INFO - Index key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:34:33,840 - INFO - Index key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:34:33,840 - INFO - Chunks key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:34:33,841 - INFO - Chunks key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:34:33,841 - INFO - Chunks key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:34:33,841 - INFO - Attempting to download FAISS index from key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:34:33,841 - INFO - Attempting to download FAISS index from key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:34:33,841 - INFO - Attempting to download FAISS index from key: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/faiss_index.index
+2025-04-09 18:34:34,031 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:34:34,032 - INFO - Downloading JSON from S3: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:34:34,035 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:34:34,035 - INFO - Downloading JSON from S3: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:34:34,063 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:34:34,064 - INFO - Downloading JSON from S3: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/chunks.json
+2025-04-09 18:34:34,097 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:34:34,105 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:34:34,123 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:34:35,002 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:34:35,002 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:34:35,002 - INFO - RAG context retrieved for essay 1/3
+2025-04-09 18:34:35,003 - INFO - RAG context retrieved for essay 1/3
+2025-04-09 18:34:35,005 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:34:35,005 - INFO - RAG context retrieved for essay 1/3
+2025-04-09 18:34:39,500 - INFO - Completed essay 1/3
+2025-04-09 18:34:39,856 - INFO - Completed essay 2/3
+2025-04-09 18:34:40,073 - INFO - Completed essay 3/3
+2025-04-09 18:34:40,289 - INFO - Completed grading 3 essays. Failed: 0
+2025-04-09 18:34:40,545 - INFO - Uploaded to S3: http://129.10.157.62:9000/essaybot/dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/gradedFiles/graded_response_2025-04-09-18-34-40.xlsx
+2025-04-09 18:34:40,546 - INFO - 127.0.0.1 - - [09/Apr/2025 18:34:40] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-04-09 18:35:20,233 - INFO - Received data: {'s3_file_path': 'http://129.10.157.62:9000/essaybot/dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/gradedFiles/graded_response_2025-04-09-18-34-40.xlsx', 'config_rubric': {'criteria': [{'description': 'The candidate demonstrates a clear understanding of the proposed machine learning tasks and their difficulty levels.', 'name': 'Task Understanding', 'scoringLevels': {'full': 'The candidate accurately describes all three tasks and their characteristics, demonstrating an in-depth understanding.', 'minimal': 'The candidate fails to describe any task accurately.', 'partial': 'The candidate partially describes one or two tasks, but may have some inaccuracies or misunderstandings.'}, 'subCriteria': [], 'weight': 40}, {'description': 'The candidate demonstrates an ability to analyze the MS MARCO dataset and its characteristics, such as the number of questions and passages.', 'name': 'Dataset Analysis', 'scoringLevels': {'full': "The candidate accurately describes the dataset's key features, including the number of questions, passages, and answers.", 'minimal': 'The candidate fails to describe any aspect of the dataset.', 'partial': 'The candidate partially describes some aspects of the dataset, but may have inaccuracies or omissions.'}, 'subCriteria': [], 'weight': 30}, {'description': 'The candidate provides a thoughtful critique of the proposed machine learning tasks, including their strengths and weaknesses.', 'name': 'Task Design Critique', 'scoringLevels': {'full': 'The candidate provides a thorough and insightful critique, highlighting both the benefits and limitations of each task.', 'minimal': 'The candidate fails to provide any meaningful critique.', 'partial': 'The candidate partially critiques one or two tasks, but may have some inaccuracies or omissions.'}, 'subCriteria': [], 'weight': 30}]}}
+2025-04-09 18:35:20,233 - INFO - Downloading file from S3: http://129.10.157.62:9000/essaybot/dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/gradedFiles/graded_response_2025-04-09-18-34-40.xlsx
+2025-04-09 18:35:20,234 - INFO - Final S3 key used for download: dash_user/67f6f5603b795be36c3bc9e3/67f6f57a3b795be36c3bc9e9/gradedFiles/graded_response_2025-04-09-18-34-40.xlsx
+2025-04-09 18:35:20,351 - INFO - Available columns in Excel: ['ID', 'Response', 'Task Understanding_feedback', 'Task Understanding_score', 'Dataset Analysis_feedback', 'Dataset Analysis_score', 'Task Design Critique_feedback', 'Task Design Critique_score', 'Total_Score']
+2025-04-09 18:35:20,358 - INFO - Generating histogram with max_score: 100
+2025-04-09 18:35:20,363 - INFO - Score distribution: count     3.0
+mean     76.0
+std       2.0
+min      74.0
+25%      75.0
+50%      76.0
+75%      77.0
+max      78.0
+Name: TOTAL_SCORE, dtype: float64
+2025-04-09 18:35:20,363 - INFO - Bin edges: [0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0, 55.00000000000001, 60.0, 65.0, 70.0, 75.0, 80.0, 85.0, 90.0, 95.0, 100.0]
+2025-04-09 18:35:20,363 - INFO - Bin 0-5%: 0 scores between 0.0 and 5.0
+2025-04-09 18:35:20,363 - INFO - Bin 5-10%: 0 scores between 5.0 and 10.0
+2025-04-09 18:35:20,363 - INFO - Bin 10-15%: 0 scores between 10.0 and 15.0
+2025-04-09 18:35:20,364 - INFO - Bin 15-20%: 0 scores between 15.0 and 20.0
+2025-04-09 18:35:20,364 - INFO - Bin 20-25%: 0 scores between 20.0 and 25.0
+2025-04-09 18:35:20,364 - INFO - Bin 25-30%: 0 scores between 25.0 and 30.0
+2025-04-09 18:35:20,364 - INFO - Bin 30-35%: 0 scores between 30.0 and 35.0
+2025-04-09 18:35:20,364 - INFO - Bin 35-40%: 0 scores between 35.0 and 40.0
+2025-04-09 18:35:20,364 - INFO - Bin 40-45%: 0 scores between 40.0 and 45.0
+2025-04-09 18:35:20,364 - INFO - Bin 45-50%: 0 scores between 45.0 and 50.0
+2025-04-09 18:35:20,364 - INFO - Bin 50-55%: 0 scores between 50.0 and 55.0
+2025-04-09 18:35:20,365 - INFO - Bin 55-60%: 0 scores between 55.0 and 60.0
+2025-04-09 18:35:20,365 - INFO - Bin 60-65%: 0 scores between 60.0 and 65.0
+2025-04-09 18:35:20,365 - INFO - Bin 65-70%: 0 scores between 65.0 and 70.0
+2025-04-09 18:35:20,365 - INFO - Bin 70-75%: 1 scores between 70.0 and 75.0
+2025-04-09 18:35:20,365 - INFO - Bin 75-80%: 2 scores between 75.0 and 80.0
+2025-04-09 18:35:20,365 - INFO - Bin 80-85%: 0 scores between 80.0 and 85.0
+2025-04-09 18:35:20,365 - INFO - Bin 85-90%: 0 scores between 85.0 and 90.0
+2025-04-09 18:35:20,365 - INFO - Bin 90-95%: 0 scores between 90.0 and 95.0
+2025-04-09 18:35:20,365 - INFO - Bin 95-100%: 0 scores between 95.0 and 100.0
+2025-04-09 18:35:20,366 - INFO - Generating histogram with max_score: 100
+2025-04-09 18:35:20,367 - INFO - Score distribution: count     3.0
+mean     76.0
+std       2.0
+min      74.0
+25%      75.0
+50%      76.0
+75%      77.0
+max      78.0
+Name: TOTAL_PERCENTAGE, dtype: float64
+2025-04-09 18:35:20,367 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-04-09 18:35:20,367 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-04-09 18:35:20,367 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-04-09 18:35:20,368 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-04-09 18:35:20,368 - INFO - Bin 60-80%: 3 scores between 60.0 and 80.0
+2025-04-09 18:35:20,368 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-04-09 18:35:20,371 - INFO - 127.0.0.1 - - [09/Apr/2025 18:35:20] "POST /analyze_grading HTTP/1.1" 200 -
+2025-04-09 18:46:27,805 - INFO - Processing file: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/1611-09268v3-2.pdf
+2025-04-09 18:46:27,807 - INFO - Downloading file from S3: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/1611-09268v3-2.pdf
+2025-04-09 18:46:29,560 - INFO - Generated 37 chunks with average size 1056.95 characters
+2025-04-09 18:46:35,340 - WARNING - Not enough training data (37) for clustering with nlist=12. Requires at least 468 points. Using IndexFlatL2.
+2025-04-09 18:46:35,456 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:46:35,614 - INFO - Uploaded to S3: https://essaybot.s3.amazonaws.com/dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:46:35,620 - INFO - 127.0.0.1 - - [09/Apr/2025 18:46:35] "POST /index-multiple HTTP/1.1" 200 -
+2025-04-09 18:47:06,185 - INFO - Index key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:47:06,185 - INFO - Chunks key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:47:06,185 - INFO - Attempting to download FAISS index from key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:47:06,357 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:47:06,357 - INFO - Downloading JSON from S3: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:47:06,416 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:47:07,399 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:47:07,399 - INFO - Generating a sample rubric using model: llama3.1:8b...
+2025-04-09 18:47:07,399 - INFO - Sending request to local model: llama3.1:8b
+2025-04-09 18:47:12,778 - INFO - Successfully generated sample rubric
+2025-04-09 18:47:12,783 - INFO - 127.0.0.1 - - [09/Apr/2025 18:47:12] "POST /generate_rubric HTTP/1.1" 200 -
+2025-04-09 18:47:40,093 - INFO - Generated prompt for criterion: Understanding Task Levels
+2025-04-09 18:47:41,454 - INFO - Generated prompt for criterion: Dataset and Task Understanding
+2025-04-09 18:47:42,568 - INFO - Generated prompt for criterion: Task Description Clarity
+2025-04-09 18:47:42,570 - INFO - 127.0.0.1 - - [09/Apr/2025 18:47:42] "POST /generate_prompt HTTP/1.1" 200 -
+2025-04-09 18:48:00,471 - INFO - Index key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:48:00,471 - INFO - Chunks key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:48:00,471 - INFO - Attempting to download FAISS index from key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:48:00,635 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:48:00,636 - INFO - Downloading JSON from S3: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:48:00,697 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:48:01,657 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:48:01,658 - INFO - RAG context retrieved for grading: arXivpreprintarXiv:1609.05284,2016. Siri. Siripersonalassistant. http://www.apple.com/ios/siri/,2018. S.Sukhbaatar,J.Weston,R.Fergus,etal. End-to-endmemorynetworks. InAdvancesinneuralinformation proce...
+2025-04-09 18:48:05,093 - INFO - 127.0.0.1 - - [09/Apr/2025 18:48:05] "POST /grade_single_essay HTTP/1.1" 200 -
+2025-04-09 18:48:33,365 - INFO - Parsed S3 key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/student-responses-2025-04-09T22-48-23-038Z.csv
+2025-04-09 18:48:33,365 - INFO - Parsed folder: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31
+2025-04-09 18:48:33,365 - INFO - Parsed S3 key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/student-responses-2025-04-09T22-48-23-038Z.csv
+2025-04-09 18:48:33,365 - INFO - Parsed folder: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31
+2025-04-09 18:48:33,365 - INFO - Downloading file from S3: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/student-responses-2025-04-09T22-48-23-038Z.csv
+2025-04-09 18:48:33,434 - INFO - Starting threaded grading of 3 essays...
+2025-04-09 18:48:33,435 - INFO - Index key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:48:33,435 - INFO - Index key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:48:33,435 - INFO - Chunks key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:48:33,435 - INFO - Index key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:48:33,435 - INFO - Chunks key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:48:33,435 - INFO - Attempting to download FAISS index from key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:48:33,436 - INFO - Chunks key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:48:33,436 - INFO - Attempting to download FAISS index from key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:48:33,437 - INFO - Attempting to download FAISS index from key: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/faiss_index.index
+2025-04-09 18:48:33,630 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:48:33,630 - INFO - Downloading JSON from S3: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:48:33,636 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:48:33,636 - INFO - Downloading JSON from S3: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:48:33,640 - INFO - FAISS index downloaded and loaded successfully
+2025-04-09 18:48:33,640 - INFO - Downloading JSON from S3: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/chunks.json
+2025-04-09 18:48:33,696 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:48:33,708 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:48:33,718 - INFO - Query: What are the three challenges of diverse difficulty levels that the writers of this paper propose?...
+2025-04-09 18:48:34,645 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:48:34,645 - INFO - RAG context retrieved for essay 1/3
+2025-04-09 18:48:34,647 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:48:34,647 - INFO - Retrieved 5 chunks for query: What are the three challenges of diverse difficult...
+2025-04-09 18:48:34,648 - INFO - RAG context retrieved for essay 1/3
+2025-04-09 18:48:34,648 - INFO - RAG context retrieved for essay 1/3
+2025-04-09 18:48:38,869 - INFO - Completed essay 1/3
+2025-04-09 18:48:39,251 - INFO - Completed essay 2/3
+2025-04-09 18:48:39,599 - INFO - Completed essay 3/3
+2025-04-09 18:48:39,814 - INFO - Completed grading 3 essays. Failed: 0
+2025-04-09 18:48:39,979 - INFO - Uploaded to S3: http://129.10.157.62:9000/essaybot/dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/gradedFiles/graded_response_2025-04-09-18-48-39.xlsx
+2025-04-09 18:48:39,979 - INFO - 127.0.0.1 - - [09/Apr/2025 18:48:39] "POST /grade_bulk_essays HTTP/1.1" 200 -
+2025-04-09 18:49:22,367 - INFO - Received data: {'s3_file_path': 'http://129.10.157.62:9000/essaybot/dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/gradedFiles/graded_response_2025-04-09-18-48-39.xlsx', 'config_rubric': {'criteria': [{'description': 'The ability to accurately identify and describe the three machine learning tasks proposed, including their difficulty levels.', 'name': 'Understanding Task Levels', 'scoringLevels': {'full': 'Accurately identifies and describes all three tasks with correct difficulty levels.', 'minimal': 'Fails to identify any of the tasks or provides a vague description.', 'partial': 'Identifies two out of the three tasks correctly or partially describes one task.'}, 'subCriteria': [], 'weight': 40}, {'description': 'The ability to comprehend the dataset and tasks proposed, including their purpose and significance.', 'name': 'Dataset and Task Understanding', 'scoringLevels': {'full': 'Demonstrates a thorough understanding of the dataset and tasks, including their strengths and limitations.', 'minimal': 'Fails to demonstrate any understanding of the dataset and tasks.', 'partial': 'Shows some understanding of the dataset and tasks but lacks depth or clarity.'}, 'subCriteria': [], 'weight': 30}, {'description': 'The ability to clearly describe each task, including their requirements and expectations.', 'name': 'Task Description Clarity', 'scoringLevels': {'full': 'Clearly describes each task with specific examples or scenarios.', 'minimal': 'Fails to provide a clear description of any of the tasks.', 'partial': 'Provides a clear description of one or two tasks but lacks clarity for the remaining tasks.'}, 'subCriteria': [], 'weight': 30}]}}
+2025-04-09 18:49:22,368 - INFO - Downloading file from S3: http://129.10.157.62:9000/essaybot/dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/gradedFiles/graded_response_2025-04-09-18-48-39.xlsx
+2025-04-09 18:49:22,368 - INFO - Final S3 key used for download: dash_user/67f6f8a53b795be36c3bca2b/67f6f8b73b795be36c3bca31/gradedFiles/graded_response_2025-04-09-18-48-39.xlsx
+2025-04-09 18:49:22,468 - INFO - Available columns in Excel: ['ID', 'Response', 'Understanding Task Levels_feedback', 'Understanding Task Levels_score', 'Dataset and Task Understanding_feedback', 'Dataset and Task Understanding_score', 'Task Description Clarity_feedback', 'Task Description Clarity_score', 'Total_Score']
+2025-04-09 18:49:22,471 - INFO - Generating histogram with max_score: 100
+2025-04-09 18:49:22,473 - INFO - Score distribution: count     3.000000
+mean     73.333333
+std       3.055050
+min      70.000000
+25%      72.000000
+50%      74.000000
+75%      75.000000
+max      76.000000
+Name: TOTAL_SCORE, dtype: float64
+2025-04-09 18:49:22,473 - INFO - Bin edges: [0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0, 55.00000000000001, 60.0, 65.0, 70.0, 75.0, 80.0, 85.0, 90.0, 95.0, 100.0]
+2025-04-09 18:49:22,473 - INFO - Bin 0-5%: 0 scores between 0.0 and 5.0
+2025-04-09 18:49:22,474 - INFO - Bin 5-10%: 0 scores between 5.0 and 10.0
+2025-04-09 18:49:22,474 - INFO - Bin 10-15%: 0 scores between 10.0 and 15.0
+2025-04-09 18:49:22,474 - INFO - Bin 15-20%: 0 scores between 15.0 and 20.0
+2025-04-09 18:49:22,474 - INFO - Bin 20-25%: 0 scores between 20.0 and 25.0
+2025-04-09 18:49:22,474 - INFO - Bin 25-30%: 0 scores between 25.0 and 30.0
+2025-04-09 18:49:22,475 - INFO - Bin 30-35%: 0 scores between 30.0 and 35.0
+2025-04-09 18:49:22,475 - INFO - Bin 35-40%: 0 scores between 35.0 and 40.0
+2025-04-09 18:49:22,475 - INFO - Bin 40-45%: 0 scores between 40.0 and 45.0
+2025-04-09 18:49:22,475 - INFO - Bin 45-50%: 0 scores between 45.0 and 50.0
+2025-04-09 18:49:22,475 - INFO - Bin 50-55%: 0 scores between 50.0 and 55.0
+2025-04-09 18:49:22,475 - INFO - Bin 55-60%: 0 scores between 55.0 and 60.0
+2025-04-09 18:49:22,476 - INFO - Bin 60-65%: 0 scores between 60.0 and 65.0
+2025-04-09 18:49:22,476 - INFO - Bin 65-70%: 0 scores between 65.0 and 70.0
+2025-04-09 18:49:22,476 - INFO - Bin 70-75%: 2 scores between 70.0 and 75.0
+2025-04-09 18:49:22,476 - INFO - Bin 75-80%: 1 scores between 75.0 and 80.0
+2025-04-09 18:49:22,476 - INFO - Bin 80-85%: 0 scores between 80.0 and 85.0
+2025-04-09 18:49:22,477 - INFO - Bin 85-90%: 0 scores between 85.0 and 90.0
+2025-04-09 18:49:22,477 - INFO - Bin 90-95%: 0 scores between 90.0 and 95.0
+2025-04-09 18:49:22,477 - INFO - Bin 95-100%: 0 scores between 95.0 and 100.0
+2025-04-09 18:49:22,477 - INFO - Generating histogram with max_score: 100
+2025-04-09 18:49:22,478 - INFO - Score distribution: count     3.000000
+mean     73.333333
+std       3.055050
+min      70.000000
+25%      72.000000
+50%      74.000000
+75%      75.000000
+max      76.000000
+Name: TOTAL_PERCENTAGE, dtype: float64
+2025-04-09 18:49:22,478 - INFO - Bin edges: [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+2025-04-09 18:49:22,478 - INFO - Bin 0-20%: 0 scores between 0.0 and 20.0
+2025-04-09 18:49:22,479 - INFO - Bin 20-40%: 0 scores between 20.0 and 40.0
+2025-04-09 18:49:22,479 - INFO - Bin 40-60%: 0 scores between 40.0 and 60.0
+2025-04-09 18:49:22,479 - INFO - Bin 60-80%: 3 scores between 60.0 and 80.0
+2025-04-09 18:49:22,479 - INFO - Bin 80-100%: 0 scores between 80.0 and 100.0
+2025-04-09 18:49:22,483 - INFO - 127.0.0.1 - - [09/Apr/2025 18:49:22] "POST /analyze_grading HTTP/1.1" 200 -

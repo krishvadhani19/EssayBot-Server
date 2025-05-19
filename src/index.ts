@@ -32,7 +32,11 @@ app.get("/list-models", (req: Request, res: Response, next: Function) => {
     .then((response: any) => {
       res
         .status(200)
-        .json(response.data.models.map((model: any) => model.name));
+        .json(
+          response.data.models
+            .map((model: any) => model.name)
+            .filter((name: string) => !name.toLowerCase().includes("deepseek"))
+        );
     })
     .catch((error) => {
       res.status(500).json({
